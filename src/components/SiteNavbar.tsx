@@ -43,7 +43,7 @@ export function SiteNavbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[color:var(--color-charcoal)]">
-      <div className="wk-container flex h-20 items-center justify-between">
+      <div className="wk-container flex h-24 items-center justify-between">
         <Link to="/" className="rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30">
           <WekaLogo />
         </Link>
