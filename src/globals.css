@@ -94,7 +94,8 @@
   }
 
   .wk-card-dark {
-    @apply rounded-xl bg-[color:var(--color-charcoal-mid)]/90;
+    @apply rounded-xl;
+    background-color: rgba(58, 58, 58, 0.9);
   }
 
   .wk-pill {
