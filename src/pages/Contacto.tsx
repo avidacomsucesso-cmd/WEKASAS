@@ -87,24 +87,24 @@ export default function Contacto() {
                 </svg>
               </div>
 
-              <h1 className="text-3xl font-bold tracking-[-0.03em] sm:text-4xl">
+              <h1 className="text-3xl font-bold tracking-[-0.03em] text-white sm:text-4xl">
                 Vamos falar sobre o seu imóvel.
               </h1>
-              <p className="mt-3 text-sm text-white/75 sm:text-base">
+              <p className="mt-3 text-sm text-white/90 sm:text-base">
                 Avaliação gratuita em 24 horas. Sem compromisso.
               </p>
 
-              <div className="mt-7 space-y-3 text-sm text-white/80">
+              <div className="mt-7 space-y-4 text-sm font-medium text-white">
                 {[
                   "Resposta em 24h",
                   "Sem custos",
                   "Cobre PT e ES",
                 ].map((t) => (
                   <div key={t} className="flex items-center gap-3">
-                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[color:var(--color-orange)]">
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[color:var(--color-orange)] ring-1 ring-white/20">
                       ✓
                     </span>
-                    <span>{t}</span>
+                    <span className="text-white">{t}</span>
                   </div>
                 ))}
               </div>
@@ -113,12 +113,12 @@ export default function Contacto() {
                 href={`https://wa.me/${wa}`}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-flex items-center justify-center rounded-lg bg-[#25D366] px-4 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#1fb65a]"
+                className="mt-8 inline-flex items-center justify-center rounded-lg bg-[#25D366] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:bg-[#1fb65a]"
               >
                 Falar no WhatsApp
               </a>
 
-              <p className="mt-6 text-xs text-white/55">
+              <p className="mt-8 text-xs text-white/60">
                 Ao submeter, concordas em ser contactado pela WEKASAS.
               </p>
             </div>
