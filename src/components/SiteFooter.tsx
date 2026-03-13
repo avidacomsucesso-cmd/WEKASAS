@@ -4,19 +4,13 @@ import { WekaLogo } from "@/components/WekaLogo";
 export function SiteFooter() {
   return (
     <footer className="border-t border-white/10 bg-[color:var(--color-charcoal)]">
-      <div className="wk-container wk-section py-12">
-        <div className="grid gap-10 md:grid-cols-12">
+      <div className="wk-container wk-section py-16">
+        <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-4">
-            <WekaLogo />
-            <p className="mt-3 max-w-xs text-sm text-[color:var(--color-text-muted)]">
+            <WekaLogo className="mb-4" />
+            <p className="max-w-xs text-base font-medium text-[color:var(--color-text-muted)]">
               O seu imóvel. A nossa responsabilidade.
             </p>
-            <img
-              src="/assets/wekasas-brand-wall.png"
-              alt="WEKASAS"
-              className="mt-6 w-full max-w-sm rounded-xl border border-white/10 opacity-90"
-              loading="lazy"
-            />
           </div>
 
           <div className="grid gap-10 sm:grid-cols-2 md:col-span-8 md:grid-cols-4">

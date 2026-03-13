@@ -158,16 +158,16 @@ export default function Index() {
         <div className="wk-container py-6">
           <div className="grid gap-3 text-center sm:grid-cols-3 sm:text-left">
             <div>
-              <p className="text-2xl font-bold text-zinc-900">300+</p>
-              <p className="text-sm text-zinc-600">proprietários</p>
+              <p className="text-2xl font-bold text-zinc-900">Avaliação gratuita</p>
+              <p className="text-sm text-zinc-600">em 24h</p>
             </div>
             <div>
               <p className="text-2xl font-bold text-zinc-900">Lisboa e Madrid</p>
               <p className="text-sm text-zinc-600">presença local</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-zinc-900">4.9★</p>
-              <p className="text-sm text-zinc-600">satisfação</p>
+              <p className="text-2xl font-bold text-zinc-900">Renda garantida</p>
+              <p className="text-sm text-zinc-600">seguro incluído</p>
             </div>
           </div>
         </div>
@@ -326,7 +326,7 @@ export default function Index() {
                 key={t.name}
                 className="wk-card-dark border border-white/10 p-6"
               >
-                <p className="text-sm leading-relaxed text-white/80">“{t.text}”</p>
+                <p className="text-sm leading-relaxed text-white/80">"{t.text}"</p>
                 <div className="mt-5 flex items-center justify-between">
                   <p className="text-sm font-semibold text-white">{t.name}</p>
                   <span className="text-xs font-semibold text-[color:var(--color-orange)]">

@@ -11,12 +11,12 @@ export function WekaLogo({
   textClassName?: string;
 }) {
   return (
-    <div className={cn("flex items-center gap-2", className)}>
+    <div className={cn("flex items-center gap-3", className)}>
       <svg
         viewBox="0 0 80 68"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className={cn("h-7 w-7", markClassName)}
+        className={cn("h-8 w-8", markClassName)}
         aria-hidden="true"
         focusable="false"
       >
@@ -32,7 +32,7 @@ export function WekaLogo({
 
       <span
         className={cn(
-          "select-none font-sans text-sm font-bold uppercase tracking-[0.05em] text-white",
+          "select-none font-sans text-base font-bold uppercase tracking-[0.05em] text-white",
           textClassName
         )}
       >
