@@ -14,44 +14,35 @@
     --color-text-muted: rgba(255, 255, 255, 0.45);
 
     /* shadcn tokens (aligned with brand) */
-    --background: 0 0% 13%;
-    --foreground: 0 0% 100%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 13%;
 
-    --card: 0 0% 18%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
 
-    --popover: 0 0% 13%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
 
     --primary: 20 96% 55%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 22%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 13%;
 
-    --muted: 0 0% 22%;
-    --muted-foreground: 0 0% 78%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 0 0% 22%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 13%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 28%;
-    --input: 0 0% 28%;
+    --border: 0 0% 89%;
+    --input: 0 0% 89%;
     --ring: 20 96% 55%;
 
     --radius: 0.9rem;
-
-    --sidebar-background: 0 0% 13%;
-    --sidebar-foreground: 0 0% 100%;
-    --sidebar-primary: 20 96% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 0 0% 22%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 0 0% 28%;
-    --sidebar-ring: 20 96% 55%;
   }
 }
 
@@ -68,8 +59,8 @@
   }
 
   body {
-    background: var(--color-charcoal);
-    color: var(--color-white);
+    background: white;
+    color: var(--color-charcoal);
   }
 
   h1,
@@ -77,6 +68,7 @@
   h3,
   h4 {
     letter-spacing: -0.02em;
+    color: var(--color-charcoal);
   }
 }
 

@@ -192,7 +192,7 @@ export default function Index() {
               return (
                 <Card
                   key={p.n}
-                  className="wk-card relative overflow-hidden p-6 sm:p-7"
+                  className="wk-card relative overflow-hidden p-6 sm:p-7 bg-white border-zinc-200"
                 >
                   <div className="absolute left-0 top-0 h-full w-1 bg-[color:var(--color-orange)]" />
                   <div className="flex items-start justify-between">

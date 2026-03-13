@@ -41,17 +41,17 @@ export function RentCalculator() {
 
   return (
     <div className="grid gap-6 lg:grid-cols-12">
-      <Card className="wk-card lg:col-span-7">
+      <Card className="wk-card lg:col-span-7 bg-white border-zinc-200">
         <div className="p-6 sm:p-8">
           <p className="text-sm font-semibold text-zinc-900">Inputs</p>
           <div className="mt-6 grid gap-5 sm:grid-cols-3">
             <div className="space-y-2">
               <Label className="text-zinc-700">Cidade</Label>
               <Select value={city} onValueChange={(v) => setCity(v as City)}>
-                <SelectTrigger className="h-11 rounded-xl bg-white">
+                <SelectTrigger className="h-11 rounded-xl bg-white border-zinc-200 text-zinc-900">
                   <SelectValue placeholder="Cidade" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white border-zinc-200">
                   <SelectItem value="Lisboa">Lisboa</SelectItem>
                   <SelectItem value="Madrid">Madrid</SelectItem>
                   <SelectItem value="Barcelona">Barcelona</SelectItem>
@@ -66,10 +66,10 @@ export function RentCalculator() {
                 value={typology}
                 onValueChange={(v) => setTypology(v as Typology)}
               >
-                <SelectTrigger className="h-11 rounded-xl bg-white">
+                <SelectTrigger className="h-11 rounded-xl bg-white border-zinc-200 text-zinc-900">
                   <SelectValue placeholder="Tipologia" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white border-zinc-200">
                   {(["T0", "T1", "T2", "T3", "T4"] as Typology[]).map((t) => (
                     <SelectItem key={t} value={t}>
                       {t}
@@ -85,10 +85,10 @@ export function RentCalculator() {
                 value={condition}
                 onValueChange={(v) => setCondition(v as Condition)}
               >
-                <SelectTrigger className="h-11 rounded-xl bg-white">
+                <SelectTrigger className="h-11 rounded-xl bg-white border-zinc-200 text-zinc-900">
                   <SelectValue placeholder="Estado" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white border-zinc-200">
                   <SelectItem value="excelente">Excelente</SelectItem>
                   <SelectItem value="bom">Bom</SelectItem>
                   <SelectItem value="a recuperar">A recuperar</SelectItem>
@@ -111,7 +111,7 @@ export function RentCalculator() {
         </div>
       </Card>
 
-      <Card className={cn("wk-card lg:col-span-5", base === 0 && "opacity-60")}>
+      <Card className={cn("wk-card lg:col-span-5 bg-white border-zinc-200", base === 0 && "opacity-60")}>
         <div className="p-6 sm:p-8">
           <p className="text-sm font-semibold text-zinc-900">Resultado</p>
 
