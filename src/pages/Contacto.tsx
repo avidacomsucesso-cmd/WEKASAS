@@ -76,7 +76,7 @@ export default function Contacto() {
             <div className="relative bg-[color:var(--color-charcoal)] p-8 text-white lg:col-span-5">
               <div className="pointer-events-none absolute -right-24 -top-10 opacity-[0.08]">
                 <img
-                  src="/assets/wekasas-logo-final.png"
+                  src="/assets/wekasas-logo-official.png"
                   alt=""
                   className="h-64 w-auto object-contain mix-blend-screen"
                 />
