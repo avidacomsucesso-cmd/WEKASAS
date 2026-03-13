@@ -12,6 +12,7 @@ import Arrendamentos from "./pages/Arrendamentos";
 import ArrendamentoDetalhe from "./pages/ArrendamentoDetalhe";
 import Contacto from "./pages/Contacto";
 import Sobre from "./pages/Sobre";
+import Parceiros from "./pages/Parceiros";
 import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";
 import TermosCondicoes from "./pages/TermosCondicoes";
 import NotFound from "./pages/NotFound";
@@ -36,6 +37,7 @@ const App = () => (
             />
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/sobre" element={<Sobre />} />
+            <Route path="/parceiros" element={<Parceiros />} />
             <Route
               path="/politica-de-privacidade"
               element={<PoliticaPrivacidade />}
