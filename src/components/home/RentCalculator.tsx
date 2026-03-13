@@ -2,6 +2,7 @@ import * as React from "react";
 import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { WekaButton } from "@/components/WekaButton";
 import { cn } from "@/lib/utils";
 
 type City = "Lisboa" | "Madrid" | "Barcelona" | "Porto";
@@ -40,109 +41,113 @@ export function RentCalculator() {
   const netAnnual = Math.round((estimated - commissionMonthly) * 12);
 
   return (
-    <div className="grid gap-6 lg:grid-cols-12">
-      <Card className="wk-card lg:col-span-7 bg-white border-zinc-200">
-        <div className="p-6 sm:p-8">
-          <p className="text-sm font-semibold text-zinc-900">Inputs</p>
-          <div className="mt-6 grid gap-5 sm:grid-cols-3">
-            <div className="space-y-2">
-              <Label className="text-zinc-700">Cidade</Label>
-              <Select value={city} onValueChange={(v) => setCity(v as City)}>
-                <SelectTrigger className="h-11 rounded-xl bg-white border-zinc-200 text-zinc-900">
-                  <SelectValue placeholder="Cidade" />
-                </SelectTrigger>
-                <SelectContent className="bg-white border-zinc-200">
-                  <SelectItem value="Lisboa">Lisboa</SelectItem>
-                  <SelectItem value="Madrid">Madrid</SelectItem>
-                  <SelectItem value="Barcelona">Barcelona</SelectItem>
-                  <SelectItem value="Porto">Porto</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <Label className="text-zinc-700">Tipologia</Label>
-              <Select
-                value={typology}
-                onValueChange={(v) => setTypology(v as Typology)}
-              >
-                <SelectTrigger className="h-11 rounded-xl bg-white border-zinc-200 text-zinc-900">
-                  <SelectValue placeholder="Tipologia" />
-                </SelectTrigger>
-                <SelectContent className="bg-white border-zinc-200">
-                  {(["T0", "T1", "T2", "T3", "T4"] as Typology[]).map((t) => (
-                    <SelectItem key={t} value={t}>
-                      {t}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-2">
-              <Label className="text-zinc-700">Estado</Label>
-              <Select
-                value={condition}
-                onValueChange={(v) => setCondition(v as Condition)}
-              >
-                <SelectTrigger className="h-11 rounded-xl bg-white border-zinc-200 text-zinc-900">
-                  <SelectValue placeholder="Estado" />
-                </SelectTrigger>
-                <SelectContent className="bg-white border-zinc-200">
-                  <SelectItem value="excelente">Excelente</SelectItem>
-                  <SelectItem value="bom">Bom</SelectItem>
-                  <SelectItem value="a recuperar">A recuperar</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+    <div className="mx-auto max-w-5xl">
+      <div className="grid overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-xl lg:grid-cols-12">
+        {/* INPUTS PANEL */}
+        <div className="p-8 lg:col-span-7 lg:p-12">
+          <div className="flex items-center gap-2 mb-8">
+            <div className="h-2 w-2 rounded-full bg-[color:var(--color-orange)]" />
+            <h3 className="text-lg font-bold text-zinc-900 uppercase tracking-wider">Simulação</h3>
           </div>
-
-          {base === 0 ? (
-            <p className="mt-6 rounded-xl bg-zinc-50 p-4 text-sm text-zinc-600">
-              Ainda não temos uma estimativa para {city} {typology}. Experimenta T1,
-              T2 ou T3.
-            </p>
-          ) : (
-            <p className="mt-6 text-sm text-zinc-600">
-              Estimativa indicativa (não vinculativa), com base em valores médios de
-              mercado.
-            </p>
-          )}
-        </div>
-      </Card>
-
-      <Card className={cn("wk-card lg:col-span-5 bg-white border-zinc-200", base === 0 && "opacity-60")}>
-        <div className="p-6 sm:p-8">
-          <p className="text-sm font-semibold text-zinc-900">Resultado</p>
-
-          <div className="mt-6 space-y-4">
-            <div className="rounded-xl bg-[color:var(--color-orange-light)] p-4">
-              <p className="text-xs font-semibold text-[color:var(--color-orange)]">
-                Renda estimada
-              </p>
-              <p className="mt-1 text-2xl font-bold text-zinc-900">
-                {eur(estimated || 0)}
-                <span className="text-sm font-semibold text-zinc-600">/mês</span>
-              </p>
-            </div>
-
-            <div className="grid gap-3 rounded-xl border border-zinc-200 p-4">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-zinc-600">Comissão WEKASAS</span>
-                <span className="font-semibold text-zinc-900">{eur(commissionMonthly || 0)} / mês</span>
-              </div>
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-zinc-600">Rendimento líquido anual</span>
-                <span className="font-semibold text-zinc-900">{eur(netAnnual || 0)}</span>
+          
+          <div className="grid gap-8 sm:grid-cols-1">
+            <div className="space-y-4">
+              <Label className="text-sm font-bold text-zinc-500 uppercase tracking-tight">Onde se localiza o imóvel?</Label>
+              <div className="flex flex-wrap gap-2">
+                {(["Lisboa", "Porto", "Madrid", "Barcelona"] as City[]).map((c) => (
+                  <button
+                    key={c}
+                    onClick={() => setCity(c)}
+                    className={cn(
+                      "px-6 py-3 rounded-xl border text-sm font-bold transition-all",
+                      city === c 
+                        ? "bg-zinc-900 border-zinc-900 text-white shadow-lg" 
+                        : "bg-white border-zinc-200 text-zinc-600 hover:border-zinc-400"
+                    )}
+                  >
+                    {c}
+                  </button>
+                ))}
               </div>
             </div>
 
-            <p className="text-xs text-zinc-500">
-              Comissão de gestão mensal: 10% da renda.
-            </p>
+            <div className="grid gap-8 sm:grid-cols-2">
+              <div className="space-y-4">
+                <Label className="text-sm font-bold text-zinc-500 uppercase tracking-tight">Tipologia</Label>
+                <Select value={typology} onValueChange={(v) => setTypology(v as Typology)}>
+                  <SelectTrigger className="h-14 rounded-2xl bg-zinc-50 border-transparent text-zinc-900 text-lg font-bold focus:ring-orange-500">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white border-zinc-200">
+                    {(["T0", "T1", "T2", "T3", "T4"] as Typology[]).map((t) => (
+                      <SelectItem key={t} value={t} className="font-medium">{t}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-4">
+                <Label className="text-sm font-bold text-zinc-500 uppercase tracking-tight">Estado de Conservação</Label>
+                <Select value={condition} onValueChange={(v) => setCondition(v as Condition)}>
+                  <SelectTrigger className="h-14 rounded-2xl bg-zinc-50 border-transparent text-zinc-900 text-lg font-bold focus:ring-orange-500">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white border-zinc-200">
+                    <SelectItem value="excelente" className="font-medium">Excelente</SelectItem>
+                    <SelectItem value="bom" className="font-medium">Bom</SelectItem>
+                    <SelectItem value="a recuperar" className="font-medium">A recuperar</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          </div>
+
+          <p className="mt-12 text-xs font-medium text-zinc-400 italic">
+            * Valores médios de mercado. A avaliação final requer vistoria técnica.
+          </p>
+        </div>
+
+        {/* RESULTS PANEL */}
+        <div className="bg-zinc-900 p-8 lg:col-span-5 lg:p-12">
+          <div className="flex items-center gap-2 mb-10">
+            <div className="h-2 w-2 rounded-full bg-[#22C55E] animate-pulse" />
+            <h3 className="text-lg font-bold text-white uppercase tracking-wider">Estimativa WEKASAS</h3>
+          </div>
+
+          <div className="space-y-10">
+            <div>
+              <p className="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-2">Renda Mensal Bruta</p>
+              <div className="flex items-baseline gap-2">
+                <span className="text-5xl font-black text-white tracking-tighter">{eur(estimated)}</span>
+                <span className="text-xl font-bold text-zinc-500">/mês</span>
+              </div>
+            </div>
+
+            <div className="h-px bg-zinc-800" />
+
+            <div className="space-y-6">
+              <div className="flex justify-between items-center">
+                <span className="text-sm font-bold text-zinc-400 uppercase">Gestão WEKASAS (10%)</span>
+                <span className="text-lg font-bold text-zinc-200">-{eur(commissionMonthly)}</span>
+              </div>
+              <div className="flex justify-between items-center bg-white/5 p-6 rounded-2xl border border-white/10">
+                <div className="space-y-1">
+                  <p className="text-xs font-bold text-[color:var(--color-orange)] uppercase tracking-widest">Rendimento Líquido</p>
+                  <p className="text-sm font-medium text-zinc-400">Anual Garantido</p>
+                </div>
+                <span className="text-3xl font-black text-white">{eur(netAnnual)}</span>
+              </div>
+            </div>
+
+            <div className="pt-6">
+              <WekaButton asChild className="w-full h-14 rounded-2xl text-base font-black shadow-lg shadow-orange-500/20">
+                <a href="/contacto">Solicitar Avaliação Real</a>
+              </WekaButton>
+              <p className="text-center mt-4 text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Seguro de incumprimento incluído</p>
+            </div>
           </div>
         </div>
-      </Card>
+      </div>
     </div>
   );
 }
