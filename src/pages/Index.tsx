@@ -69,9 +69,9 @@ export default function Index() {
       <section className="relative overflow-hidden bg-[color:var(--color-charcoal)]">
         <div className="pointer-events-none absolute right-[-120px] top-16 hidden opacity-[0.06] sm:block">
           <img
-            src="/assets/wekasas-logo-full.png"
+            src="/assets/wekasas-logo-final.png"
             alt=""
-            className="h-[420px] w-auto object-contain"
+            className="h-[420px] w-auto object-contain mix-blend-screen"
           />
         </div>
 

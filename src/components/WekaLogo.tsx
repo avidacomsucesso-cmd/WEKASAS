@@ -9,9 +9,9 @@ export function WekaLogo({
   return (
     <div className={cn("flex items-center gap-3", className)}>
       <img
-        src="/assets/wekasas-logo-full.png"
+        src="/assets/wekasas-logo-final.png"
         alt="WEKASAS"
-        className="h-28 w-auto object-contain mix-blend-screen"
+        className="h-28 w-auto object-contain mix-blend-screen brightness-125 contrast-125"
         aria-hidden="true"
       />
     </div>
