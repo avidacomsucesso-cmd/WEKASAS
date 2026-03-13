@@ -68,22 +68,11 @@ export default function Index() {
       {/* HERO */}
       <section className="relative overflow-hidden bg-[color:var(--color-charcoal)]">
         <div className="pointer-events-none absolute right-[-120px] top-16 hidden opacity-[0.06] sm:block">
-          <svg
-            viewBox="0 0 80 68"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-[420px] w-[420px]"
-            aria-hidden="true"
-          >
-            <path
-              d="M10,20 L10,56 L22,56 L22,36 L40,56 L58,36 L58,56 L70,56 L70,20 L58,20 L58,40 L40,20 L22,40 L22,20 Z"
-              fill="#ffffff"
-            />
-            <path
-              d="M4,14 L4,50 L16,50 L16,30 L40,50 L64,30 L64,50 L76,50 L76,14 L64,14 L64,34 L40,14 L16,34 L16,14 Z"
-              fill="#ffffff"
-            />
-          </svg>
+          <img
+            src="/assets/wekasas-logo-full.png"
+            alt=""
+            className="h-[420px] w-auto object-contain"
+          />
         </div>
 
         <div className="wk-container wk-section pt-12 sm:pt-16">
