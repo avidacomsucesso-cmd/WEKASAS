@@ -3,6 +3,7 @@ import { WekaButton } from "@/components/WekaButton";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
 import { RentCalculator } from "@/components/home/RentCalculator";
+import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { ShieldCheck, KeyRound, Smartphone, UserCheck, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -109,34 +110,8 @@ export default function Index() {
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="wk-card-dark border border-white/10 p-6 sm:p-8">
-                <p className="text-sm font-semibold text-white">Em 24h</p>
-                <p className="mt-2 text-2xl font-bold leading-tight text-white">
-                  Recebe uma avaliação do teu imóvel e um plano de arrendamento
-                  completo.
-                </p>
-
-                <div className="mt-6 grid gap-3">
-                  {[
-                    "Sem custos escondidos",
-                    "Seguro de incumprimento incluído",
-                    "Suporte em PT e ES",
-                  ].map((t) => (
-                    <div
-                      key={t}
-                      className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3"
-                    >
-                      <span className="text-sm font-medium text-white/80">
-                        {t}
-                      </span>
-                      <span className="text-xs font-semibold text-[color:var(--color-orange)]">
-                        ✓
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <HeroCarousel />
             </div>
           </div>
         </div>
@@ -145,18 +120,18 @@ export default function Index() {
       {/* SOCIAL PROOF */}
       <section className="bg-white">
         <div className="wk-container py-6">
-          <div className="grid gap-3 text-center sm:grid-cols-3 sm:text-left">
+          <div className="grid gap-6 text-center sm:grid-cols-3 sm:text-left">
             <div>
-              <p className="text-2xl font-bold text-zinc-900">Avaliação gratuita</p>
-              <p className="text-sm text-zinc-600">em 24h</p>
+              <p className="text-sm font-bold text-zinc-900 sm:text-base">Avaliação gratuita</p>
+              <p className="text-xs text-zinc-500 font-medium">em 24h</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-zinc-900">Lisboa e Madrid</p>
-              <p className="text-sm text-zinc-600">presença local</p>
+              <p className="text-sm font-bold text-zinc-900 sm:text-base">Lisboa · Porto · Madrid · Barcelona</p>
+              <p className="text-xs text-zinc-500 font-medium">presença local</p>
             </div>
             <div>
-              <p className="text-2xl font-bold text-zinc-900">Renda garantida</p>
-              <p className="text-sm text-zinc-600">seguro incluído</p>
+              <p className="text-sm font-bold text-zinc-900 sm:text-base">Renda garantida</p>
+              <p className="text-xs text-zinc-500 font-medium">todos os meses</p>
             </div>
           </div>
         </div>
