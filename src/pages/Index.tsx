@@ -68,11 +68,11 @@ export default function Index() {
 
       {/* HERO */}
       <section className="relative overflow-hidden bg-[color:var(--color-charcoal)]">
-        <div className="pointer-events-none absolute right-[-120px] top-16 hidden opacity-[0.06] sm:block">
+        <div className="pointer-events-none absolute right-[-180px] top-8 hidden opacity-[0.06] sm:block">
           <img
             src="/assets/wekasas-logo-official.png"
             alt=""
-            className="h-[420px] w-auto object-contain mix-blend-screen"
+            className="h-[630px] w-auto object-contain mix-blend-screen"
           />
         </div>
 
