@@ -18,6 +18,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -61,6 +64,16 @@ export default {
           "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
+        },
+
+        wk: {
+          charcoal: "var(--color-charcoal)",
+          "charcoal-mid": "var(--color-charcoal-mid)",
+          orange: "var(--color-orange)",
+          "orange-dark": "var(--color-orange-dark)",
+          "orange-light": "var(--color-orange-light)",
+          white: "var(--color-white)",
+          "text-muted": "var(--color-text-muted)",
         },
       },
       borderRadius: {
