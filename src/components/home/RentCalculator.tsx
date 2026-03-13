@@ -36,33 +36,40 @@ export function RentCalculator() {
   const [condition, setCondition] = React.useState<Condition>("bom");
 
   const base = baseRent[city][typology] ?? 0;
-  const estimated = Math.round(base * conditionMultiplier(condition));
+  
+  // New Multipliers
+  const conditionMult = condition === "excelente" ? 1.0 : condition === "bom" ? 0.92 : 0.80;
+  
+  const estimated = Math.round(base * conditionMult);
   const commissionMonthly = Math.round(estimated * 0.1);
-  const netAnnual = Math.round((estimated - commissionMonthly) * 12);
+  
+  const netAnnualSelf = Math.round(estimated * 12);
+  const netAnnualWeka = Math.round((estimated - commissionMonthly) * 12);
+  const diffAnnual = netAnnualSelf - netAnnualWeka;
 
   return (
-    <div className="mx-auto max-w-5xl">
+    <div className="mx-auto max-w-6xl">
       <div className="grid overflow-hidden rounded-3xl border border-zinc-200 bg-white shadow-xl lg:grid-cols-12">
         {/* INPUTS PANEL */}
-        <div className="p-8 lg:col-span-7 lg:p-12">
+        <div className="p-8 lg:col-span-4 lg:p-10 border-b lg:border-b-0 lg:border-r border-zinc-100">
           <div className="flex items-center gap-2 mb-8">
             <div className="h-2 w-2 rounded-full bg-[color:var(--color-orange)]" />
-            <h3 className="text-lg font-bold text-zinc-900 uppercase tracking-wider">Simulação</h3>
+            <h3 className="text-sm font-bold text-zinc-900 uppercase tracking-wider">O seu imóvel</h3>
           </div>
           
-          <div className="grid gap-8 sm:grid-cols-1">
+          <div className="space-y-8">
             <div className="space-y-4">
-              <Label className="text-sm font-bold text-zinc-500 uppercase tracking-tight">Onde se localiza o imóvel?</Label>
+              <Label className="text-xs font-black text-zinc-400 uppercase tracking-widest">Cidade</Label>
               <div className="flex flex-wrap gap-2">
                 {(["Lisboa", "Porto", "Madrid", "Barcelona"] as City[]).map((c) => (
                   <button
                     key={c}
                     onClick={() => setCity(c)}
                     className={cn(
-                      "px-6 py-3 rounded-xl border text-sm font-bold transition-all",
+                      "px-4 py-2 rounded-xl border text-xs font-bold transition-all",
                       city === c 
-                        ? "bg-zinc-900 border-zinc-900 text-white shadow-lg" 
-                        : "bg-white border-zinc-200 text-zinc-600 hover:border-zinc-400"
+                        ? "bg-zinc-900 border-zinc-900 text-white shadow-md" 
+                        : "bg-white border-zinc-200 text-zinc-500 hover:border-zinc-300"
                     )}
                   >
                     {c}
@@ -71,79 +78,136 @@ export function RentCalculator() {
               </div>
             </div>
 
-            <div className="grid gap-8 sm:grid-cols-2">
-              <div className="space-y-4">
-                <Label className="text-sm font-bold text-zinc-500 uppercase tracking-tight">Tipologia</Label>
-                <Select value={typology} onValueChange={(v) => setTypology(v as Typology)}>
-                  <SelectTrigger className="h-14 rounded-2xl bg-zinc-50 border-transparent text-zinc-900 text-lg font-bold focus:ring-orange-500">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-white border-zinc-200">
-                    {(["T0", "T1", "T2", "T3", "T4"] as Typology[]).map((t) => (
-                      <SelectItem key={t} value={t} className="font-medium">{t}</SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+            <div className="space-y-4">
+              <Label className="text-xs font-black text-zinc-400 uppercase tracking-widest">Tipologia</Label>
+              <Select value={typology} onValueChange={(v) => setTypology(v as Typology)}>
+                <SelectTrigger className="h-12 rounded-xl bg-zinc-50 border-transparent text-zinc-900 font-bold">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-white border-zinc-200">
+                  {(["T0", "T1", "T2", "T3", "T4"] as Typology[]).map((t) => (
+                    <SelectItem key={t} value={t} className="font-medium">{t}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
 
-              <div className="space-y-4">
-                <Label className="text-sm font-bold text-zinc-500 uppercase tracking-tight">Estado de Conservação</Label>
-                <Select value={condition} onValueChange={(v) => setCondition(v as Condition)}>
-                  <SelectTrigger className="h-14 rounded-2xl bg-zinc-50 border-transparent text-zinc-900 text-lg font-bold focus:ring-orange-500">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent className="bg-white border-zinc-200">
-                    <SelectItem value="excelente" className="font-medium">Excelente</SelectItem>
-                    <SelectItem value="bom" className="font-medium">Bom</SelectItem>
-                    <SelectItem value="a recuperar" className="font-medium">A recuperar</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
+            <div className="space-y-4">
+              <Label className="text-xs font-black text-zinc-400 uppercase tracking-widest">Estado</Label>
+              <Select value={condition} onValueChange={(v) => setCondition(v as Condition)}>
+                <SelectTrigger className="h-12 rounded-xl bg-zinc-50 border-transparent text-zinc-900 font-bold">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent className="bg-white border-zinc-200">
+                  <SelectItem value="excelente" className="font-medium">Excelente</SelectItem>
+                  <SelectItem value="bom" className="font-medium">Bom</SelectItem>
+                  <SelectItem value="a recuperar" className="font-medium">A recuperar</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
 
-          <p className="mt-12 text-xs font-medium text-zinc-400 italic">
-            * Valores médios de mercado. A avaliação final requer vistoria técnica.
+          <p className="mt-10 text-[10px] text-zinc-400 uppercase font-bold tracking-tighter">
+            * Estimativas baseadas em valores médios de mercado. Não vinculativas.
           </p>
         </div>
 
-        {/* RESULTS PANEL */}
-        <div className="bg-zinc-900 p-8 lg:col-span-5 lg:p-12">
-          <div className="flex items-center gap-2 mb-10">
-            <div className="h-2 w-2 rounded-full bg-[#22C55E] animate-pulse" />
-            <h3 className="text-lg font-bold text-white uppercase tracking-wider">Estimativa WEKASAS</h3>
+        {/* COMPARISON PANEL */}
+        <div className="lg:col-span-8 grid md:grid-cols-2 relative bg-zinc-50">
+          {/* Column A - Sem Gestão */}
+          <div className="p-8 lg:p-10 border-r border-zinc-200/50">
+            <div className="mb-6">
+              <h4 className="text-sm font-black text-zinc-400 uppercase tracking-widest mb-1">Por conta própria</h4>
+              <p className="text-lg font-bold text-zinc-900">Sem gestão</p>
+            </div>
+
+            <div className="space-y-4 mb-8">
+              <div className="flex justify-between text-sm">
+                <span className="text-zinc-500 font-medium">Renda mensal</span>
+                <span className="font-bold text-zinc-900">{eur(estimated)}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-zinc-500 font-medium">Gestão</span>
+                <span className="font-bold text-zinc-900">€0</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-zinc-500 font-medium">Garantia</span>
+                <span className="font-bold text-red-500">Não incluída</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-zinc-500 font-medium">Tempo arrendar</span>
+                <span className="font-bold text-zinc-900">45–60 dias</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-zinc-500 font-medium">Se inquilino falhar</span>
+                <span className="font-bold text-zinc-900">€0</span>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-zinc-200">
+              <p className="text-[10px] font-black text-zinc-400 uppercase tracking-widest mb-1">Líquido Anual</p>
+              <p className="text-2xl font-black text-zinc-900">{eur(netAnnualSelf)}</p>
+              <p className="mt-2 text-[10px] font-bold text-red-400 uppercase tracking-tighter italic">Risco não coberto</p>
+            </div>
           </div>
 
-          <div className="space-y-10">
-            <div>
-              <p className="text-sm font-bold text-zinc-400 uppercase tracking-widest mb-2">Renda Mensal Bruta</p>
-              <div className="flex items-baseline gap-2">
-                <span className="text-5xl font-black text-white tracking-tighter">{eur(estimated)}</span>
-                <span className="text-xl font-bold text-zinc-500">/mês</span>
+          {/* VS Element */}
+          <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex-col items-center gap-2 pointer-events-none">
+            <div className="bg-white border-4 border-zinc-50 rounded-full h-12 w-12 flex items-center justify-center shadow-lg">
+              <span className="text-xs font-black text-[color:var(--color-orange)]">VS</span>
+            </div>
+            <div className="bg-white px-3 py-1 rounded-full shadow-md border border-zinc-100 whitespace-nowrap">
+              <p className="text-[9px] font-bold text-zinc-500 leading-tight text-center">
+                {eur(diffAnnual)}/ano <br/> pela tranquilidade
+              </p>
+            </div>
+          </div>
+
+          {/* Column B - Com WEKASAS */}
+          <div className="p-8 lg:p-10 bg-zinc-900 relative ring-4 ring-[color:var(--color-orange)] ring-inset">
+            <div className="absolute top-4 right-4">
+              <span className="bg-[color:var(--color-orange)] text-white text-[9px] font-black uppercase px-2 py-1 rounded-md tracking-widest shadow-lg shadow-orange-500/20">
+                Recomendado
+              </span>
+            </div>
+            <div className="mb-6">
+              <h4 className="text-sm font-black text-white/40 uppercase tracking-widest mb-1">Com WEKASAS</h4>
+              <p className="text-lg font-bold text-white">Renda Garantida</p>
+            </div>
+
+            <div className="space-y-4 mb-8 text-white/90">
+              <div className="flex justify-between text-sm">
+                <span className="text-white/50 font-medium">Renda mensal</span>
+                <span className="font-bold">{eur(estimated)}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-white/50 font-medium">Gestão (10%)</span>
+                <span className="font-bold text-[color:var(--color-orange)]">-{eur(commissionMonthly)}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-white/50 font-medium">Garantia</span>
+                <span className="font-bold text-[#22C55E]">Incluída ✓</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-white/50 font-medium">Tempo arrendar</span>
+                <span className="font-bold">18 dias</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-white/50 font-medium">Se inquilino falhar</span>
+                <span className="font-bold text-[#22C55E]">{eur(estimated - commissionMonthly)} ✓</span>
               </div>
             </div>
 
-            <div className="h-px bg-zinc-800" />
-
-            <div className="space-y-6">
-              <div className="flex justify-between items-center">
-                <span className="text-sm font-bold text-zinc-400 uppercase">Gestão WEKASAS (10%)</span>
-                <span className="text-lg font-bold text-zinc-200">-{eur(commissionMonthly)}</span>
-              </div>
-              <div className="flex justify-between items-center bg-white/5 p-6 rounded-2xl border border-white/10">
-                <div className="space-y-1">
-                  <p className="text-xs font-bold text-[color:var(--color-orange)] uppercase tracking-widest">Rendimento Líquido</p>
-                  <p className="text-sm font-medium text-zinc-400">Anual Garantido</p>
-                </div>
-                <span className="text-3xl font-black text-white">{eur(netAnnual)}</span>
-              </div>
+            <div className="pt-4 border-t border-white/10">
+              <p className="text-[10px] font-black text-white/40 uppercase tracking-widest mb-1">Líquido Anual</p>
+              <p className="text-2xl font-black text-white">{eur(netAnnualWeka)}</p>
+              <p className="mt-2 text-[10px] font-bold text-[#22C55E] uppercase tracking-tighter">Renda garantida todos os meses</p>
             </div>
 
-            <div className="pt-6">
-              <WekaButton asChild className="w-full h-14 rounded-2xl text-base font-black shadow-lg shadow-orange-500/20">
-                <a href="/contacto">Solicitar Avaliação Real</a>
+            <div className="mt-8">
+              <WekaButton asChild className="w-full h-12 rounded-xl text-sm font-black shadow-lg shadow-orange-500/30">
+                <a href="/contacto">Quero arrendar com a WEKASAS</a>
               </WekaButton>
-              <p className="text-center mt-4 text-[10px] text-zinc-500 font-bold uppercase tracking-widest">Seguro de incumprimento incluído</p>
             </div>
           </div>
         </div>
