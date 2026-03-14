@@ -152,13 +152,14 @@ export function RentCalculator() {
           </div>
 
           {/* VS Element */}
-          <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 flex-col items-center gap-2 pointer-events-none">
-            <div className="bg-white border-4 border-zinc-50 rounded-full h-12 w-12 flex items-center justify-center shadow-lg">
-              <span className="text-xs font-black text-[color:var(--color-orange)]">VS</span>
+          <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex-col items-center gap-0 pointer-events-none">
+            <div className="bg-[color:var(--color-orange)] rounded-full h-14 w-14 flex items-center justify-center shadow-[0_0_20px_rgba(250,98,28,0.4)] border-4 border-white">
+              <span className="text-sm font-black text-white">VS</span>
             </div>
-            <div className="bg-white px-3 py-1 rounded-full shadow-md border border-zinc-100 whitespace-nowrap">
-              <p className="text-[9px] font-bold text-zinc-500 leading-tight text-center">
-                {eur(diffAnnual)}/ano <br/> pela tranquilidade
+            <div className="mt-[-8px] bg-white px-4 py-2 rounded-2xl shadow-[0_10px_25px_rgba(0,0,0,0.1)] border border-zinc-100 whitespace-nowrap">
+              <p className="text-[11px] font-black text-zinc-900 leading-tight text-center">
+                {eur(diffAnnual)}/ano <br/>
+                <span className="text-[color:var(--color-orange)] uppercase tracking-tighter">pela tranquilidade</span>
               </p>
             </div>
           </div>
