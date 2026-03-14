@@ -35,39 +35,24 @@ function wekasasApiMiddleware(): Plugin {
         }
 
         try {
+          const resendKey = process.env.RESEND_API_KEY;
+          const notificationEmail = "wekasasadm@gmail.com";
+
           if (req.url === "/api/contact") {
             const payload = await readJsonBody(req);
+            const { name, email, phone, country, region, typology, expectedRent, message } = payload ?? {};
 
-            const {
-              name,
-              email,
-              phone,
-              city,
-              typology,
-              expectedRent,
-              message,
-            } = payload ?? {};
-
-            if (!name || !email || !phone || !city || !typology || !expectedRent) {
+            if (!name || !email || !phone || !country || !region || !typology || !expectedRent) {
               res.statusCode = 400;
               res.end(JSON.stringify({ ok: false, error: "Dados em falta." }));
               return;
             }
 
-            const resendKey = process.env.RESEND_API_KEY;
             if (!resendKey) {
               res.statusCode = 500;
-              res.end(
-                JSON.stringify({
-                  ok: false,
-                  error: "RESEND_API_KEY não está configurada.",
-                })
-              );
+              res.end(JSON.stringify({ ok: false, error: "RESEND_API_KEY não configurada." }));
               return;
             }
-
-            const notificationEmail =
-              process.env.NOTIFICATION_EMAIL || "contacto@wekasas.com";
 
             const resend = new Resend(resendKey);
 
@@ -76,31 +61,14 @@ function wekasasApiMiddleware(): Plugin {
               to: [notificationEmail],
               subject: `Novo pedido de avaliação — ${name}`,
               replyTo: email,
-              text: [
-                `Nome: ${name}`,
-                `Email: ${email}`,
-                `Telefone: ${phone}`,
-                `Cidade: ${city}`,
-                `Tipologia: ${typology}`,
-                `Renda esperada: ${expectedRent}€`,
-                message ? `Mensagem: ${message}` : "",
-              ]
-                .filter(Boolean)
-                .join("\n"),
+              text: `Nome: ${name}\nEmail: ${email}\nTelefone: ${phone}\nPaís: ${country}\nRegião: ${region}\nTipologia: ${typology}\nRenda: ${expectedRent}€\nMensagem: ${message || ""}`,
             });
 
             await resend.emails.send({
               from: "WEKASAS <onboarding@resend.dev>",
               to: [email],
               subject: "Recebemos o teu pedido — WEKASAS",
-              text: [
-                `Olá ${name},`,
-                "", 
-                "Recebemos o teu pedido de avaliação gratuita.",
-                "Vamos contactar em menos de 24 horas.",
-                "", 
-                "WEKASAS — O seu imóvel. A nossa responsabilidade.",
-              ].join("\n"),
+              text: `Olá ${name},\n\nRecebemos o teu pedido de avaliação gratuita.\nVamos contactar em menos de 24 horas.\n\nQualquer dúvida, estamos disponíveis:\nEmail: contacto@wekasas.com\nWhatsApp: +351 96 252 5307\n\nWEKASAS — O seu imóvel. A nossa responsabilidade.\nwekasas.com`,
             });
 
             res.statusCode = 200;
@@ -108,66 +76,37 @@ function wekasasApiMiddleware(): Plugin {
             return;
           }
 
-          if (req.url === "/api/interest") {
+          if (req.url === "/api/parceiros") {
             const payload = await readJsonBody(req);
-            const { name, email, phone, message, listingTitle, listingCity } =
-              payload ?? {};
+            const { name, email, phone, country, region, partnerType } = payload ?? {};
 
-            if (!name || !email || !phone || !listingTitle) {
+            if (!name || !email || !phone || !country || !region || !partnerType) {
               res.statusCode = 400;
               res.end(JSON.stringify({ ok: false, error: "Dados em falta." }));
               return;
             }
 
-            const resendKey = process.env.RESEND_API_KEY;
             if (!resendKey) {
               res.statusCode = 500;
-              res.end(
-                JSON.stringify({
-                  ok: false,
-                  error: "RESEND_API_KEY não está configurada.",
-                })
-              );
+              res.end(JSON.stringify({ ok: false, error: "RESEND_API_KEY não configurada." }));
               return;
             }
-
-            const notificationEmail =
-              process.env.NOTIFICATION_EMAIL || "contacto@wekasas.com";
 
             const resend = new Resend(resendKey);
 
             await resend.emails.send({
               from: "WEKASAS <onboarding@resend.dev>",
               to: [notificationEmail],
-              subject: `Interesse em arrendamento — ${listingTitle}`,
+              subject: `Novo parceiro WEKASAS — ${name} (${partnerType})`,
               replyTo: email,
-              text: [
-                `Imóvel: ${listingTitle}`,
-                listingCity ? `Cidade: ${listingCity}` : "",
-                "",
-                `Nome: ${name}`,
-                `Email: ${email}`,
-                `Telefone: ${phone}`,
-                message ? `Mensagem: ${message}` : "",
-              ]
-                .filter(Boolean)
-                .join("\n"),
+              text: `Nome: ${name}\nEmail: ${email}\nTelefone: ${phone}\nTipo: ${partnerType}\nPaís: ${country}\nRegião: ${region}`,
             });
 
             await resend.emails.send({
               from: "WEKASAS <onboarding@resend.dev>",
               to: [email],
-              subject: "Recebemos o teu interesse — WEKASAS",
-              text: [
-                `Olá ${name},`,
-                "",
-                "Obrigado pelo teu interesse. Vamos responder o mais rapidamente possível.",
-                "",
-                `Imóvel: ${listingTitle}`,
-                listingCity ? `Cidade: ${listingCity}` : "",
-                "",
-                "WEKASAS",
-              ].join("\n"),
+              subject: "Recebemos o teu cadastro — WEKASAS",
+              text: `Olá ${name},\n\nObrigado pelo teu interesse em ser parceiro WEKASAS.\nVamos contactar-te em breve.\n\nQualquer dúvida, estamos disponíveis:\nEmail: contacto@wekasas.com\nWhatsApp: +351 96 252 5307\n\nWEKASAS\nwekasas.com`,
             });
 
             res.statusCode = 200;

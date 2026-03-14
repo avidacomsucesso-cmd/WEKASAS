@@ -84,12 +84,27 @@ export default function Parceiros() {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
-    // Simulação de envio (seguindo o padrão das outras páginas)
-    setTimeout(() => {
+
+    try {
+      const res = await fetch("/api/parceiros", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        toast.error(data?.error || "Não foi possível enviar. Liga-nos: +351 96 252 5307");
+        return;
+      }
+
       setDone(true);
-      setLoading(false);
       toast.success("Candidatura enviada. Vamos contactar em breve.");
-    }, 1000);
+    } catch {
+      toast.error("Não foi possível enviar. Liga-nos: +351 96 252 5307");
+    } finally {
+      setLoading(false);
+    }
   }
 
   const wa = getWhatsAppNumber();

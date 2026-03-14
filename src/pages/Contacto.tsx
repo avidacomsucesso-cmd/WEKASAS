@@ -50,14 +50,14 @@ export default function Contacto() {
 
       const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        toast.error(data?.error || "Não foi possível enviar. Tenta novamente.");
+        toast.error(data?.error || "Não foi possível enviar. Liga-nos: +351 96 252 5307");
         return;
       }
 
       setDone(true);
       toast.success("Pedido enviado. Vamos contactar em menos de 24 horas.");
     } catch {
-      toast.error("Não foi possível enviar. Tenta novamente.");
+      toast.error("Não foi possível enviar. Liga-nos: +351 96 252 5307");
     } finally {
       setLoading(false);
     }

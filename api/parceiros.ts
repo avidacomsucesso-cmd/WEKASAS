@@ -7,18 +7,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return;
   }
 
-  const {
-    name,
-    email,
-    phone,
-    country,
-    region,
-    typology,
-    expectedRent,
-    message,
-  } = (req.body ?? {}) as Record<string, any>;
+  const { name, email, phone, country, region, partnerType } =
+    (req.body ?? {}) as Record<string, any>;
 
-  if (!name || !email || !phone || !country || !region || !typology || !expectedRent) {
+  if (!name || !email || !phone || !country || !region || !partnerType) {
     res.status(400).json({ ok: false, error: "Dados em falta." });
     return;
   }
@@ -35,31 +27,29 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     await resend.emails.send({
       from: "WEKASAS <onboarding@resend.dev>",
       to: [notificationEmail],
-      subject: `Novo pedido de avaliação — ${name}`,
+      subject: `Novo parceiro WEKASAS — ${name} (${partnerType})`,
       replyTo: email,
       text: [
+        `Novo Cadastro de Parceiro:`,
+        "",
         `Nome: ${name}`,
         `Email: ${email}`,
         `Telefone: ${phone}`,
+        `Tipo de parceiro: ${partnerType}`,
         `País: ${country}`,
         `Região/Distrito: ${region}`,
-        `Tipologia: ${typology}`,
-        `Renda esperada: ${expectedRent}€`,
-        message ? `Mensagem: ${message}` : "",
-      ]
-        .filter(Boolean)
-        .join("\n"),
+      ].join("\n"),
     });
 
     await resend.emails.send({
       from: "WEKASAS <onboarding@resend.dev>",
       to: [email],
-      subject: "Recebemos o teu pedido — WEKASAS",
+      subject: "Recebemos o teu cadastro — WEKASAS",
       text: [
         `Olá ${name},`,
         "",
-        "Recebemos o teu pedido de avaliação gratuita.",
-        "Vamos contactar em menos de 24 horas.",
+        "Obrigado pelo teu interesse em ser parceiro WEKASAS.",
+        "Vamos contactar-te em breve para explicar os próximos passos.",
         "",
         "Qualquer dúvida, estamos disponíveis:",
         "Email: contacto@wekasas.com",
