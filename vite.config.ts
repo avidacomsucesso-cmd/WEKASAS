@@ -35,7 +35,7 @@ function wekasasApiMiddleware(): Plugin {
         }
 
         try {
-          const resendKey = process.env.RESEND_API_KEY;
+          const resendKey = process.env.RESEND_API_KEY || "re_KiFLajpT_MvtBd2SB5hGV7DL7f5qWbqu7";
           const notificationEmail = "wekasasadm@gmail.com";
 
           if (req.url === "/api/contact") {
@@ -132,8 +132,9 @@ export default defineConfig(() => ({
   },
   define: {
     "import.meta.env.NEXT_PUBLIC_WHATSAPP": JSON.stringify(
-      process.env.NEXT_PUBLIC_WHATSAPP || ""
+      process.env.NEXT_PUBLIC_WHATSAPP || "351962525307"
     ),
+    "process.env.RESEND_API_KEY": JSON.stringify("re_KiFLajpT_MvtBd2SB5hGV7DL7f5qWbqu7"),
   },
   plugins: [dyadComponentTagger(), react(), wekasasApiMiddleware()],
   resolve: {
