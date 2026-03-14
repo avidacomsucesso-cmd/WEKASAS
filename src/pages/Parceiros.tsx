@@ -5,28 +5,61 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Slider } from "@/components/ui/slider";
 import { toast } from "sonner";
-import { Users, UserPlus, Briefcase, MessageCircle } from "lucide-react";
+import { Users, Briefcase, MessageCircle, Info, UserPlus } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+function eur(n: number) {
+  return new Intl.NumberFormat("pt-PT", {
+    style: "currency",
+    currency: "EUR",
+    maximumFractionDigits: 0,
+  }).format(n);
+}
 
 export default function Parceiros() {
   const [loading, setLoading] = React.useState(false);
   const [done, setDone] = React.useState(false);
+  
+  // Calculator State
+  const [partnerType, setPartnerType] = React.useState<"indicador" | "consultor">("indicador");
+  const [estimatedRent, setEstimatedRent] = React.useState(1450);
+
+  const calculateCommission = () => {
+    if (partnerType === "indicador") {
+      if (estimatedRent <= 1000) return 150;
+      if (estimatedRent <= 2000) return 200;
+      return 300;
+    } else {
+      // Consultor: 35% of WEKASAS fee (1.5 rents)
+      // Fee = estimatedRent * 1.5
+      // Commission = Fee * 0.35
+      return Math.round(estimatedRent * 1.5 * 0.35);
+    }
+  };
 
   const programs = [
     {
       icon: Users,
-      title: "Parceiros da Portaria",
-      desc: "Porteiros e gestores de condomínio que conhecem os proprietários do prédio.",
-    },
-    {
-      icon: UserPlus,
-      title: "Indica WEKASAS",
-      desc: "Partilha o teu link ou indica um amigo que quer arrendar o imóvel com segurança.",
+      title: "Indicadores de Imóveis",
+      desc: "Ideal para porteiros, zeladores, gestores de condomínio, vizinhos ou qualquer pessoa que conheça um proprietário.",
+      benefits: [
+        "Renda até €1.000 → €150 de comissão",
+        "Renda €1.001–€2.000 → €200 de comissão",
+        "Renda acima de €2.001 → €300 de comissão",
+      ],
     },
     {
       icon: Briefcase,
-      title: "Corretor Parceiro",
-      desc: "Trabalhas no setor imobiliário? Potencia a tua carteira com a nossa gestão.",
+      title: "Consultor Parceiro",
+      desc: "Para consultores imobiliários, corretores e agentes independentes que querem potenciar a sua carteira.",
+      benefits: [
+        "35% da taxa de intermediação WEKASAS",
+        "Renda €1.000 → comissão €525",
+        "Renda €1.450 → comissão €761",
+        "Renda €2.000 → comissão €1.050",
+      ],
     },
   ];
 
@@ -47,7 +80,7 @@ export default function Parceiros() {
     <>
       <PageMeta
         title="Parceiros — WEKASAS"
-        description="Ganha dinheiro a indicar imóveis. Indica proprietários e recebe até €150 por imóvel arrendado."
+        description="Ganha dinheiro a indicar imóveis. Programas para indicadores e consultores imobiliários."
         path="/parceiros"
       />
 
@@ -58,11 +91,7 @@ export default function Parceiros() {
               Ganha dinheiro a indicar imóveis.
             </h1>
             <p className="mt-5 text-base text-white/75 sm:text-lg">
-              Indica-nos proprietários. Nós tratamos de tudo. Tu recebes até{" "}
-              <span className="font-bold text-[color:var(--color-orange)]">
-                €150
-              </span>{" "}
-              por imóvel arrendado.
+              Indica-nos proprietários. Nós tratamos de tudo. Recebe comissões atrativas por cada imóvel arrendado.
             </p>
           </div>
         </div>
@@ -70,23 +99,38 @@ export default function Parceiros() {
 
       <section className="bg-white">
         <div className="wk-container wk-section">
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-2">
             {programs.map((p) => {
               const Icon = p.icon;
               return (
-                <Card key={p.title} className="wk-card p-7">
+                <Card key={p.title} className="wk-card p-8 border-zinc-200">
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-[color:var(--color-orange-light)] text-[color:var(--color-orange)]">
                     <Icon className="h-6 w-6" />
                   </div>
-                  <h3 className="mt-5 text-xl font-bold text-zinc-900">
+                  <h3 className="mt-6 text-2xl font-bold text-zinc-900">
                     {p.title}
                   </h3>
                   <p className="mt-3 text-sm leading-relaxed text-zinc-600">
                     {p.desc}
                   </p>
+                  <div className="mt-6 space-y-2 border-t border-zinc-100 pt-6">
+                    {p.benefits.map((benefit, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-sm font-semibold text-zinc-800">
+                        <div className="h-1 w-1 rounded-full bg-[color:var(--color-orange)]" />
+                        {benefit}
+                      </div>
+                    ))}
+                  </div>
                 </Card>
               );
             })}
+          </div>
+
+          <div className="mt-12 flex items-center gap-3 rounded-2xl bg-zinc-50 p-6 border border-zinc-200">
+            <Info className="h-5 w-5 text-[color:var(--color-orange)] shrink-0" />
+            <p className="text-sm font-bold text-zinc-700">
+              Quando se paga: <span className="font-normal">O pagamento é feito integralmente quando a WEKASAS recebe a primeira renda do inquilino.</span>
+            </p>
           </div>
         </div>
       </section>
@@ -99,8 +143,56 @@ export default function Parceiros() {
                 Torna-te parceiro.
               </h2>
               <p className="mt-3 text-base text-zinc-600">
-                Preenche os teus dados e entra na rede de parceiros WEKASAS.
+                Simula os teus ganhos e envia o teu cadastro.
               </p>
+
+              {/* SIMULATOR CARD */}
+              <Card className="mt-8 p-6 bg-zinc-900 text-white rounded-3xl border-0 shadow-xl">
+                <p className="text-xs font-black text-white/40 uppercase tracking-widest mb-6">Simulador de Comissão</p>
+                
+                <div className="space-y-8">
+                  <div className="flex p-1 bg-white/5 rounded-xl">
+                    <button
+                      onClick={() => setPartnerType("indicador")}
+                      className={cn(
+                        "flex-1 py-2 text-xs font-bold rounded-lg transition-all",
+                        partnerType === "indicador" ? "bg-white text-zinc-900" : "text-white/60"
+                      )}
+                    >
+                      Indicador
+                    </button>
+                    <button
+                      onClick={() => setPartnerType("consultor")}
+                      className={cn(
+                        "flex-1 py-2 text-xs font-bold rounded-lg transition-all",
+                        partnerType === "consultor" ? "bg-white text-zinc-900" : "text-white/60"
+                      )}
+                    >
+                      Consultor
+                    </button>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-end">
+                      <Label className="text-xs font-bold text-white/60 uppercase">Renda Estimada</Label>
+                      <span className="text-xl font-black">{eur(estimatedRent)}</span>
+                    </div>
+                    <Slider
+                      value={[estimatedRent]}
+                      onValueChange={(v) => setEstimatedRent(v[0])}
+                      min={500}
+                      max={4000}
+                      step={50}
+                      className="py-4"
+                    />
+                  </div>
+
+                  <div className="bg-white/10 p-6 rounded-2xl border border-white/10 text-center">
+                    <p className="text-[10px] font-black text-[color:var(--color-orange)] uppercase tracking-widest mb-1">A tua comissão</p>
+                    <p className="text-4xl font-black text-white">{eur(calculateCommission())}</p>
+                  </div>
+                </div>
+              </Card>
 
               <div className="mt-8 rounded-2xl border border-zinc-200 bg-zinc-50 p-6">
                 <p className="text-sm font-semibold text-zinc-900">
@@ -118,7 +210,7 @@ export default function Parceiros() {
             </div>
 
             <div className="lg:col-span-7">
-              <Card className="wk-card p-6 sm:p-8">
+              <Card className="wk-card p-6 sm:p-8 border-zinc-200 shadow-xl">
                 {!done ? (
                   <form onSubmit={onSubmit} className="grid gap-5">
                     <div className="grid gap-5 sm:grid-cols-2">
