@@ -10,6 +10,14 @@ import { toast } from "sonner";
 import { Users, Briefcase, MessageCircle, Info, UserPlus } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+function getWhatsAppNumber() {
+  const raw =
+    (import.meta as any).env?.NEXT_PUBLIC_WHATSAPP ||
+    (import.meta as any).env?.VITE_WHATSAPP ||
+    "351962525307";
+  return String(raw).replace(/\D/g, "");
+}
+
 function eur(n: number) {
   return new Intl.NumberFormat("pt-PT", {
     style: "currency",
@@ -74,7 +82,7 @@ export default function Parceiros() {
     }, 1000);
   }
 
-  const wa = "351910000000"; // Padrão usado anteriormente
+  const wa = getWhatsAppNumber();
 
   return (
     <>

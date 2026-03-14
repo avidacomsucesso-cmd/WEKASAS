@@ -62,7 +62,7 @@ export default function Sobre() {
                   <p className="text-sm font-semibold text-zinc-900">Presença</p>
                   <div className="mt-4 grid gap-2">
                     {[
-                      { city: "Lisboa", note: "Operação local" },
+                      { city: "Lisboa", note: "Paço de Arcos" },
                       { city: "Madrid", note: "Operação local" },
                       { city: "Barcelona", note: "Rede de parceiros" },
                     ].map((c) => (

@@ -13,8 +13,8 @@ import ArrendamentoDetalhe from "./pages/ArrendamentoDetalhe";
 import Contacto from "./pages/Contacto";
 import Sobre from "./pages/Sobre";
 import Parceiros from "./pages/Parceiros";
-import PoliticaPrivacidade from "./pages/PoliticaPrivacidade";
-import TermosCondicoes from "./pages/TermosCondicoes";
+import Privacidade from "./pages/Privacidade";
+import Termos from "./pages/Termos";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -38,11 +38,8 @@ const App = () => (
             <Route path="/contacto" element={<Contacto />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/parceiros" element={<Parceiros />} />
-            <Route
-              path="/politica-de-privacidade"
-              element={<PoliticaPrivacidade />}
-            />
-            <Route path="/termos-e-condicoes" element={<TermosCondicoes />} />
+            <Route path="/privacidade" element={<Privacidade />} />
+            <Route path="/termos" element={<Termos />} />
           </Route>
 
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

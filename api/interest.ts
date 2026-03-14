@@ -20,7 +20,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return;
   }
 
-  const notificationEmail = process.env.NOTIFICATION_EMAIL || "wekasas@wekasas.com";
+  const notificationEmail = process.env.NOTIFICATION_EMAIL || "contacto@wekasas.com";
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   await resend.emails.send({

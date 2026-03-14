@@ -5,7 +5,7 @@ function getWhatsAppNumber() {
   const raw =
     (import.meta as any).env?.NEXT_PUBLIC_WHATSAPP ||
     (import.meta as any).env?.VITE_WHATSAPP ||
-    "351910000000";
+    "351962525307";
   return String(raw).replace(/\D/g, "");
 }
 

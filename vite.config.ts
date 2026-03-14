@@ -67,7 +67,7 @@ function wekasasApiMiddleware(): Plugin {
             }
 
             const notificationEmail =
-              process.env.NOTIFICATION_EMAIL || "wekasas@wekasas.com";
+              process.env.NOTIFICATION_EMAIL || "contacto@wekasas.com";
 
             const resend = new Resend(resendKey);
 
@@ -132,7 +132,7 @@ function wekasasApiMiddleware(): Plugin {
             }
 
             const notificationEmail =
-              process.env.NOTIFICATION_EMAIL || "wekasas@wekasas.com";
+              process.env.NOTIFICATION_EMAIL || "contacto@wekasas.com";
 
             const resend = new Resend(resendKey);
 
