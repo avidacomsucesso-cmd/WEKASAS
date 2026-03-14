@@ -42,7 +42,7 @@ export default function Sobre() {
                 Manifesto
               </h2>
               <div className="mt-6 rounded-2xl border border-zinc-200 bg-zinc-50 p-6 sm:p-8">
-                <p className="whitespace-pre-line text-lg font-semibold leading-relaxed text-zinc-900 sm:text-xl">
+                <p className="whitespace-pre-line text-base font-normal leading-relaxed text-zinc-600 sm:text-lg">
                   {manifesto}
                 </p>
               </div>
@@ -53,7 +53,7 @@ export default function Sobre() {
                 <p className="text-xs font-bold text-[color:var(--color-orange)]">
                   MISSÃO
                 </p>
-                <p className="mt-3 text-2xl font-bold text-zinc-900">
+                <p className="mt-3 text-xl font-bold text-zinc-900">
                   Tornar o arrendamento simples, seguro e justo — para
                   proprietários e inquilinos.
                 </p>
