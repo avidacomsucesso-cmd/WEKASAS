@@ -10,6 +10,7 @@ const navItems = [
   { href: "/como-funciona", label: "Como funciona" },
   { href: "/precos", label: "Preços" },
   { href: "/arrendamentos", label: "Para inquilinos" },
+  { href: "/parceiros", label: "Parceiros" },
   { href: "/sobre", label: "Sobre" },
 ];
 
