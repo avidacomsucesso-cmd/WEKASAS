@@ -11,13 +11,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     name,
     email,
     phone,
-    city,
+    country,
+    region,
     typology,
     expectedRent,
     message,
   } = (req.body ?? {}) as Record<string, any>;
 
-  if (!name || !email || !phone || !city || !typology || !expectedRent) {
+  if (!name || !email || !phone || !country || !region || !typology || !expectedRent) {
     res.status(400).json({ ok: false, error: "Dados em falta." });
     return;
   }
@@ -39,7 +40,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       `Nome: ${name}`,
       `Email: ${email}`,
       `Telefone: ${phone}`,
-      `Cidade: ${city}`,
+      `País: ${country}`,
+      `Região/Distrito: ${region}`,
       `Tipologia: ${typology}`,
       `Renda esperada: ${expectedRent}€`,
       message ? `Mensagem: ${message}` : "",

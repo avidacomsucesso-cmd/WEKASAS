@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Slider } from "@/components/ui/slider";
+import { LocationSelect } from "@/components/LocationSelect";
 import { toast } from "sonner";
 import { Users, Briefcase, MessageCircle, Info, UserPlus } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -29,6 +30,15 @@ function eur(n: number) {
 export default function Parceiros() {
   const [loading, setLoading] = React.useState(false);
   const [done, setDone] = React.useState(false);
+  
+  const [form, setForm] = React.useState({
+    name: "",
+    email: "",
+    phone: "",
+    country: "Portugal",
+    region: "Lisboa",
+    partnerType: "portaria"
+  });
   
   // Calculator State
   const [partnerType, setPartnerType] = React.useState<"indicador" | "consultor">("indicador");
@@ -224,38 +234,49 @@ export default function Parceiros() {
                     <div className="grid gap-5 sm:grid-cols-2">
                       <div className="space-y-2">
                         <Label>Nome completo</Label>
-                        <Input required className="h-11 rounded-xl" />
+                        <Input 
+                          required 
+                          className="h-11 rounded-xl"
+                          value={form.name}
+                          onChange={(e) => setForm(s => ({ ...s, name: e.target.value }))}
+                        />
                       </div>
                       <div className="space-y-2">
                         <Label>Email</Label>
-                        <Input required type="email" className="h-11 rounded-xl" />
-                      </div>
-                    </div>
-
-                    <div className="grid gap-5 sm:grid-cols-2">
-                      <div className="space-y-2">
-                        <Label>Telefone</Label>
-                        <Input required className="h-11 rounded-xl" />
-                      </div>
-                      <div className="space-y-2">
-                        <Label>Cidade</Label>
-                        <Select required>
-                          <SelectTrigger className="h-11 rounded-xl">
-                            <SelectValue placeholder="Escolhe a cidade" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="lisboa">Lisboa</SelectItem>
-                            <SelectItem value="porto">Porto</SelectItem>
-                            <SelectItem value="madrid">Madrid</SelectItem>
-                            <SelectItem value="barcelona">Barcelona</SelectItem>
-                          </SelectContent>
-                        </Select>
+                        <Input 
+                          required 
+                          type="email" 
+                          className="h-11 rounded-xl" 
+                          value={form.email}
+                          onChange={(e) => setForm(s => ({ ...s, email: e.target.value }))}
+                        />
                       </div>
                     </div>
 
                     <div className="space-y-2">
+                      <Label>Telefone</Label>
+                      <Input 
+                        required 
+                        className="h-11 rounded-xl" 
+                        value={form.phone}
+                        onChange={(e) => setForm(s => ({ ...s, phone: e.target.value }))}
+                      />
+                    </div>
+
+                    <LocationSelect 
+                      country={form.country}
+                      region={form.region}
+                      onCountryChange={(v) => setForm(s => ({ ...s, country: v }))}
+                      onRegionChange={(v) => setForm(s => ({ ...s, region: v }))}
+                    />
+
+                    <div className="space-y-2">
                       <Label>Tipo de parceiro</Label>
-                      <Select required>
+                      <Select 
+                        required
+                        value={form.partnerType}
+                        onValueChange={(v) => setForm(s => ({ ...s, partnerType: v }))}
+                      >
                         <SelectTrigger className="h-11 rounded-xl">
                           <SelectValue placeholder="Selecciona o perfil" />
                         </SelectTrigger>

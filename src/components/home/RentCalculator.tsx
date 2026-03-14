@@ -3,17 +3,29 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { WekaButton } from "@/components/WekaButton";
+import { LocationSelect } from "@/components/LocationSelect";
 import { cn } from "@/lib/utils";
 
-type City = "Lisboa" | "Madrid" | "Barcelona" | "Porto";
+type City = string;
 type Typology = "T0" | "T1" | "T2" | "T3" | "T4";
 type Condition = "excelente" | "bom" | "a recuperar";
 
-const baseRent: Record<City, Partial<Record<Typology, number>>> = {
+const baseRent: Record<string, Partial<Record<Typology, number>>> = {
   Lisboa: { T1: 1100, T2: 1450, T3: 1900 },
   Madrid: { T1: 1000, T2: 1350, T3: 1700 },
   Barcelona: { T1: 1100, T2: 1500, T3: 1900 },
   Porto: { T1: 850, T2: 1100, T3: 1400 },
+  Aveiro: { T2: 800 },
+  Braga: { T2: 750 },
+  Coimbra: { T2: 700 },
+  Setúbal: { T2: 900 },
+  Faro: { T2: 950 },
+  Sevilla: { T2: 1200 },
+  Valencia: { T2: 1100 },
+  Málaga: { T2: 1150 },
+  Bilbao: { T2: 1200 },
+  Zaragoza: { T2: 900 },
+  Murcia: { T2: 750 },
 };
 
 function conditionMultiplier(condition: Condition) {
@@ -31,11 +43,21 @@ function eur(n: number) {
 }
 
 export function RentCalculator() {
-  const [city, setCity] = React.useState<City>("Lisboa");
+  const [country, setCountry] = React.useState("Portugal");
+  const [region, setRegion] = React.useState("Lisboa");
   const [typology, setTypology] = React.useState<Typology>("T2");
   const [condition, setCondition] = React.useState<Condition>("bom");
 
-  const base = baseRent[city][typology] ?? 0;
+  const getBaseValue = () => {
+    const specific = baseRent[region]?.[typology];
+    if (specific) return specific;
+    
+    // Fallbacks
+    if (country === "Portugal") return 650;
+    return 800;
+  };
+
+  const base = getBaseValue();
   
   // New Multipliers
   const conditionMult = condition === "excelente" ? 1.0 : condition === "bom" ? 0.92 : 0.80;
@@ -58,25 +80,13 @@ export function RentCalculator() {
           </div>
           
           <div className="space-y-8">
-            <div className="space-y-4">
-              <Label className="text-xs font-black text-zinc-400 uppercase tracking-widest">Cidade</Label>
-              <div className="flex flex-wrap gap-2">
-                {(["Lisboa", "Porto", "Madrid", "Barcelona"] as City[]).map((c) => (
-                  <button
-                    key={c}
-                    onClick={() => setCity(c)}
-                    className={cn(
-                      "px-4 py-2 rounded-xl border text-xs font-bold transition-all",
-                      city === c 
-                        ? "bg-zinc-900 border-zinc-900 text-white shadow-md" 
-                        : "bg-white border-zinc-200 text-zinc-500 hover:border-zinc-300"
-                    )}
-                  >
-                    {c}
-                  </button>
-                ))}
-              </div>
-            </div>
+            <LocationSelect 
+              country={country}
+              region={region}
+              onCountryChange={setCountry}
+              onRegionChange={setRegion}
+              variant="dark"
+            />
 
             <div className="space-y-4">
               <Label className="text-xs font-black text-zinc-400 uppercase tracking-widest">Tipologia</Label>

@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { LocationSelect } from "@/components/LocationSelect";
 import { toast } from "sonner";
 
 function getWhatsAppNumber() {
@@ -24,7 +25,8 @@ export default function Contacto() {
     name: "",
     email: "",
     phone: "",
-    city: "Lisboa",
+    country: "Portugal",
+    region: "Lisboa",
     typology: "T2",
     expectedRent: "",
     message: "",
@@ -186,52 +188,32 @@ export default function Contacto() {
                         </div>
                       </div>
 
-                      <div className="grid gap-5 sm:grid-cols-2">
-                        <div className="space-y-2">
-                          <Label className="text-zinc-700">Cidade</Label>
-                          <Select
-                            value={form.city}
-                            onValueChange={(v) =>
-                              setForm((s) => ({ ...s, city: v }))
-                            }
-                          >
-                            <SelectTrigger className="h-11 rounded-xl">
-                              <SelectValue placeholder="Cidade" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {[
-                                "Lisboa",
-                                "Porto",
-                                "Madrid",
-                                "Barcelona",
-                              ].map((c) => (
-                                <SelectItem key={c} value={c}>
-                                  {c}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </div>
-                        <div className="space-y-2">
-                          <Label className="text-zinc-700">Tipologia</Label>
-                          <Select
-                            value={form.typology}
-                            onValueChange={(v) =>
-                              setForm((s) => ({ ...s, typology: v }))
-                            }
-                          >
-                            <SelectTrigger className="h-11 rounded-xl">
-                              <SelectValue placeholder="Tipologia" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              {["T0", "T1", "T2", "T3", "T4"].map((t) => (
-                                <SelectItem key={t} value={t}>
-                                  {t}
-                                </SelectItem>
-                              ))}
-                            </SelectContent>
-                          </Select>
-                        </div>
+                      <LocationSelect 
+                        country={form.country}
+                        region={form.region}
+                        onCountryChange={(v) => setForm(s => ({ ...s, country: v }))}
+                        onRegionChange={(v) => setForm(s => ({ ...s, region: v }))}
+                      />
+
+                      <div className="space-y-2">
+                        <Label className="text-zinc-700">Tipologia</Label>
+                        <Select
+                          value={form.typology}
+                          onValueChange={(v) =>
+                            setForm((s) => ({ ...s, typology: v }))
+                          }
+                        >
+                          <SelectTrigger className="h-11 rounded-xl">
+                            <SelectValue placeholder="Tipologia" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {["T0", "T1", "T2", "T3", "T4"].map((t) => (
+                              <SelectItem key={t} value={t}>
+                                {t}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
                       </div>
 
                       <div className="space-y-2">
