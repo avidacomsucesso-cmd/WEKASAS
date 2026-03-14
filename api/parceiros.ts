@@ -1,5 +1,7 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
 import { Resend } from "resend";
+import fs from "fs";
+import path from "path";
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (req.method !== "POST") {
@@ -24,6 +26,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
+    // Read HTML template
+    const templatePath = path.join(process.cwd(), "api/templates/email_parceiro.html");
+    let htmlContent = fs.readFileSync(templatePath, "utf8");
+
+    // Dynamic replacements
+    const partnerTypeLabel = partnerType === "indicador" 
+      ? "Indicador de Imóveis" 
+      : "Consultor Parceiro";
+
+    htmlContent = htmlContent
+      .replace(/\{\{nome\}\}/g, name)
+      .replace(/\{\{tipo_parceiro\}\}/g, partnerTypeLabel);
+
+    // Internal Notification (Plain Text)
     await resend.emails.send({
       from: "WEKASAS <onboarding@resend.dev>",
       to: [notificationEmail],
@@ -41,23 +57,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       ].join("\n"),
     });
 
+    // Welcome email to Partner (HTML)
     await resend.emails.send({
       from: "WEKASAS <onboarding@resend.dev>",
       to: [email],
-      subject: "Recebemos o teu cadastro — WEKASAS",
-      text: [
-        `Olá ${name},`,
-        "",
-        "Obrigado pelo teu interesse em ser parceiro WEKASAS.",
-        "Vamos contactar-te em breve para explicar os próximos passos.",
-        "",
-        "Qualquer dúvida, estamos disponíveis:",
-        "Email: contacto@wekasas.com",
-        "WhatsApp: +351 96 252 5307",
-        "",
-        "WEKASAS — O seu imóvel. A nossa responsabilidade.",
-        "wekasas.com",
-      ].join("\n"),
+      subject: "Bem-vindo ao programa Parceiros — WEKASAS",
+      html: htmlContent,
     });
 
     res.status(200).json({ ok: true });
