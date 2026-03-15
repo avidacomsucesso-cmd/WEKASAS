@@ -205,9 +205,9 @@ export default function Parceiros() {
               />
             </div>
             <div className="text-white">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">3 passos. Menos de 2 minutos.</h2>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-10">3 passos. Menos de 2 minutos.</h2>
               
-              <div className="mt-10 space-y-10">
+              <div className="space-y-10">
                 <div className="flex gap-5">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color:var(--color-orange)] text-white font-bold">1</div>
                   <div>
