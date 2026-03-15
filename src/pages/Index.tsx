@@ -49,7 +49,7 @@ const faqs = [
   },
   {
     q: "Operam em Espanha também?",
-    a: "Sim. Lisboa, Porto, Madrid e Barcelona.",
+    a: "Sim. Operamos em todo o território de Portugal e Espanha.",
   },
   {
     q: "Quanto tempo demora até arrendar?",
@@ -61,7 +61,7 @@ export default function Index() {
   return (
     <>
       <PageMeta
-        title="WEKASAS — Gestão de Arrendamento com Renda Garantida | Lisboa e Madrid"
+        title="WEKASAS — Gestão de Arrendamento com Renda Garantida | Portugal e Espanha"
         description="Gerimos tudo e garantimos a tua renda todos os meses — mesmo que o inquilino falhe. Plataforma de gestão de arrendamento em PT + ES."
         path="/"
       />
@@ -106,7 +106,7 @@ export default function Index() {
               <div className="mt-7 flex flex-wrap gap-2">
                 <span className="wk-pill">Renda garantida</span>
                 <span className="wk-pill">100% digital</span>
-                <span className="wk-pill">Lisboa e Madrid</span>
+                <span className="wk-pill">Portugal e Espanha</span>
               </div>
             </div>
 
@@ -283,17 +283,17 @@ export default function Index() {
               {
                 text: "Recebi a renda mesmo quando o inquilino atrasou dois meses. Nunca pensei que fosse possível.",
                 name: "Carlos M.",
-                city: "Lisboa",
+                city: "Portugal",
               },
               {
                 text: "Trataram de tudo desde o primeiro dia. Eu não fiz nada.",
                 name: "Inês R.",
-                city: "Porto",
+                city: "Portugal",
               },
               {
                 text: "Processo todo pelo telemóvel. Assinámos o contrato sem uma única reunião.",
                 name: "Miguel T.",
-                city: "Madrid",
+                city: "Espanha",
               },
             ].map((t) => (
               <div

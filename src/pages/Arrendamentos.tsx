@@ -35,7 +35,7 @@ export default function Arrendamentos() {
     <>
       <PageMeta
         title="Arrendamentos — WEKASAS"
-        description="Imóveis disponíveis para arrendar em Lisboa e Madrid. Filtra por cidade, tipologia e preço."
+        description="Imóveis disponíveis para arrendar em Portugal e Espanha. Filtra por país, tipologia e preço."
         path="/arrendamentos"
       />
 
@@ -47,7 +47,7 @@ export default function Arrendamentos() {
                 Arrendamentos
               </h1>
               <p className="mt-4 text-base text-zinc-600 sm:text-lg">
-                Imóveis disponíveis em Lisboa e Madrid. Filtra e pede mais
+                Imóveis disponíveis em Portugal e Espanha. Filtra e pede mais
                 detalhes.
               </p>
             </div>
@@ -60,15 +60,15 @@ export default function Arrendamentos() {
             <p className="text-sm font-semibold text-zinc-900">Filtros</p>
             <div className="mt-6 grid gap-5 lg:grid-cols-12">
               <div className="space-y-2 lg:col-span-4">
-                <Label className="text-zinc-700">Cidade</Label>
+                <Label className="text-zinc-700">País</Label>
                 <Select value={city} onValueChange={(v) => setCity(v as CityFilter)}>
                   <SelectTrigger className="h-11 rounded-xl bg-white">
-                    <SelectValue placeholder="Cidade" />
+                    <SelectValue placeholder="País" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Todas">Todas</SelectItem>
-                    <SelectItem value="Lisboa">Lisboa</SelectItem>
-                    <SelectItem value="Madrid">Madrid</SelectItem>
+                    <SelectItem value="Todas">Todos</SelectItem>
+                    <SelectItem value="Lisboa">Portugal</SelectItem>
+                    <SelectItem value="Madrid">Espanha</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

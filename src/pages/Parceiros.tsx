@@ -138,7 +138,7 @@ export default function Parceiros() {
                     PM
                   </div>
                   <div>
-                    <p className="text-xs font-bold text-white leading-none">Pedro M. · Lisboa</p>
+                    <p className="text-xs font-bold text-white leading-none">Pedro M. · Portugal</p>
                     <p className="mt-1 text-[10px] font-medium text-white/50 leading-none">Parceiro desde Jan 2025</p>
                   </div>
                 </div>

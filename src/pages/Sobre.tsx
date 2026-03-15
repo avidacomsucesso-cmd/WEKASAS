@@ -62,18 +62,17 @@ export default function Sobre() {
                   <p className="text-sm font-semibold text-zinc-900">Presença</p>
                   <div className="mt-4 grid gap-2">
                     {[
-                      { city: "Lisboa", note: "Paço de Arcos" },
-                      { city: "Madrid", note: "Operação local" },
-                      { city: "Barcelona", note: "Rede de parceiros" },
+                      { country: "Portugal", note: "Sede em Paço de Arcos" },
+                      { country: "Espanha", note: "Operação local" },
                     ].map((c) => (
                       <div
-                        key={c.city}
+                        key={c.country}
                         className="flex items-center justify-between rounded-xl bg-white px-4 py-3"
                       >
                         <div className="flex items-center gap-2">
                           <MapPin className="h-4 w-4 text-[color:var(--color-orange)]" />
                           <span className="text-sm font-semibold text-zinc-900">
-                            {c.city}
+                            {c.country}
                           </span>
                         </div>
                         <span className="text-xs font-semibold text-zinc-600">
