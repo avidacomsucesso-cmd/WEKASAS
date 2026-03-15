@@ -126,7 +126,17 @@ export default function Index() {
               <p className="text-xs text-zinc-500 font-medium">em 24h</p>
             </div>
             <div>
-              <p className="text-sm font-bold text-zinc-900 sm:text-base">Lisboa · Porto · Madrid · Barcelona</p>
+              <div className="flex items-center justify-center sm:justify-start gap-2 mb-0.5">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-lg">🇵🇹</span>
+                  <span className="text-sm font-bold text-zinc-900 sm:text-base">Portugal</span>
+                </div>
+                <span className="text-zinc-300 mx-1">·</span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-lg">🇪🇸</span>
+                  <span className="text-sm font-bold text-zinc-900 sm:text-base">Espanha</span>
+                </div>
+              </div>
               <p className="text-xs text-zinc-500 font-medium">presença local</p>
             </div>
             <div>
