@@ -4,14 +4,6 @@ import { cn } from "@/lib/utils";
 const slides = [
   {
     image: "/assets/hero-slide-1.png",
-    initials: "JM",
-    name: "João M.",
-    role: "Proprietário · Portugal",
-    rent: "€1.450",
-    stats: "14 meses consecutivos",
-  },
-  {
-    image: "/assets/hero-slide-2.png",
     initials: "AR",
     name: "Ana R.",
     role: "Proprietária · Portugal",
@@ -19,10 +11,18 @@ const slides = [
     stats: "8 meses consecutivos",
   },
   {
-    image: "/assets/hero-slide-3.png",
+    image: "/assets/hero-slide-2.png",
     initials: "MT",
     name: "Miguel T.",
-    role: "Proprietário · Espanha",
+    role: "Proprietário · Portugal",
+    rent: "€1.450",
+    stats: "14 meses consecutivos",
+  },
+  {
+    image: "/assets/hero-slide-3.png",
+    initials: "JL",
+    name: "Juan e Lucia",
+    role: "Proprietários · Espanha",
     rent: "€1.350",
     stats: "22 meses consecutivos",
   },
