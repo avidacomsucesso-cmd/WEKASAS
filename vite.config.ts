@@ -134,7 +134,6 @@ export default defineConfig(() => ({
     "import.meta.env.NEXT_PUBLIC_WHATSAPP": JSON.stringify(
       process.env.NEXT_PUBLIC_WHATSAPP || "351962525307"
     ),
-    "process.env.RESEND_API_KEY": JSON.stringify("re_KiFLajpT_MvtBd2SB5hGV7DL7f5qWbqu7"),
   },
   plugins: [dyadComponentTagger(), react(), wekasasApiMiddleware()],
   resolve: {

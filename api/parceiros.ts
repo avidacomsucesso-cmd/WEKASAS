@@ -12,10 +12,15 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const { name, email, phone, country, region, partnerType } =
     (req.body ?? {}) as Record<string, any>;
 
-  const apiKey = process.env.RESEND_API_KEY || "re_KiFLajpT_MvtBd2SB5hGV7DL7f5qWbqu7";
+  const apiKey = process.env.RESEND_API_KEY;
 
   if (!name || !email || !phone || !country || !region || !partnerType) {
     res.status(400).json({ ok: false, error: "Dados em falta." });
+    return;
+  }
+
+  if (!apiKey) {
+    res.status(500).json({ ok: false, error: "RESEND_API_KEY não está configurada no servidor." });
     return;
   }
 
