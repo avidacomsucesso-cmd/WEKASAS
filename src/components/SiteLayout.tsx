@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { SiteNavbar } from "@/components/SiteNavbar";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WhatsAppFab } from "@/components/WhatsAppFab";
+import { CookieBanner } from "@/components/CookieBanner";
 
 export function SiteLayout() {
   const location = useLocation();
@@ -19,6 +20,7 @@ export function SiteLayout() {
       </main>
       <SiteFooter />
       <WhatsAppFab />
+      <CookieBanner />
     </div>
   );
 }
