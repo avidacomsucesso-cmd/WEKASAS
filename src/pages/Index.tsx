@@ -126,18 +126,23 @@ export default function Index() {
               <p className="text-xs text-zinc-500 font-medium">em 24h</p>
             </div>
             <div>
-              <div className="flex items-center justify-center sm:justify-start gap-2 mb-0.5">
-                <div className="flex items-center gap-1.5">
-                  <span className="text-lg">🇵🇹</span>
-                  <span className="text-sm font-bold text-zinc-900 sm:text-base">Portugal</span>
+              <div className="flex items-center justify-center sm:justify-start gap-4 mb-0.5">
+                <div className="flex flex-col gap-0.5">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] font-bold text-zinc-400">PT</span>
+                    <span className="text-sm font-bold text-zinc-900 sm:text-base">Portugal</span>
+                  </div>
+                  <p className="text-[10px] text-zinc-500 font-medium leading-none">presença local</p>
                 </div>
-                <span className="text-zinc-300 mx-1">·</span>
-                <div className="flex items-center gap-1.5">
-                  <span className="text-lg">🇪🇸</span>
-                  <span className="text-sm font-bold text-zinc-900 sm:text-base">Espanha</span>
+                <span className="text-zinc-200 self-center">|</span>
+                <div className="flex flex-col gap-0.5">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[10px] font-bold text-zinc-400">ES</span>
+                    <span className="text-sm font-bold text-zinc-900 sm:text-base">Espanha</span>
+                  </div>
+                  <p className="text-[10px] text-zinc-500 font-medium leading-none">presença local</p>
                 </div>
               </div>
-              <p className="text-xs text-zinc-500 font-medium">presença local</p>
             </div>
             <div>
               <p className="text-sm font-bold text-zinc-900 sm:text-base">Renda garantida</p>
