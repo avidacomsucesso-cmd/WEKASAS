@@ -36,31 +36,23 @@ export default function Contacto() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setLoading(true);
+    
+    const subject = encodeURIComponent(`Novo pedido de avaliação — ${form.name}`);
+    const body = encodeURIComponent(
+      `Nome: ${form.name}\n` +
+      `Email: ${form.email}\n` +
+      `Telefone: ${form.phone}\n` +
+      `País: ${form.country}\n` +
+      `Região: ${form.region}\n` +
+      `Tipologia: ${form.typology}\n` +
+      `Renda esperada: ${form.expectedRent}€\n` +
+      `Mensagem: ${form.message}`
+    );
 
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          expectedRent: Number(form.expectedRent),
-        }),
-      });
-
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        toast.error(data?.error || "Não foi possível enviar. Liga-nos: +351 96 252 5307");
-        return;
-      }
-
-      setDone(true);
-      toast.success("Pedido enviado. Vamos contactar em menos de 24 horas.");
-    } catch {
-      toast.error("Não foi possível enviar. Liga-nos: +351 96 252 5307");
-    } finally {
-      setLoading(false);
-    }
+    window.location.href = `mailto:wekasasadm@gmail.com?subject=${subject}&body=${body}`;
+    
+    setDone(true);
+    toast.success("O teu cliente de email foi aberto. Por favor, clica em 'Enviar'.");
   }
 
   return (

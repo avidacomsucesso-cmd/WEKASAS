@@ -83,28 +83,21 @@ export default function Parceiros() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setLoading(true);
 
-    try {
-      const res = await fetch("/api/parceiros", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    const subject = encodeURIComponent(`Novo parceiro WEKASAS — ${form.name} (${form.partnerType})`);
+    const body = encodeURIComponent(
+      `Nome: ${form.name}\n` +
+      `Email: ${form.email}\n` +
+      `Telefone: ${form.phone}\n` +
+      `País: ${form.country}\n` +
+      `Região: ${form.region}\n` +
+      `Tipo de parceiro: ${form.partnerType}`
+    );
 
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        toast.error(data?.error || "Não foi possível enviar. Liga-nos: +351 96 252 5307");
-        return;
-      }
+    window.location.href = `mailto:wekasasadm@gmail.com?subject=${subject}&body=${body}`;
 
-      setDone(true);
-      toast.success("Candidatura enviada. Vamos contactar em breve.");
-    } catch {
-      toast.error("Não foi possível enviar. Liga-nos: +351 96 252 5307");
-    } finally {
-      setLoading(false);
-    }
+    setDone(true);
+    toast.success("O teu cliente de email foi aberto. Por favor, clica em 'Enviar'.");
   }
 
   const wa = getWhatsAppNumber();
