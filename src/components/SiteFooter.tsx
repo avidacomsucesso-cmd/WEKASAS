@@ -93,7 +93,7 @@ export function SiteFooter() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2025 HEAVENWHISPER UNIPESSOAL, LDA — Marca WEKASAS</p>
+          <p>© 2026 HEAVENWHISPER UNIPESSOAL, LDA — Marca WEKASAS</p>
           <p>Plataforma de gestão de arrendamento — PT + ES</p>
         </div>
       </div>
