@@ -86,7 +86,7 @@ export function SiteFooter() {
               <ul className="mt-4 space-y-2 text-sm">
                 <li className="text-white/70 tracking-tight">contacto@wekasas.com</li>
                 <li className="text-white/70">+351 96 252 5307</li>
-                <li className="text-white/70">Lisboa · Porto · Madrid · Barcelona</li>
+                <li className="text-white/70">Portugal · Espanha</li>
               </ul>
             </div>
           </div>
