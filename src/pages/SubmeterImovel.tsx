@@ -6,7 +6,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { LocationSelect } from "@/components/LocationSelect";
-import { AddressAutocomplete, AddressComponents } from "@/components/AddressAutocomplete";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import { 
@@ -54,7 +53,7 @@ export default function SubmeterImovel() {
     auth: false,
   });
 
-  const onAddressSelect = (formattedAddress: string, components?: AddressComponents) => {
+  const onAddressSelect = (formattedAddress: string, components?: any) => {
     if (components) {
       setForm((s) => ({
         ...s,
@@ -176,12 +175,11 @@ export default function SubmeterImovel() {
 
                 <div className="space-y-2">
                   <Label>Morada completa</Label>
-                  <AddressAutocomplete
-                    value={form.address}
-                    onChange={onAddressSelect}
+                  <Input 
+                    required
                     placeholder="Rua, número, porta..."
-                    className="h-11 rounded-xl"
-                    countries={form.country === "Portugal" ? ["pt"] : ["es"]}
+                    value={form.address}
+                    onChange={e => setForm(s => ({ ...s, address: e.target.value }))}
                   />
                 </div>
 
