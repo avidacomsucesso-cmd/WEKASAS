@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { LocationSelect } from "@/components/LocationSelect";
+import { AddressAutocomplete, AddressComponents } from "@/components/AddressAutocomplete";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import { 
@@ -30,6 +31,7 @@ export default function SubmeterImovel() {
     country: "Portugal",
     region: "Lisboa",
     address: "",
+    postalCode: "",
     typology: "T2",
     area: "",
     floor: "",
@@ -51,6 +53,20 @@ export default function SubmeterImovel() {
     privacy: false,
     auth: false,
   });
+
+  const onAddressSelect = (formattedAddress: string, components?: AddressComponents) => {
+    if (components) {
+      setForm((s) => ({
+        ...s,
+        address: formattedAddress,
+        country: components.countryCode === "PT" ? "Portugal" : components.countryCode === "ES" ? "Espanha" : s.country,
+        region: components.region || s.region,
+        postalCode: components.postalCode || s.postalCode,
+      }));
+    } else {
+      setForm((s) => ({ ...s, address: formattedAddress }));
+    }
+  };
 
   const nextStep = () => setStep((s) => (s + 1) as Step);
   const prevStep = () => setStep((s) => (s - 1) as Step);
@@ -89,6 +105,7 @@ export default function SubmeterImovel() {
         `País: ${form.country}\n` +
         `Região: ${form.region}\n` +
         `Morada: ${form.address}\n` +
+        `Código Postal: ${form.postalCode}\n` +
         `Tipologia: ${form.typology}\n` +
         `Área: ${form.area}m²\n` +
         `Andar: ${form.floor}\n` +
@@ -159,12 +176,32 @@ export default function SubmeterImovel() {
 
                 <div className="space-y-2">
                   <Label>Morada completa</Label>
-                  <Input 
-                    required
-                    placeholder="Rua, número, porta..."
+                  <AddressAutocomplete
                     value={form.address}
-                    onChange={e => setForm(s => ({ ...s, address: e.target.value }))}
+                    onChange={onAddressSelect}
+                    placeholder="Rua, número, porta..."
+                    className="h-11 rounded-xl"
+                    countries={form.country === "Portugal" ? ["pt"] : ["es"]}
                   />
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="space-y-2">
+                    <Label>Código Postal</Label>
+                    <Input 
+                      placeholder="Ex: 2770-071"
+                      value={form.postalCode}
+                      onChange={e => setForm(s => ({ ...s, postalCode: e.target.value }))}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Andar (opcional)</Label>
+                    <Input 
+                      placeholder="Ex: 2º Esq"
+                      value={form.floor}
+                      onChange={e => setForm(s => ({ ...s, floor: e.target.value }))}
+                    />
+                  </div>
                 </div>
 
                 <div className="space-y-2">
@@ -188,25 +225,15 @@ export default function SubmeterImovel() {
                   </div>
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label>Área útil m²</Label>
-                    <Input 
-                      required
-                      type="number"
-                      placeholder="Ex: 85"
-                      value={form.area}
-                      onChange={e => setForm(s => ({ ...s, area: e.target.value }))}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>Andar (opcional)</Label>
-                    <Input 
-                      placeholder="Ex: 2º Esq"
-                      value={form.floor}
-                      onChange={e => setForm(s => ({ ...s, floor: e.target.value }))}
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <Label>Área útil m²</Label>
+                  <Input 
+                    required
+                    type="number"
+                    placeholder="Ex: 85"
+                    value={form.area}
+                    onChange={e => setForm(s => ({ ...s, area: e.target.value }))}
+                  />
                 </div>
 
                 <div className="space-y-2">

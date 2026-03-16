@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { LocationSelect } from "@/components/LocationSelect";
+import { AddressAutocomplete, AddressComponents } from "@/components/AddressAutocomplete";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
@@ -29,10 +30,24 @@ export default function Contacto() {
     phone: "",
     country: "Portugal",
     region: "Lisboa",
+    address: "",
     typology: "T2",
     expectedRent: "",
     message: "",
   });
+
+  const onAddressSelect = (formattedAddress: string, components?: AddressComponents) => {
+    if (components) {
+      setForm((s) => ({
+        ...s,
+        address: formattedAddress,
+        country: components.countryCode === "PT" ? "Portugal" : components.countryCode === "ES" ? "Espanha" : s.country,
+        region: components.region || s.region,
+      }));
+    } else {
+      setForm((s) => ({ ...s, address: formattedAddress }));
+    }
+  };
 
   const wa = getWhatsAppNumber();
 
@@ -46,6 +61,7 @@ export default function Contacto() {
       `Telefone: ${form.phone}\n` +
       `País: ${form.country}\n` +
       `Região: ${form.region}\n` +
+      `Morada: ${form.address}\n` +
       `Tipologia: ${form.typology}\n` +
       `Renda esperada: ${form.expectedRent}€\n` +
       `Mensagem: ${form.message}`
@@ -201,6 +217,17 @@ export default function Contacto() {
                         onCountryChange={(v) => setForm(s => ({ ...s, country: v }))}
                         onRegionChange={(v) => setForm(s => ({ ...s, region: v }))}
                       />
+
+                      <div className="space-y-2">
+                        <Label className="text-zinc-700">Morada do imóvel (opcional)</Label>
+                        <AddressAutocomplete
+                          value={form.address}
+                          onChange={onAddressSelect}
+                          placeholder="Comece a escrever a morada..."
+                          className="h-11 rounded-xl"
+                          countries={form.country === "Portugal" ? ["pt"] : ["es"]}
+                        />
+                      </div>
 
                       <div className="space-y-2">
                         <Label className="text-zinc-700">Tipologia</Label>
