@@ -34,37 +34,26 @@ export function AddressAutocomplete({
 }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const autocompleteRef = useRef<any>(null);
+  const onChangeRef = useRef(onChange);
+
+  // Keep the latest onChange in a ref to avoid re-initializing autocomplete when it changes
+  useEffect(() => {
+    onChangeRef.current = onChange;
+  }, [onChange]);
 
   useEffect(() => {
-    // Tentar obter a chave de várias formas possíveis em ambiente Vite/React
     const apiKey = 
       import.meta.env.VITE_GOOGLE_PLACES_KEY || 
       (window as any).GOOGLE_PLACES_APIKEY ||
-      "AIzaSyCA8i_MD423MR9vQBRlyYk5FhEjkcWkq4w"; // Fallback para a chave fornecida se as envs falharem no preview
-    
-    if (!apiKey) {
-      return;
-    }
+      "AIzaSyCA8i_MD423MR9vQBRlyYk5FhEjkcWkq4w";
+
+    if (!apiKey) return;
 
     const scriptId = "google-maps-script";
     let script = document.getElementById(scriptId) as HTMLScriptElement;
 
-    if (!script) {
-      script = document.createElement("script");
-      script.id = scriptId;
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&language=pt`;
-      script.async = true;
-      script.defer = true;
-      document.head.appendChild(script);
-    }
-
     const initAutocomplete = () => {
-      if (!inputRef.current || !window.google?.maps?.places) {
-        return;
-      }
-
-      // Prevenir inicializações duplicadas
-      if (autocompleteRef.current) return;
+      if (!inputRef.current || !window.google?.maps?.places || autocompleteRef.current) return;
 
       autocompleteRef.current = new window.google.maps.places.Autocomplete(inputRef.current, {
         types: ["address"],
@@ -72,17 +61,15 @@ export function AddressAutocomplete({
         fields: ["address_components", "formatted_address"],
       });
 
+      // Disable browser native autocomplete to prevent interference
+      inputRef.current.setAttribute("autocomplete", "off");
+
       autocompleteRef.current.addListener("place_changed", () => {
         const place = autocompleteRef.current.getPlace();
-        if (!place.address_components) return;
+        if (!place || !place.address_components) return;
 
         const components: AddressComponents = {
-          street: "",
-          city: "",
-          region: "",
-          postalCode: "",
-          country: "",
-          countryCode: "",
+          street: "", city: "", region: "", postalCode: "", country: "", countryCode: "",
         };
 
         let streetNumber = "";
@@ -103,22 +90,30 @@ export function AddressAutocomplete({
 
         components.street = `${route}${streetNumber ? ", " + streetNumber : ""}`;
         
-        onChange(place.formatted_address, components);
+        // Use the ref to call the latest onChange without triggering effect re-run
+        if (onChangeRef.current) {
+          onChangeRef.current(place.formatted_address, components);
+        }
       });
     };
 
-    if (window.google?.maps?.places) {
+    if (!script) {
+      script = document.createElement("script");
+      script.id = scriptId;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&language=pt`;
+      script.async = true;
+      script.onload = initAutocomplete;
+      document.head.appendChild(script);
+    } else if (window.google?.maps?.places) {
       initAutocomplete();
     } else {
-      script.onload = initAutocomplete;
+      script.addEventListener("load", initAutocomplete);
     }
 
     return () => {
-      if (window.google?.maps?.event && autocompleteRef.current) {
-        window.google.maps.event.clearInstanceListeners(autocompleteRef.current);
-      }
+      if (script) script.removeEventListener("load", initAutocomplete);
     };
-  }, [countries, onChange]);
+  }, [JSON.stringify(countries)]); // Only re-run if countries change
 
   return (
     <Input
@@ -128,6 +123,7 @@ export function AddressAutocomplete({
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       className={className}
+      autoComplete="off"
     />
   );
 }
