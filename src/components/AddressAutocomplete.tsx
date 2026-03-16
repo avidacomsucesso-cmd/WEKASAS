@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Input } from "@/components/ui/input";
 
 export interface AddressComponents {
@@ -35,25 +34,29 @@ export function AddressAutocomplete({
 }: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const autocompleteRef = useRef<any>(null);
-  const onChangeRef = useRef(onChange);
 
   useEffect(() => {
-    onChangeRef.current = onChange;
-  }, [onChange]);
-
-  useEffect(() => {
-    const apiKey = 
-      import.meta.env.VITE_GOOGLE_PLACES_KEY || 
-      (window as any).GOOGLE_PLACES_APIKEY ||
-      "AIzaSyCA8i_MD423MR9vQBRlyYk5FhEjkcWkq4w";
-
-    if (!apiKey) return;
+    const apiKey = import.meta.env.VITE_GOOGLE_PLACES_KEY || import.meta.env.GOOGLE_PLACES_APIKEY;
+    
+    if (!apiKey) {
+      console.warn("Google Places API Key not found. Autocomplete disabled.");
+      return;
+    }
 
     const scriptId = "google-maps-script";
     let script = document.getElementById(scriptId) as HTMLScriptElement;
 
+    if (!script) {
+      script = document.createElement("script");
+      script.id = scriptId;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&language=pt`;
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    }
+
     const initAutocomplete = () => {
-      if (!inputRef.current || !window.google?.maps?.places || autocompleteRef.current) return;
+      if (!inputRef.current || !window.google?.maps?.places) return;
 
       autocompleteRef.current = new window.google.maps.places.Autocomplete(inputRef.current, {
         types: ["address"],
@@ -61,15 +64,17 @@ export function AddressAutocomplete({
         fields: ["address_components", "formatted_address"],
       });
 
-      // Disable browser native autocomplete
-      inputRef.current.setAttribute("autocomplete", "off");
-
       autocompleteRef.current.addListener("place_changed", () => {
         const place = autocompleteRef.current.getPlace();
-        if (!place || !place.address_components) return;
+        if (!place.address_components) return;
 
         const components: AddressComponents = {
-          street: "", city: "", region: "", postalCode: "", country: "", countryCode: "",
+          street: "",
+          city: "",
+          region: "",
+          postalCode: "",
+          country: "",
+          countryCode: "",
         };
 
         let streetNumber = "";
@@ -90,55 +95,31 @@ export function AddressAutocomplete({
 
         components.street = `${route}${streetNumber ? ", " + streetNumber : ""}`;
         
-        if (onChangeRef.current) {
-          onChangeRef.current(place.formatted_address, components);
-        }
+        onChange(place.formatted_address, components);
       });
     };
 
-    if (!script) {
-      script = document.createElement("script");
-      script.id = scriptId;
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&language=pt`;
-      script.async = true;
-      script.onload = initAutocomplete;
-      document.head.appendChild(script);
-    } else if (window.google?.maps?.places) {
+    if (window.google?.maps?.places) {
       initAutocomplete();
     } else {
-      script.addEventListener("load", initAutocomplete);
+      script.onload = initAutocomplete;
     }
 
     return () => {
-      // Don't remove script on unmount as it causes errors with the Google script
-      if (script) script.removeEventListener("load", initAutocomplete);
+      if (window.google?.maps?.event && autocompleteRef.current) {
+        window.google.maps.event.clearInstanceListeners(autocompleteRef.current);
+      }
     };
-  }, [JSON.stringify(countries)]);
-
-  // Use a local state for the input value to prevent re-renders from the parent during typing
-  // This is a "controlled-to-uncontrolled" pattern to solve the focus/lag issues
-  const [localValue, setLocalValue] = useState(value);
-
-  // Sync external value changes (like when clicking a suggestion) back to local state
-  useEffect(() => {
-    setLocalValue(value);
-  }, [value]);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newVal = e.target.value;
-    setLocalValue(newVal);
-    onChange(newVal);
-  };
+  }, [countries, onChange]);
 
   return (
     <Input
       ref={inputRef}
       type="text"
-      value={localValue}
-      onChange={handleInputChange}
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       className={className}
-      autoComplete="off"
     />
   );
 }
