@@ -1,4 +1,5 @@
-import { useEffect, useRef, React } from "react";
+import * as React from "react";
+import { useEffect, useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 
 export interface AddressComponents {
@@ -116,7 +117,7 @@ export function AddressAutocomplete({
 
   // Use a local state for the input value to prevent re-renders from the parent during typing
   // This is a "controlled-to-uncontrolled" pattern to solve the focus/lag issues
-  const [localValue, setLocalValue] = React.useState(value);
+  const [localValue, setLocalValue] = useState(value);
 
   // Sync external value changes (like when clicking a suggestion) back to local state
   useEffect(() => {
