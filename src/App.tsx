@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SiteLayout } from "@/components/SiteLayout";
+import { Outlet } from "react-router-dom";
 
 import Index from "./pages/Index";
 import ComoFunciona from "./pages/ComoFunciona";
@@ -22,8 +23,8 @@ function App() {
   return (
     <TooltipProvider>
       <BrowserRouter>
-        <SiteLayout>
-          <Routes>
+        <Routes>
+          <Route element={<SiteLayout />}>
             <Route path="/" element={<Index />} />
             <Route path="/como-funciona" element={<ComoFunciona />} />
             <Route path="/precos" element={<Precos />} />
@@ -34,8 +35,9 @@ function App() {
             <Route path="/submeter-imovel" element={<SubmeterImovel />} />
             <Route path="/termos" element={<Termos />} />
             <Route path="/privacidade" element={<Privacidade />} />
-          </Routes>
-        </SiteLayout>
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
       <Toaster />
       <Sonner />
