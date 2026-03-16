@@ -182,8 +182,8 @@ export default function ComoFunciona() {
             <div className="relative">
               <div className="aspect-[4/5] sm:aspect-[4/3] lg:aspect-auto lg:h-[480px] w-full overflow-hidden rounded-2xl">
                 <img 
-                  src="/assets/hero-parceiros-5.png" 
-                  alt="Proprietário WEKASAS" 
+                  src="/assets/javier-carmem-madrid.png" 
+                  alt="Javier e Carmem - Madrid" 
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -194,7 +194,7 @@ export default function ComoFunciona() {
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
                   </div>
                   <p className="text-xs font-bold text-zinc-900">
-                    Imóvel arrendado em 16 dias · Lisboa
+                    Imóvel arrendado em 16 dias · Madrid
                   </p>
                 </div>
               </div>
@@ -301,8 +301,8 @@ export default function ComoFunciona() {
             <div className="order-2 lg:order-1">
               <div className="h-[500px] w-full overflow-hidden rounded-2xl shadow-xl">
                 <img 
-                  src="/assets/hero-parceiros-6.png" 
-                  alt="Equipa WEKASAS" 
+                  src="/assets/cristovao-j-lisboa.jpg" 
+                  alt="Cristóvão J - Lisboa" 
                   className="h-full w-full object-cover object-top"
                 />
               </div>
