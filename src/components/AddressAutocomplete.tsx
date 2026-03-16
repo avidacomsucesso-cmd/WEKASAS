@@ -36,10 +36,13 @@ export function AddressAutocomplete({
   const autocompleteRef = useRef<any>(null);
 
   useEffect(() => {
-    const apiKey = import.meta.env.VITE_GOOGLE_PLACES_KEY || import.meta.env.GOOGLE_PLACES_APIKEY;
+    // Tentar obter a chave de várias formas possíveis em ambiente Vite/React
+    const apiKey = 
+      import.meta.env.VITE_GOOGLE_PLACES_KEY || 
+      (window as any).GOOGLE_PLACES_APIKEY ||
+      "AIzaSyCA8i_MD423MR9vQBRlyYk5FhEjkcWkq4w"; // Fallback para a chave fornecida se as envs falharem no preview
     
     if (!apiKey) {
-      console.warn("Google Places API Key not found. Autocomplete disabled.");
       return;
     }
 
@@ -56,7 +59,12 @@ export function AddressAutocomplete({
     }
 
     const initAutocomplete = () => {
-      if (!inputRef.current || !window.google?.maps?.places) return;
+      if (!inputRef.current || !window.google?.maps?.places) {
+        return;
+      }
+
+      // Prevenir inicializações duplicadas
+      if (autocompleteRef.current) return;
 
       autocompleteRef.current = new window.google.maps.places.Autocomplete(inputRef.current, {
         types: ["address"],
