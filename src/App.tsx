@@ -20,22 +20,26 @@ import SubmeterImovel from "./pages/SubmeterImovel";
 
 function App() {
   return (
-    <BrowserRouter>
-      <SiteLayout>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/como-funciona" element={<ComoFunciona />} />
-          <Route path="/precos" element={<Precos />} />
-          <Route path="/arrendamentos" element={<Arrendamentos />} />
-          <Route path="/parceiros" element={<Parceiros />} />
-          <Route path="/sobre" element={<Sobre />} />
-          <Route path="/contacto" element={<Contacto />} />
-          <Route path="/submeter-imovel" element={<SubmeterImovel />} />
-          <Route path="/termos" element={<Termos />} />
-          <Route path="/privacidade" element={<Privacidade />} />
-        </Routes>
-      </SiteLayout>
-    </BrowserRouter>
+    <TooltipProvider>
+      <BrowserRouter>
+        <SiteLayout>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/como-funciona" element={<ComoFunciona />} />
+            <Route path="/precos" element={<Precos />} />
+            <Route path="/arrendamentos" element={<Arrendamentos />} />
+            <Route path="/parceiros" element={<Parceiros />} />
+            <Route path="/sobre" element={<Sobre />} />
+            <Route path="/contacto" element={<Contacto />} />
+            <Route path="/submeter-imovel" element={<SubmeterImovel />} />
+            <Route path="/termos" element={<Termos />} />
+            <Route path="/privacidade" element={<Privacidade />} />
+          </Routes>
+        </SiteLayout>
+      </BrowserRouter>
+      <Toaster />
+      <Sonner />
+    </TooltipProvider>
   );
 }
 
