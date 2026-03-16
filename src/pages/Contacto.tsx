@@ -8,6 +8,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { LocationSelect } from "@/components/LocationSelect";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 function getWhatsAppNumber() {
   const raw =
@@ -65,6 +67,19 @@ export default function Contacto() {
 
       <section className="bg-white">
         <div className="wk-container wk-section">
+          {/* ONBOARDING BANNER */}
+          <div className="mb-10 flex flex-col items-center justify-between gap-4 rounded-2xl bg-[color:var(--color-orange-light)] p-6 sm:flex-row">
+            <div className="text-center sm:text-left">
+              <h3 className="text-lg font-bold text-zinc-900">Queres submeter o teu imóvel?</h3>
+              <p className="text-sm text-zinc-600">Usa o nosso formulário de onboarding para um processo mais rápido.</p>
+            </div>
+            <WekaButton asChild className="h-11">
+              <Link to="/submeter-imovel">
+                Submeter imóvel agora <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </WekaButton>
+          </div>
+
           <div className="grid overflow-hidden rounded-2xl border border-zinc-200 lg:grid-cols-12">
             {/* LEFT */}
             <div className="relative bg-[color:var(--color-charcoal)] p-8 text-white lg:col-span-5">

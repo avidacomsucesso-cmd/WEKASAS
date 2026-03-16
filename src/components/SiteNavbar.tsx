@@ -52,7 +52,7 @@ export function SiteNavbar() {
         <nav className="hidden md:flex md:items-center md:gap-8">
           <NavLinks />
           <WekaButton asChild size="lg" className="px-6 h-12 text-sm font-bold">
-            <Link to="/contacto">
+            <Link to="/submeter-imovel">
               Quero arrendar o meu imóvel <ArrowUpRight className="ml-1.5 h-4.5 w-4.5" />
             </Link>
           </WekaButton>
@@ -77,7 +77,7 @@ export function SiteNavbar() {
                 <NavLinks onNavigate={() => setOpen(false)} />
 
                 <WekaButton asChild className="w-full">
-                  <Link to="/contacto" onClick={() => setOpen(false)}>
+                  <Link to="/submeter-imovel" onClick={() => setOpen(false)}>
                     Quero arrendar o meu imóvel
                   </Link>
                 </WekaButton>

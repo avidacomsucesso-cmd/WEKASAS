@@ -16,38 +16,27 @@ import Parceiros from "./pages/Parceiros";
 import Privacidade from "./pages/Privacidade";
 import Termos from "./pages/Termos";
 import NotFound from "./pages/NotFound";
+import SubmeterImovel from "./pages/SubmeterImovel";
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+function App() {
+  return (
+    <BrowserRouter>
+      <SiteLayout>
         <Routes>
-          <Route element={<SiteLayout />}>
-            <Route path="/" element={<Index />} />
-            <Route path="/como-funciona" element={<ComoFunciona />} />
-            <Route path="/precos" element={<Precos />} />
-            <Route path="/arrendamentos" element={<Arrendamentos />} />
-            <Route
-              path="/arrendamentos/:slug"
-              element={<ArrendamentoDetalhe />}
-            />
-            <Route path="/contacto" element={<Contacto />} />
-            <Route path="/sobre" element={<Sobre />} />
-            <Route path="/parceiros" element={<Parceiros />} />
-            <Route path="/privacidade" element={<Privacidade />} />
-            <Route path="/termos" element={<Termos />} />
-          </Route>
-
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Index />} />
+          <Route path="/como-funciona" element={<ComoFunciona />} />
+          <Route path="/precos" element={<Precos />} />
+          <Route path="/arrendamentos" element={<Arrendamentos />} />
+          <Route path="/parceiros" element={<Parceiros />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/contacto" element={<Contacto />} />
+          <Route path="/submeter-imovel" element={<SubmeterImovel />} />
+          <Route path="/termos" element={<Termos />} />
+          <Route path="/privacidade" element={<Privacidade />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+      </SiteLayout>
+    </BrowserRouter>
+  );
+}
 
 export default App;
