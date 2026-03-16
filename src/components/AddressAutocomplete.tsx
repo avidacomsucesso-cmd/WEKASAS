@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, React } from "react";
 import { Input } from "@/components/ui/input";
 
 export interface AddressComponents {
@@ -36,7 +36,6 @@ export function AddressAutocomplete({
   const autocompleteRef = useRef<any>(null);
   const onChangeRef = useRef(onChange);
 
-  // Keep the latest onChange in a ref to avoid re-initializing autocomplete when it changes
   useEffect(() => {
     onChangeRef.current = onChange;
   }, [onChange]);
@@ -61,7 +60,7 @@ export function AddressAutocomplete({
         fields: ["address_components", "formatted_address"],
       });
 
-      // Disable browser native autocomplete to prevent interference
+      // Disable browser native autocomplete
       inputRef.current.setAttribute("autocomplete", "off");
 
       autocompleteRef.current.addListener("place_changed", () => {
@@ -90,7 +89,6 @@ export function AddressAutocomplete({
 
         components.street = `${route}${streetNumber ? ", " + streetNumber : ""}`;
         
-        // Use the ref to call the latest onChange without triggering effect re-run
         if (onChangeRef.current) {
           onChangeRef.current(place.formatted_address, components);
         }
@@ -111,16 +109,32 @@ export function AddressAutocomplete({
     }
 
     return () => {
+      // Don't remove script on unmount as it causes errors with the Google script
       if (script) script.removeEventListener("load", initAutocomplete);
     };
-  }, [JSON.stringify(countries)]); // Only re-run if countries change
+  }, [JSON.stringify(countries)]);
+
+  // Use a local state for the input value to prevent re-renders from the parent during typing
+  // This is a "controlled-to-uncontrolled" pattern to solve the focus/lag issues
+  const [localValue, setLocalValue] = React.useState(value);
+
+  // Sync external value changes (like when clicking a suggestion) back to local state
+  useEffect(() => {
+    setLocalValue(value);
+  }, [value]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newVal = e.target.value;
+    setLocalValue(newVal);
+    onChange(newVal);
+  };
 
   return (
     <Input
       ref={inputRef}
       type="text"
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
+      value={localValue}
+      onChange={handleInputChange}
       placeholder={placeholder}
       className={className}
       autoComplete="off"
