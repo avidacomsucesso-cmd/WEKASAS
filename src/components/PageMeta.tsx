@@ -12,9 +12,9 @@ export function PageMeta({ title, description, path }: { title: string; descript
       <link rel="canonical" href={canonicalUrl} />
       
       {/* SEO — hreflang */}
-      <link rel="alternate" hreflang="pt" href="https://wekasas.com/?lang=pt" />
-      <link rel="alternate" hreflang="es" href="https://wekasas.com/?lang=es" />
-      <link rel="alternate" hreflang="x-default" href="https://wekasas.com/" />
+      <link rel="alternate" hrefLang="pt" href="https://wekasas.com/?lang=pt" />
+      <link rel="alternate" hrefLang="es" href="https://wekasas.com/?lang=es" />
+      <link rel="alternate" hrefLang="x-default" href="https://wekasas.com/" />
     </Helmet>
   );
 }
