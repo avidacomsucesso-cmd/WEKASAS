@@ -1,30 +1,20 @@
 import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
 
-export function PageMeta(props: {
-  title: string;
-  description: string;
-  path: string;
-  image?: string;
-}) {
-  const canonical = `https://wekasas.com${props.path}`;
-  const image = props.image ?? "/og.png";
+export function PageMeta({ title, description, path }: { title: string; description: string; path: string }) {
+  const location = useLocation();
+  const canonicalUrl = `https://wekasas.com${path}`;
 
   return (
     <Helmet>
-      <title>{props.title}</title>
-      <meta name="description" content={props.description} />
-      <link rel="canonical" href={canonical} />
-
-      <meta property="og:type" content="website" />
-      <meta property="og:title" content={props.title} />
-      <meta property="og:description" content={props.description} />
-      <meta property="og:url" content={canonical} />
-      <meta property="og:image" content={image} />
-
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={props.title} />
-      <meta name="twitter:description" content={props.description} />
-      <meta name="twitter:image" content={image} />
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <link rel="canonical" href={canonicalUrl} />
+      
+      {/* SEO — hreflang */}
+      <link rel="alternate" hreflang="pt" href="https://wekasas.com/?lang=pt" />
+      <link rel="alternate" hreflang="es" href="https://wekasas.com/?lang=es" />
+      <link rel="alternate" hreflang="x-default" href="https://wekasas.com/" />
     </Helmet>
   );
 }

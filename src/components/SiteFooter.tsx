@@ -1,100 +1,76 @@
 import { Link } from "react-router-dom";
 import { WekaLogo } from "@/components/WekaLogo";
+import { useTranslation } from 'react-i18next';
 
 export function SiteFooter() {
+  const { t } = useTranslation();
+
   return (
-    <footer className="border-t border-white/10 bg-[color:var(--color-charcoal)]">
-      <div className="wk-container wk-section py-16">
-        <div className="grid gap-12 md:grid-cols-12">
-          <div className="md:col-span-4">
-            <WekaLogo className="mb-4" />
-            <p className="max-w-xs text-base font-medium text-[color:var(--color-text-muted)]">
-              O seu imóvel. A nossa responsabilidade.
+    <footer className="bg-[color:var(--color-charcoal)] border-t border-white/10 pt-16 pb-8 text-white">
+      <div className="wk-container">
+        <div className="grid gap-12 md:grid-cols-12 lg:gap-20">
+          <div className="md:col-span-5">
+            <WekaLogo />
+            <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/60">
+              {t('footer.tagline')}
             </p>
-            <div className="mt-8 space-y-2 text-xs text-[color:var(--color-text-muted)]">
-              <p className="font-bold text-white/60">HEAVENWHISPER UNIPESSOAL, LDA</p>
-              <p>NIF: 517 714 140</p>
-              <p>Rua dos Malhões, Quinta da Fonte</p>
-              <p>2770-071 Paço de Arcos, Lisboa</p>
-            </div>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 md:col-span-8 md:grid-cols-4">
-            <div>
-              <p className="text-sm font-semibold text-white">Serviços</p>
-              <ul className="mt-4 space-y-2 text-sm">
-                <li>
-                  <Link className="text-white/70 hover:text-white" to="/como-funciona">
-                    Como funciona
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-white/70 hover:text-white" to="/precos">
-                    Preços
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-white/70 hover:text-white" to="/arrendamentos">
-                    Para inquilinos
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          <div className="md:col-span-7">
+            <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-[color:var(--color-orange)]">
+                  {t('footer.services')}
+                </p>
+                <ul className="mt-4 space-y-2">
+                  <li><Link to="/como-funciona" className="text-xs text-white/60 hover:text-white transition-colors">{t('nav.how')}</Link></li>
+                  <li><Link to="/precos" className="text-xs text-white/60 hover:text-white transition-colors">{t('nav.prices')}</Link></li>
+                  <li><Link to="/arrendamentos" className="text-xs text-white/60 hover:text-white transition-colors">{t('nav.tenants')}</Link></li>
+                </ul>
+              </div>
 
-            <div>
-              <p className="text-sm font-semibold text-white">Empresa</p>
-              <ul className="mt-4 space-y-2 text-sm">
-                <li>
-                  <Link className="text-white/70 hover:text-white" to="/sobre">
-                    Sobre
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-white/70 hover:text-white" to="/parceiros">
-                    Parceiros
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-white/70 hover:text-white" to="/contacto">
-                    Contacto
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-[color:var(--color-orange)]">
+                  {t('footer.company')}
+                </p>
+                <ul className="mt-4 space-y-2">
+                  <li><Link to="/sobre" className="text-xs text-white/60 hover:text-white transition-colors">{t('nav.about')}</Link></li>
+                  <li><Link to="/parceiros" className="text-xs text-white/60 hover:text-white transition-colors">{t('nav.partners')}</Link></li>
+                  <li><Link to="/contacto" className="text-xs text-white/60 hover:text-white transition-colors">{t('footer.contact')}</Link></li>
+                </ul>
+              </div>
 
-            <div>
-              <p className="text-sm font-semibold text-white">Legal</p>
-              <ul className="mt-4 space-y-2 text-sm">
-                <li>
-                  <Link
-                    className="text-white/70 hover:text-white"
-                    to="/privacidade"
-                  >
-                    Política de Privacidade
-                  </Link>
-                </li>
-                <li>
-                  <Link className="text-white/70 hover:text-white" to="/termos">
-                    Termos e Condições
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-[color:var(--color-orange)]">
+                  {t('footer.legal')}
+                </p>
+                <ul className="mt-4 space-y-2">
+                  <li><Link to="/privacidade" className="text-xs text-white/60 hover:text-white transition-colors">{t('footer.privacy')}</Link></li>
+                  <li><Link to="/termos" className="text-xs text-white/60 hover:text-white transition-colors">{t('footer.terms')}</Link></li>
+                </ul>
+              </div>
 
-            <div>
-              <p className="text-sm font-semibold text-white">Contacto</p>
-              <ul className="mt-4 space-y-2 text-sm">
-                <li className="text-white/70 tracking-tight">contacto@wekasas.com</li>
-                <li className="text-white/70">+351 96 252 5307</li>
-                <li className="text-white/70">Portugal · Espanha</li>
-              </ul>
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-[color:var(--color-orange)]">
+                  {t('footer.contact')}
+                </p>
+                <ul className="mt-4 space-y-2">
+                  <li className="text-xs text-white/60">contacto@wekasas.com</li>
+                  <li className="text-xs text-white/60">+351 96 252 5307</li>
+                  <li className="text-xs text-white/60">{t('footer.platform')}</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
-          <p>© 2026 HEAVENWHISPER UNIPESSOAL, LDA — Marca WEKASAS</p>
-          <p>Plataforma de gestão de arrendamento — PT + ES</p>
+        <div className="mt-16 border-t border-white/5 pt-8 text-center sm:flex sm:items-center sm:justify-between sm:text-left">
+          <div className="text-[10px] font-medium text-white/40">
+            {t('footer.copyright')}
+          </div>
+          <div className="mt-2 text-[10px] font-bold text-white/40 sm:mt-0">
+            {t('footer.platform')}
+          </div>
         </div>
       </div>
     </footer>

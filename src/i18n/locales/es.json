@@ -1,0 +1,113 @@
+{
+  "nav": {
+    "how": "Cómo funciona",
+    "prices": "Precios",
+    "tenants": "Para inquilinos",
+    "partners": "Partners",
+    "about": "Nosotros",
+    "cta": "Quiero alquilar mi inmueble"
+  },
+  "hero": {
+    "line1": "Tu inmueble.",
+    "line2": "Nuestra responsabilidad.",
+    "sub": "Gestionamos todo. Garantizamos tu renta cada mes — aunque el inquilino no pague.",
+    "cta_primary": "Quiero una valoración gratuita",
+    "cta_secondary": "Ver cómo funciona",
+    "pill1": "Renta garantizada",
+    "pill2": "100% digital",
+    "pill3": "Portugal y España"
+  },
+  "social_proof": {
+    "s1_title": "Valoración gratuita",
+    "s1_sub": "en 24h",
+    "s2_title": "Lisboa · Oporto · Madrid · Barcelona",
+    "s2_sub": "presencia local",
+    "s3_title": "Renta garantizada",
+    "s3_sub": "todos los meses"
+  },
+  "promises": {
+    "title": "Todo lo que un propietario necesita. En un solo lugar.",
+    "sub": "Un servicio completo, digital y sin complicaciones.",
+    "p1_title": "Renta garantizada",
+    "p1_desc": "Aunque el inquilino no pague, tú cobras. Seguro de impago incluido.",
+    "p2_title": "Gestión total",
+    "p2_desc": "Fotografía, anuncios, visitas, contratos, inspecciones. Nos encargamos de todo.",
+    "p3_title": "100% digital",
+    "p3_desc": "Firma el contrato desde el móvil. Sin papeleos. Sin reuniones innecesarias.",
+    "p4_title": "Inquilinos verificados",
+    "p4_desc": "Verificamos ingresos e historial. Sabemos quién entra en tu casa."
+  },
+  "steps": {
+    "title": "3 pasos. Sin complicaciones.",
+    "sub": "Del primer contacto a la renta mensual.",
+    "s1": "Rellenas el formulario",
+    "s1d": "Valoración gratuita en 24h",
+    "s2": "Nos encargamos de todo",
+    "s2d": "Foto, anuncio, selección, contrato",
+    "s3": "Cobras la renta",
+    "s3d": "Todos los meses, garantizado",
+    "cta": "Ver el proceso completo"
+  },
+  "calculator": {
+    "title": "¿Cuánto puede rendir tu inmueble?",
+    "sub": "Haz una estimación rápida. Luego te pedimos los detalles y te damos um valor realista.",
+    "cta": "Quiero una valoración real de mi inmueble",
+    "city": "Ciudad",
+    "typology": "Tipología",
+    "condition": "Estado",
+    "excellent": "Excelente",
+    "good": "Bueno",
+    "recovering": "A reformar",
+    "own": "Por tu cuenta",
+    "no_management": "Sin gestión",
+    "with_wekasas": "Con WEKASAS",
+    "guaranteed": "Renta Garantizada",
+    "annual_net": "Líquido Anual",
+    "no_guarantee": "Riesgo no cubierto",
+    "included": "Incluida",
+    "cta_wekasas": "Quiero alquilar con WEKASAS"
+  },
+  "testimonials": {
+    "title": "Propietarios tranquilos.",
+    "sub": "Historias reales (y un sentimiento común): previsibilidad.",
+    "t1": "Cobré la renta aunque el inquilino se retrasó dos meses. Nunca pensé que fuera posible.",
+    "t1_name": "Carlos M.",
+    "t1_city": "Portugal",
+    "t2": "Se encargaron de todo desde el primer día. Yo no hice nada.",
+    "t2_name": "Inês R.",
+    "t2_city": "Portugal",
+    "t3": "Todo el proceso por el móvil. Firmamos el contrato sin ninguna reunión.",
+    "t3_name": "Miguel T.",
+    "t3_city": "España"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "sub": "Transparencia total. Sin sorpresas.",
+    "q1": "¿Cuánto cuesta WEKASAS?",
+    "a1": "Intermediación: 1,5 rentas en la firma. Gestión mensual: 10% de la renta. Sin costes ocultos.",
+    "q2": "¿Qué pasa si el inquilino no paga?",
+    "a2": "Estás cubierto. Nuestro seguro de impago garantiza hasta 12 mensualidades + daños.",
+    "q3": "¿Puedo salir cuando quiera?",
+    "a3": "Sí. Sin contratos de permanencia forzados.",
+    "q4": "¿Operáis en Portugal también?",
+    "a4": "Sí. Operamos en todo el territorio de Portugal y España.",
+    "q5": "¿Cuánto tarda en alquilarse?",
+    "a5": "Una media de 18 días hábiles desde la valoración hasta el contrato firmado."
+  },
+  "cta_final": {
+    "title": "¿Listo para cobrar tu renta?",
+    "btn": "Hablar con un gestor ahora"
+  },
+  "footer": {
+    "tagline": "Tu inmueble. Nuestra responsabilidad.",
+    "services": "Servicios",
+    "company": "Empresa",
+    "legal": "Legal",
+    "contact": "Contacto",
+    "privacy": "Política de Privacidad",
+    "terms": "Términos y Condiciones",
+    "cities": "Lisboa · Oporto · Madrid · Barcelona",
+    "copyright": "© 2026 HEAVENWHISPER UNIPESSOAL, LDA — Marca WEKASAS",
+    "platform": "Plataforma de gestión de alquiler — PT + ES"
+  }
+}

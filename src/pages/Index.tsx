@@ -6,63 +6,66 @@ import { RentCalculator } from "@/components/home/RentCalculator";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { ShieldCheck, KeyRound, Smartphone, UserCheck, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-
-const promises = [
-  {
-    n: "01",
-    title: "Renda garantida",
-    desc: "Mesmo que o inquilino falhe, tu recebes. Seguro de incumprimento incluído.",
-    icon: ShieldCheck,
-  },
-  {
-    n: "02",
-    title: "Gestão total",
-    desc: "Fotografias, anúncios, visitas, contratos, vistorias. Tratamos de tudo.",
-    icon: KeyRound,
-  },
-  {
-    n: "03",
-    title: "100% digital",
-    desc: "Assina o contrato do telemóvel. Sem papelada. Sem reuniões desnecessárias.",
-    icon: Smartphone,
-  },
-  {
-    n: "04",
-    title: "Inquilinos verificados",
-    desc: "Triagem rigorosa de rendimentos e histórico. Sabemos quem entra em tua casa.",
-    icon: UserCheck,
-  },
-];
-
-const faqs = [
-  {
-    q: "Quanto custa a WEKASAS?",
-    a: "Intermediação: 1,5 rendas na assinatura. Gestão mensal: 10% da renda. Sem custos escondidos.",
-  },
-  {
-    q: "O que acontece se o inquilino não pagar?",
-    a: "Está coberto. O nosso seguro de incumprimento garante até 12 mensalidades + danos.",
-  },
-  {
-    q: "Posso sair quando quiser?",
-    a: "Sim. Sem contratos de permanência forçados.",
-  },
-  {
-    q: "Operam em Espanha também?",
-    a: "Sim. Operamos em todo o território de Portugal e Espanha.",
-  },
-  {
-    q: "Quanto tempo demora até arrendar?",
-    a: "Em média 18 dias úteis desde a avaliação até ao contrato assinado.",
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 export default function Index() {
+  const { t } = useTranslation();
+
+  const promises = [
+    {
+      n: "01",
+      title: t('promises.p1_title'),
+      desc: t('promises.p1_desc'),
+      icon: ShieldCheck,
+    },
+    {
+      n: "02",
+      title: t('promises.p2_title'),
+      desc: t('promises.p2_desc'),
+      icon: KeyRound,
+    },
+    {
+      n: "03",
+      title: t('promises.p3_title'),
+      desc: t('promises.p3_desc'),
+      icon: Smartphone,
+    },
+    {
+      n: "04",
+      title: t('promises.p4_title'),
+      desc: t('promises.p4_desc'),
+      icon: UserCheck,
+    },
+  ];
+
+  const faqs = [
+    {
+      q: t('faq.q1'),
+      a: t('faq.a1'),
+    },
+    {
+      q: t('faq.q2'),
+      a: t('faq.a2'),
+    },
+    {
+      q: t('faq.q3'),
+      a: t('faq.a3'),
+    },
+    {
+      q: t('faq.q4'),
+      a: t('faq.a4'),
+    },
+    {
+      q: t('faq.q5'),
+      a: t('faq.a5'),
+    },
+  ];
+
   return (
     <>
       <PageMeta
-        title="WEKASAS — Gestão de Arrendamento com Renda Garantida | Portugal e Espanha"
-        description="Gerimos tudo e garantimos a tua renda todos os meses — mesmo que o inquilino falhe. Plataforma de gestão de arrendamento em PT + ES."
+        title={`WEKASAS — ${t('footer.platform')}`}
+        description={t('hero.sub')}
         path="/"
       />
 
@@ -80,33 +83,32 @@ export default function Index() {
           <div className="grid gap-10 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
               <h1 className="text-4xl font-bold leading-[1.05] tracking-[-0.03em] text-white sm:text-5xl">
-                <span className="block">O seu imóvel.</span>
+                <span className="block">{t('hero.line1')}</span>
                 <span className="block text-[color:var(--color-orange)]">
-                  A nossa responsabilidade.
+                  {t('hero.line2')}
                 </span>
               </h1>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-white/80 sm:text-lg">
-                Gerimos tudo. Garantimos a sua renda todos os meses — mesmo que o
-                inquilino falhe.
+                {t('hero.sub')}
               </p>
 
               <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <WekaButton asChild size="lg" className="h-12 px-6 text-base">
-                  <Link to="/contacto">Quero uma avaliação gratuita</Link>
+                  <Link to="/contacto">{t('hero.cta_primary')}</Link>
                 </WekaButton>
 
                 <Link
                   to="/como-funciona"
                   className="inline-flex items-center justify-center gap-2 rounded-lg px-2 py-2 text-sm font-semibold text-white/80 transition-colors duration-200 hover:text-white"
                 >
-                  Ver como funciona <ArrowRight className="h-4 w-4" />
+                  {t('hero.cta_secondary')} <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
 
               <div className="mt-7 flex flex-wrap gap-2">
-                <span className="wk-pill">Renda garantida</span>
-                <span className="wk-pill">100% digital</span>
-                <span className="wk-pill">Portugal e Espanha</span>
+                <span className="wk-pill">{t('hero.pill1')}</span>
+                <span className="wk-pill">{t('hero.pill2')}</span>
+                <span className="wk-pill">{t('hero.pill3')}</span>
               </div>
             </div>
 
@@ -122,8 +124,8 @@ export default function Index() {
         <div className="wk-container py-6">
           <div className="grid gap-6 text-center sm:grid-cols-3 sm:text-left">
             <div>
-              <p className="text-sm font-bold text-zinc-900 sm:text-base">Avaliação gratuita</p>
-              <p className="text-xs text-zinc-500 font-medium">em 24h</p>
+              <p className="text-sm font-bold text-zinc-900 sm:text-base">{t('social_proof.s1_title')}</p>
+              <p className="text-xs text-zinc-500 font-medium">{t('social_proof.s1_sub')}</p>
             </div>
             <div>
               <div className="flex items-center justify-center sm:justify-start gap-4 mb-0.5">
@@ -132,7 +134,7 @@ export default function Index() {
                     <span className="text-[10px] font-bold text-zinc-400">PT</span>
                     <span className="text-sm font-bold text-zinc-900 sm:text-base">Portugal</span>
                   </div>
-                  <p className="text-[10px] text-zinc-500 font-medium leading-none">presença local</p>
+                  <p className="text-[10px] text-zinc-500 font-medium leading-none">{t('social_proof.s2_sub')}</p>
                 </div>
                 <span className="text-zinc-200 self-center">|</span>
                 <div className="flex flex-col gap-0.5">
@@ -140,13 +142,13 @@ export default function Index() {
                     <span className="text-[10px] font-bold text-zinc-400">ES</span>
                     <span className="text-sm font-bold text-zinc-900 sm:text-base">Espanha</span>
                   </div>
-                  <p className="text-[10px] text-zinc-500 font-medium leading-none">presença local</p>
+                  <p className="text-[10px] text-zinc-500 font-medium leading-none">{t('social_proof.s2_sub')}</p>
                 </div>
               </div>
             </div>
             <div>
-              <p className="text-sm font-bold text-zinc-900 sm:text-base">Renda garantida</p>
-              <p className="text-xs text-zinc-500 font-medium">todos os meses</p>
+              <p className="text-sm font-bold text-zinc-900 sm:text-base">{t('social_proof.s3_title')}</p>
+              <p className="text-xs text-zinc-500 font-medium">{t('social_proof.s3_sub')}</p>
             </div>
           </div>
         </div>
@@ -157,11 +159,10 @@ export default function Index() {
         <div className="wk-container wk-section">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-bold tracking-[-0.02em] text-zinc-900 sm:text-4xl">
-              Tudo o que um proprietário precisa. Num só lugar.
+              {t('promises.title')}
             </h2>
             <p className="mt-3 text-base text-zinc-600">
-              Um serviço completo, digital e sem complicações — com uma obsessão:
-              previsibilidade.
+              {t('promises.sub')}
             </p>
           </div>
 
@@ -203,15 +204,14 @@ export default function Index() {
           <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <h2 className="text-3xl font-bold tracking-[-0.02em] text-white sm:text-4xl">
-                3 passos. Sem complicações.
+                {t('steps.title')}
               </h2>
               <p className="mt-3 max-w-2xl text-sm text-white/70 sm:text-base">
-                Do primeiro contacto até à renda mensal — com um processo pensado
-                para simplificar.
+                {t('steps.sub')}
               </p>
             </div>
             <WekaButton asChild intent="secondary" className="h-11">
-              <Link to="/como-funciona">Ver o processo completo</Link>
+              <Link to="/como-funciona">{t('steps.cta')}</Link>
             </WekaButton>
           </div>
 
@@ -219,18 +219,18 @@ export default function Index() {
             {[
               {
                 n: "1",
-                t: "Preenches o formulário",
-                d: "Avaliação gratuita em 24h",
+                t: t('steps.s1'),
+                d: t('steps.s1d'),
               },
               {
                 n: "2",
-                t: "Nós tratamos de tudo",
-                d: "Foto, anúncio, triagem, contrato",
+                t: t('steps.s2'),
+                d: t('steps.s2d'),
               },
               {
                 n: "3",
-                t: "Recebes a renda",
-                d: "Todos os meses, garantido",
+                t: t('steps.s3'),
+                d: t('steps.s3d'),
               },
             ].map((s) => (
               <div key={s.n} className="wk-card-dark border border-white/10 p-6">
@@ -253,15 +253,14 @@ export default function Index() {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
               <h2 className="text-3xl font-bold tracking-[-0.02em] text-zinc-900 sm:text-4xl">
-                Quanto pode render o seu imóvel?
+                {t('calculator.title')}
               </h2>
               <p className="mt-3 text-base text-zinc-600">
-                Faz uma estimativa rápida. Depois, pedimos os detalhes e damos-te
-                um valor realista.
+                {t('calculator.sub')}
               </p>
             </div>
             <WekaButton asChild className="h-11">
-              <Link to="/contacto">Quero uma avaliação real do meu imóvel</Link>
+              <Link to="/contacto">{t('calculator.cta')}</Link>
             </WekaButton>
           </div>
 
@@ -276,29 +275,29 @@ export default function Index() {
         <div className="wk-container wk-section">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-bold tracking-[-0.02em] text-white sm:text-4xl">
-              Proprietários com tranquilidade.
+              {t('testimonials.title')}
             </h2>
             <p className="mt-3 text-sm text-white/70 sm:text-base">
-              Histórias reais (e um sentimento comum): previsibilidade.
+              {t('testimonials.sub')}
             </p>
           </div>
 
           <div className="mt-10 grid gap-4 lg:grid-cols-3">
             {[
               {
-                text: "Recebi a renda mesmo quando o inquilino atrasou dois meses. Nunca pensei que fosse possível.",
-                name: "Carlos M.",
-                city: "Portugal",
+                text: t('testimonials.t1'),
+                name: t('testimonials.t1_name'),
+                city: t('testimonials.t1_city'),
               },
               {
-                text: "Trataram de tudo desde o primeiro dia. Eu não fiz nada.",
-                name: "Inês R.",
-                city: "Portugal",
+                text: t('testimonials.t2'),
+                name: t('testimonials.t2_name'),
+                city: t('testimonials.t2_city'),
               },
               {
-                text: "Processo todo pelo telemóvel. Assinámos o contrato sem uma única reunião.",
-                name: "Miguel T.",
-                city: "Espanha",
+                text: t('testimonials.t3'),
+                name: t('testimonials.t3_name'),
+                city: t('testimonials.t3_city'),
               },
             ].map((t) => (
               <div
@@ -323,10 +322,10 @@ export default function Index() {
         <div className="wk-container wk-section">
           <div className="max-w-2xl">
             <h2 className="text-3xl font-bold tracking-[-0.02em] text-zinc-900 sm:text-4xl">
-              Perguntas frequentes
+              {t('faq.title')}
             </h2>
             <p className="mt-3 text-base text-zinc-600">
-              Transparência total. Sem surpresas.
+              {t('faq.sub')}
             </p>
           </div>
 
@@ -356,13 +355,13 @@ export default function Index() {
         <div className="wk-container wk-section py-14">
           <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
             <h2 className="text-3xl font-bold tracking-[-0.02em] text-white sm:text-4xl">
-              Pronto para receber a sua renda?
+              {t('cta_final.title')}
             </h2>
             <WekaButton
               asChild
               className="h-12 bg-white px-6 text-base font-bold text-[color:var(--color-charcoal)] hover:bg-white"
             >
-              <Link to="/contacto">Falar com um gestor agora</Link>
+              <Link to="/contacto">{t('cta_final.btn')}</Link>
             </WekaButton>
           </div>
         </div>

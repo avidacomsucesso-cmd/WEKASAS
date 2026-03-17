@@ -5,17 +5,19 @@ import { cn } from "@/lib/utils";
 import { Menu, ArrowUpRight } from "lucide-react";
 import * as React from "react";
 import { Link, useLocation } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const navItems = [
-  { href: "/como-funciona", label: "Como funciona" },
-  { href: "/precos", label: "Preços" },
-  { href: "/arrendamentos", label: "Para inquilinos" },
-  { href: "/parceiros", label: "Parceiros" },
-  { href: "/sobre", label: "Sobre" },
+  { href: "/como-funciona", label: "nav.how" },
+  { href: "/precos", label: "nav.prices" },
+  { href: "/arrendamentos", label: "nav.tenants" },
+  { href: "/parceiros", label: "nav.partners" },
+  { href: "/sobre", label: "nav.about" },
 ];
 
 function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
   const location = useLocation();
+  const { t } = useTranslation();
 
   return (
     <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-6">
@@ -31,7 +33,7 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
               active && "bg-white/10 text-white"
             )}
           >
-            {item.label}
+            {t(item.label)}
           </Link>
         );
       })}
@@ -41,6 +43,7 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
 
 export function SiteNavbar() {
   const [open, setOpen] = React.useState(false);
+  const { t, i18n } = useTranslation();
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[color:var(--color-charcoal)]">
@@ -51,14 +54,65 @@ export function SiteNavbar() {
 
         <nav className="hidden md:flex md:items-center md:gap-8">
           <NavLinks />
+          
+          {/* Idioma Selector */}
+          <div className="flex items-center gap-2 px-3">
+            <button
+              onClick={() => i18n.changeLanguage('pt')}
+              className={cn(
+                "text-xs transition-colors duration-200",
+                i18n.language === 'pt' 
+                  ? 'text-white font-bold' 
+                  : 'text-white/40 hover:text-white/70'
+              )}
+            >
+              PT
+            </button>
+            <span className="text-white/20 select-none">|</span>
+            <button
+              onClick={() => i18n.changeLanguage('es')}
+              className={cn(
+                "text-xs transition-colors duration-200",
+                i18n.language.startsWith('es')
+                  ? 'text-white font-bold'
+                  : 'text-white/40 hover:text-white/70'
+              )}
+            >
+              ES
+            </button>
+          </div>
+
           <WekaButton asChild size="lg" className="px-6 h-12 text-sm font-bold">
             <Link to="/submeter-imovel">
-              Quero arrendar o meu imóvel <ArrowUpRight className="ml-1.5 h-4.5 w-4.5" />
+              {t('nav.cta')} <ArrowUpRight className="ml-1.5 h-4.5 w-4.5" />
             </Link>
           </WekaButton>
         </nav>
 
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center gap-4">
+          {/* Mobile Idioma Selector */}
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => i18n.changeLanguage('pt')}
+              className={cn(
+                "text-[10px] transition-colors duration-200",
+                i18n.language === 'pt' ? 'text-white font-bold' : 'text-white/40'
+              )}
+            >
+              PT
+            </button>
+            <span className="text-white/20 text-[10px]">|</span>
+            <button
+              onClick={() => i18n.changeLanguage('es')}
+              className={cn(
+                "text-[10px] transition-colors duration-200",
+                i18n.language.startsWith('es') ? 'text-white font-bold' : 'text-white/40'
+              )}
+            >
+              ES
+            </button>
+          </div>
+
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <button
@@ -78,13 +132,13 @@ export function SiteNavbar() {
 
                 <WekaButton asChild className="w-full">
                   <Link to="/submeter-imovel" onClick={() => setOpen(false)}>
-                    Quero arrendar o meu imóvel
+                    {t('nav.cta')}
                   </Link>
                 </WekaButton>
               </div>
 
               <p className="mt-10 text-xs text-white/60">
-                Gestão de arrendamento em PT + ES.
+                {t('footer.platform')}
               </p>
             </SheetContent>
           </Sheet>
