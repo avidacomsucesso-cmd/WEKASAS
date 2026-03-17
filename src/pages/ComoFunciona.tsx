@@ -9,124 +9,126 @@ import {
   ShieldCheck, Clock, Check, ArrowRight, X
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const steps = [
-  {
-    n: "1",
-    title: "Pedes avaliação gratuita",
-    desc: "Formulário ou WhatsApp, resposta em 24h",
-    tempo: "Dia 1 · 5 minutos",
-    icon: MessageSquare,
-  },
-  {
-    n: "2",
-    title: "Avaliação do imóvel",
-    desc: "Definimos a renda ideal com base em dados reais do mercado actual ou se já tens o preço definido, vamos em frente.",
-    tempo: "24 horas",
-    icon: BarChart3,
-    dark: true,
-  },
-  {
-    n: "3",
-    title: "Fotografia profissional",
-    desc: "Enviamos fotógrafo profissional sem custo adicional. Fotos editadas em 48h.",
-    tempo: "Dia 3–4",
-    icon: Camera,
-  },
-  {
-    n: "4",
-    title: "Publicação nos portais",
-    desc: "Idealista, Imovirtual, Fotocasa e redes sociais. Visibilidade máxima.",
-    tempo: "Dia 4–5",
-    icon: Globe,
-    dark: true,
-  },
-  {
-    n: "5",
-    title: "Triagem de candidatos",
-    desc: "Verificamos rendimentos, histórico e idoneidade. Só os melhores chegam à visita.",
-    tempo: "Dia 5–12",
-    icon: UserCheck,
-  },
-  {
-    n: "6",
-    title: "Assinatura digital",
-    desc: "Contrato 100% online. Proprietário e inquilino assinam do telemóvel.",
-    tempo: "Dia 13–16",
-    icon: FileSignature,
-    dark: true,
-  },
-  {
-    n: "7",
-    title: "Vistoria de entrada",
-    desc: "Documentada com fotos e relatório. Protege proprietário e inquilino.",
-    tempo: "Dia 16–18",
-    icon: ClipboardCheck,
-  },
-  {
-    n: "8",
-    title: "Gestão contínua",
-    desc: "Acompanhamento mensal, renda garantida todos os meses — mesmo que o inquilino falhe.",
-    tempo: "Todos os meses",
-    icon: ShieldCheck,
-    dark: true,
-    specialBadge: "RENDA GARANTIDA",
-  },
-];
-
-const includedItems = [
-  "Avaliação de mercado",
-  "Fotografia profissional",
-  "Anúncios premium",
-  "Triagem de inquilinos",
-  "Seguro de incumprimento",
-  "Contratos digitais",
-  "Vistorias detalhadas",
-  "Gestão de avarias",
-  "Cobrança de rendas",
-  "Apoio jurídico",
-];
-
-const comparison = [
-  {
-    service: "Seguro de Incumprimento",
-    weka: "✓ Até 12 meses",
-    trad: "✗ (Raramente incluído)",
-  },
-  {
-    service: "Triagem de Inquilinos",
-    weka: "✓ Rigorosa (Big Data)",
-    trad: "Simples (IRS apenas)",
-  },
-  {
-    service: "Fotografia",
-    weka: "✓ Profissional (Gratuita)",
-    trad: "Telemóvel (Geralmente)",
-  },
-  {
-    service: "Assinatura de Contrato",
-    weka: "✓ 100% Digital",
-    trad: "Presencial / Papel",
-  },
-  {
-    service: "Gestão de Avarias",
-    weka: "✓ Incluído 24/7",
-    trad: "✗ (Apenas mediação)",
-  },
-  {
-    service: "Transparência",
-    weka: "✓ App Proprietário",
-    trad: "Telefone / E-mail",
-  },
-  {
-    service: "Renda garantida se inquilino falhar",
-    weka: "✓ Até 12 meses cobertos",
-    trad: "✗",
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 export default function ComoFunciona() {
+  const { t } = useTranslation();
   const timelineRef = useRef<HTMLDivElement>(null);
+
+  const steps = [
+    {
+      n: "1",
+      title: t('steps_page.step1_t'),
+      desc: t('steps_page.step1_d'),
+      tempo: t('steps_page.step1_time'),
+      icon: MessageSquare,
+    },
+    {
+      n: "2",
+      title: t('steps_page.step2_t'),
+      desc: t('steps_page.step2_d'),
+      tempo: t('steps_page.step2_time'),
+      icon: BarChart3,
+      dark: true,
+    },
+    {
+      n: "3",
+      title: t('steps_page.step3_t'),
+      desc: t('steps_page.step3_d'),
+      tempo: t('steps_page.step3_time'),
+      icon: Camera,
+    },
+    {
+      n: "4",
+      title: t('steps_page.step4_t'),
+      desc: t('steps_page.step4_d'),
+      tempo: t('steps_page.step4_time'),
+      icon: Globe,
+      dark: true,
+    },
+    {
+      n: "5",
+      title: t('steps_page.step5_t'),
+      desc: t('steps_page.step5_d'),
+      tempo: t('steps_page.step5_time'),
+      icon: UserCheck,
+    },
+    {
+      n: "6",
+      title: t('steps_page.step6_t'),
+      desc: t('steps_page.step6_d'),
+      tempo: t('steps_page.step6_time'),
+      icon: FileSignature,
+      dark: true,
+    },
+    {
+      n: "7",
+      title: t('steps_page.step7_t'),
+      desc: t('steps_page.step7_d'),
+      tempo: t('steps_page.step7_time'),
+      icon: ClipboardCheck,
+    },
+    {
+      n: "8",
+      title: t('steps_page.step8_t'),
+      desc: t('steps_page.step8_d'),
+      tempo: t('steps_page.step8_time'),
+      icon: ShieldCheck,
+      dark: true,
+      specialBadge: t('hero.pill1'),
+    },
+  ];
+
+  const includedItems = [
+    t('pricing_page.p1_v1'),
+    t('pricing_page.p1_v2'),
+    t('pricing_page.p1_v3'),
+    t('pricing_page.p1_v4'),
+    t('pricing_page.p2_v3'),
+    t('pricing_page.p1_v5'),
+    t('pricing_page.p1_v6'),
+    t('onboarding_page.s2_service1_d'), // Example reuse
+    t('onboarding_page.s1_address'),
+    t('about_page.presence_pt'),
+  ];
+
+  const comparison = [
+    {
+      service: t('steps_page.comp_row1_s'),
+      weka: t('steps_page.comp_row1_w'),
+      trad: t('steps_page.comp_row1_t'),
+    },
+    {
+      service: t('steps_page.comp_row2_s'),
+      weka: t('steps_page.comp_row2_w'),
+      trad: t('steps_page.comp_row2_t'),
+    },
+    {
+      service: t('steps_page.comp_row3_s'),
+      weka: t('steps_page.comp_row3_w'),
+      trad: t('steps_page.comp_row3_t'),
+    },
+    {
+      service: t('steps_page.comp_row4_s'),
+      weka: t('steps_page.comp_row4_w'),
+      trad: t('steps_page.comp_row4_t'),
+    },
+    {
+      service: t('steps_page.comp_row5_s'),
+      weka: t('steps_page.comp_row5_w'),
+      trad: t('steps_page.comp_row5_t'),
+    },
+    {
+      service: t('steps_page.comp_row6_s'),
+      weka: t('steps_page.comp_row6_w'),
+      trad: t('steps_page.comp_row6_t'),
+    },
+    {
+      service: t('steps_page.comp_row7_s'),
+      weka: t('steps_page.comp_row7_w'),
+      trad: t('steps_page.comp_row7_t'),
+    },
+  ];
 
   const scrollToTimeline = () => {
     timelineRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -135,8 +137,8 @@ export default function ComoFunciona() {
   return (
     <>
       <PageMeta
-        title="Como Funciona — Gestão de Arrendamento 100% Digital | WEKASAS"
-        description="Entenda o nosso processo de 8 passos para arrendar o seu imóvel com segurança, rapidez e renda garantida."
+        title={`Como Funciona — WEKASAS`}
+        description={t('steps_page.hero_sub')}
         path="/como-funciona"
       />
 
@@ -146,21 +148,20 @@ export default function ComoFunciona() {
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div className="flex flex-col items-start">
               <span className="mb-4 inline-block text-[10px] font-bold tracking-[0.2em] text-[color:var(--color-orange)] uppercase">
-                PROCESSO 100% DIGITAL
+                {t('steps_page.hero_tag')}
               </span>
               <h1 className="text-4xl font-bold leading-[1.05] tracking-[-0.03em] text-white sm:text-6xl">
-                Do primeiro contacto à renda mensal.
+                {t('steps_page.hero_title')}
               </h1>
               <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/70">
-                8 passos. Sem burocracia. Sem reuniões desnecessárias. <br />
-                Em média 18 dias até ao primeiro inquilino.
+                {t('steps_page.hero_sub')}
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
                 {[
-                  { n: "18 dias", l: "até arrendar" },
-                  { n: "100%", l: "online sem papel" },
-                  { n: "PT + ES", l: "cobertura" },
+                  { n: "18 dias", l: t('steps_page.stat1') },
+                  { n: "100%", l: t('steps_page.stat2') },
+                  { n: "PT + ES", l: t('steps_page.stat3') },
                 ].map((s) => (
                   <div key={s.l} className="rounded-xl border border-white/12 bg-white/7 px-5 py-3 min-w-[120px]">
                     <p className="text-xl font-bold text-[color:var(--color-orange)]">{s.n}</p>
@@ -174,7 +175,7 @@ export default function ComoFunciona() {
                   onClick={scrollToTimeline}
                   className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 transition-colors hover:text-white"
                 >
-                  Ver o processo <ArrowRight className="h-4 w-4" />
+                  {t('steps_page.cta_scroll')} <ArrowRight className="h-4 w-4" />
                 </button>
               </div>
             </div>
@@ -194,7 +195,7 @@ export default function ComoFunciona() {
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
                   </div>
                   <p className="text-xs font-bold text-zinc-900">
-                    Imóvel arrendado em 16 dias · Madrid
+                    {t('steps_page.badge_success')}
                   </p>
                 </div>
               </div>
@@ -208,10 +209,10 @@ export default function ComoFunciona() {
         <div className="wk-container wk-section">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-[-0.02em] text-zinc-900 sm:text-4xl">
-              8 passos. Sem complicações.
+              {t('steps_page.timeline_title')}
             </h2>
             <p className="mt-3 text-base text-zinc-600">
-              Um fluxo claro, documentado e 100% digital.
+              {t('steps_page.timeline_sub')}
             </p>
           </div>
 
@@ -285,9 +286,7 @@ export default function ComoFunciona() {
                 <Clock className="h-6 w-6 text-white" />
               </div>
               <p className="text-lg font-medium leading-relaxed">
-                Em média, os nossos imóveis são arrendados em{" "}
-                <span className="font-bold underline decoration-white/40 underline-offset-4">18 dias úteis</span>{" "}
-                após avaliação.
+                {t('steps_page.step_avg_time')}
               </p>
             </div>
           </div>
@@ -310,10 +309,10 @@ export default function ComoFunciona() {
 
             <div className="order-1 lg:order-2">
               <h2 className="text-3xl font-bold tracking-[-0.02em] text-zinc-900 sm:text-4xl">
-                Tudo incluído. Sem surpresas.
+                {t('steps_page.included_title')}
               </h2>
               <p className="mt-3 text-base text-zinc-600">
-                Um serviço para proprietários que querem zero preocupações.
+                {t('steps_page.included_sub')}
               </p>
 
               <div className="mt-10 grid gap-3 sm:grid-cols-2">
@@ -329,7 +328,7 @@ export default function ComoFunciona() {
 
               <div className="mt-10">
                 <WekaButton asChild size="lg" className="h-12 px-8">
-                  <Link to="/contacto">Quero este serviço</Link>
+                  <Link to="/contacto">{t('steps_page.included_cta')}</Link>
                 </WekaButton>
               </div>
             </div>
@@ -342,10 +341,10 @@ export default function ComoFunciona() {
         <div className="wk-container wk-section">
           <div className="mx-auto max-w-2xl text-center">
             <h2 className="text-3xl font-bold tracking-[-0.02em] text-white sm:text-4xl">
-              WEKASAS vs Imobiliária tradicional
+              {t('steps_page.comp_title')}
             </h2>
             <p className="mt-3 text-base text-white/60">
-              Comparação directa do que muda (e do que deixa de te preocupar).
+              {t('steps_page.comp_sub')}
             </p>
           </div>
 
@@ -354,12 +353,12 @@ export default function ComoFunciona() {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="border-b border-white/10">
-                    <th className="p-5 text-sm font-bold text-white/40 uppercase tracking-wider">Serviço</th>
+                    <th className="p-5 text-sm font-bold text-white/40 uppercase tracking-wider">{t('steps_page.comp_header_service')}</th>
                     <th className="p-5 text-sm font-bold bg-[color:var(--color-orange)] text-white text-center relative">
                       WEKASAS
-                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded bg-white px-2 py-0.5 text-[8px] font-black text-[color:var(--color-orange)] uppercase">Recomendado</span>
+                      <span className="absolute -top-2 left-1/2 -translate-x-1/2 rounded bg-white px-2 py-0.5 text-[8px] font-black text-[color:var(--color-orange)] uppercase">{t('steps_page.comp_rec')}</span>
                     </th>
-                    <th className="p-5 text-sm font-bold bg-white/5 text-white/60 text-center">Imobiliária</th>
+                    <th className="p-5 text-sm font-bold bg-white/5 text-white/60 text-center">{t('steps_page.comp_header_trad')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -398,14 +397,14 @@ export default function ComoFunciona() {
             </div>
             
             <h2 className="text-3xl font-bold tracking-[-0.02em] text-zinc-900 sm:text-4xl">
-              O seguro de incumprimento explicado.
+              {t('steps_page.insurance_title')}
             </h2>
 
             <div className="mt-10 grid gap-4 sm:grid-cols-3">
               {[
-                { v: "12 rendas", l: "garantidas em atraso" },
-                { v: "€3.000", l: "cobertura em danos" },
-                { v: "0€", l: "custo extra para si" },
+                { v: t('steps_page.insurance_s1'), l: t('steps_page.insurance_s1_l') },
+                { v: t('steps_page.insurance_s2'), l: t('steps_page.insurance_s2_l') },
+                { v: t('steps_page.insurance_s3'), l: t('steps_page.insurance_s3_l') },
               ].map((s) => (
                 <div key={s.l} className="rounded-xl bg-white p-5 border border-orange-500/10 shadow-sm">
                   <p className="text-2xl font-black text-[color:var(--color-orange)]">{s.v}</p>
@@ -415,9 +414,7 @@ export default function ComoFunciona() {
             </div>
 
             <p className="mt-10 text-base leading-relaxed text-zinc-600 max-w-2xl mx-auto">
-              O seguro de incumprimento está incluído no serviço de Gestão Completa WEKASAS. 
-              Se o inquilino deixar de pagar, recebe na mesma — até 12 mensalidades em atraso. 
-              Sem burocracia. Sem advogados. Sem stress.
+              {t('steps_page.insurance_desc')}
             </p>
           </Card>
         </div>
@@ -429,19 +426,19 @@ export default function ComoFunciona() {
           <div className="grid gap-10 lg:grid-cols-2 lg:items-center">
             <div>
               <h2 className="text-4xl font-bold tracking-[-0.03em] text-white">
-                Pronto para arrendar sem preocupações?
+                {t('steps_page.cta_final_title')}
               </h2>
               <p className="mt-4 text-lg text-white/90">
-                Avaliação gratuita em 24 horas. Sem compromisso.
+                {t('steps_page.cta_final_sub')}
               </p>
               
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <WekaButton asChild size="lg" className="bg-white text-[color:var(--color-charcoal)] hover:bg-white/90">
-                  <Link to="/contacto">Pedir avaliação gratuita</Link>
+                  <Link to="/contacto">{t('steps_page.cta_final_primary')}</Link>
                 </WekaButton>
                 <WekaButton asChild intent="secondary" size="lg" className="border-white text-white hover:bg-white/10">
                   <a href="https://wa.me/351962525307" target="_blank" rel="noopener noreferrer">
-                    Falar no WhatsApp →
+                    {t('steps_page.cta_final_wa')} →
                   </a>
                 </WekaButton>
               </div>
@@ -449,9 +446,9 @@ export default function ComoFunciona() {
 
             <div className="space-y-4">
               {[
-                "Resposta em menos de 24 horas",
-                "Avaliação gratuita e sem compromisso",
-                "Gestor dedicado em PT e ES"
+                t('steps_page.bullet1'),
+                t('steps_page.bullet2'),
+                t('steps_page.bullet3')
               ].map((t) => (
                 <div key={t} className="flex items-center gap-3">
                   <div className="flex h-6 w-6 items-center justify-center rounded-full bg-white/20">

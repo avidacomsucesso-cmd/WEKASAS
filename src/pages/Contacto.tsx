@@ -10,6 +10,7 @@ import { LocationSelect } from "@/components/LocationSelect";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 function getWhatsAppNumber() {
   const raw =
@@ -20,6 +21,7 @@ function getWhatsAppNumber() {
 }
 
 export default function Contacto() {
+  const { t } = useTranslation();
   const [loading, setLoading] = React.useState(false);
   const [done, setDone] = React.useState(false);
 
@@ -72,12 +74,12 @@ export default function Contacto() {
           {/* ONBOARDING BANNER */}
           <div className="mb-10 flex flex-col items-center justify-between gap-4 rounded-2xl bg-[color:var(--color-orange-light)] p-6 sm:flex-row">
             <div className="text-center sm:text-left">
-              <h3 className="text-lg font-bold text-zinc-900">Queres submeter o teu imóvel?</h3>
-              <p className="text-sm text-zinc-600">Usa o nosso formulário de onboarding para um processo mais rápido.</p>
+              <h3 className="text-lg font-bold text-zinc-900">{t('contact_page.onboarding_title')}</h3>
+              <p className="text-sm text-zinc-600">{t('contact_page.onboarding_sub')}</p>
             </div>
             <WekaButton asChild className="h-11">
               <Link to="/submeter-imovel">
-                Submeter imóvel agora <ArrowRight className="ml-2 h-4 w-4" />
+                {t('contact_page.onboarding_btn')} <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </WekaButton>
           </div>
@@ -94,17 +96,17 @@ export default function Contacto() {
               </div>
 
               <h1 className="text-3xl font-bold tracking-[-0.03em] text-white sm:text-4xl">
-                Vamos falar sobre o seu imóvel.
+                {t('contact_page.title')}
               </h1>
               <p className="mt-3 text-sm text-white/90 sm:text-base">
-                Avaliação gratuita em 24 horas. Sem compromisso.
+                {t('contact_page.sub')}
               </p>
 
               <div className="mt-7 space-y-4 text-sm font-medium text-white">
                 {[
-                  "Resposta em 24h",
-                  "Sem custos",
-                  "Cobre PT e ES",
+                  t('contact_page.v1'),
+                  t('contact_page.v2'),
+                  t('contact_page.v3'),
                 ].map((t) => (
                   <div key={t} className="flex items-center gap-3">
                     <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[color:var(--color-orange)] ring-1 ring-white/20">
@@ -121,11 +123,11 @@ export default function Contacto() {
                 rel="noreferrer"
                 className="mt-8 inline-flex items-center justify-center rounded-lg bg-[#25D366] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:bg-[#1fb65a]"
               >
-                Falar no WhatsApp
+                {t('contact_page.wa_btn')}
               </a>
 
               <p className="mt-8 text-xs text-white/60">
-                Ao submeter, concordas em ser contactado pela WEKASAS.
+                {t('contact_page.disclaimer')}
               </p>
             </div>
 
@@ -137,7 +139,7 @@ export default function Contacto() {
                     <form onSubmit={onSubmit} className="grid gap-5">
                       <div className="grid gap-5 sm:grid-cols-2">
                         <div className="space-y-2">
-                          <Label className="text-zinc-700">Nome completo</Label>
+                          <Label className="text-zinc-700">{t('contact_page.form_name')}</Label>
                           <Input
                             required
                             className="h-11 rounded-xl"
@@ -148,7 +150,7 @@ export default function Contacto() {
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label className="text-zinc-700">Email</Label>
+                          <Label className="text-zinc-700">{t('contact_page.form_email')}</Label>
                           <Input
                             required
                             type="email"
@@ -163,7 +165,7 @@ export default function Contacto() {
 
                       <div className="grid gap-5 sm:grid-cols-2">
                         <div className="space-y-2">
-                          <Label className="text-zinc-700">Telefone</Label>
+                          <Label className="text-zinc-700">{t('contact_page.form_phone')}</Label>
                           <Input
                             required
                             className="h-11 rounded-xl"
@@ -174,7 +176,7 @@ export default function Contacto() {
                           />
                         </div>
                         <div className="space-y-2">
-                          <Label className="text-zinc-700">Renda esperada</Label>
+                          <Label className="text-zinc-700">{t('contact_page.form_rent')}</Label>
                           <div className="relative">
                             <Input
                               required
@@ -205,17 +207,17 @@ export default function Contacto() {
                       />
 
                       <div className="space-y-2">
-                        <Label className="text-zinc-700">Morada do imóvel (opcional)</Label>
+                        <Label className="text-zinc-700">{t('contact_page.form_address')}</Label>
                         <Input
                           value={form.address}
                           onChange={(e) => setForm(s => ({ ...s, address: e.target.value }))}
-                          placeholder="Ex: Rua das Flores, 123"
+                          placeholder={t('contact_page.form_address_p')}
                           className="h-11 rounded-xl"
                         />
                       </div>
 
                       <div className="space-y-2">
-                        <Label className="text-zinc-700">Tipologia</Label>
+                        <Label className="text-zinc-700">{t('contact_page.form_typology')}</Label>
                         <Select
                           value={form.typology}
                           onValueChange={(v) =>
@@ -236,7 +238,7 @@ export default function Contacto() {
                       </div>
 
                       <div className="space-y-2">
-                        <Label className="text-zinc-700">Mensagem (opcional)</Label>
+                        <Label className="text-zinc-700">{t('contact_page.form_message')}</Label>
                         <Textarea
                           className="min-h-28 rounded-xl"
                           value={form.message}
@@ -251,20 +253,19 @@ export default function Contacto() {
                         disabled={loading}
                         className="h-12 px-6 text-base"
                       >
-                        {loading ? "A enviar..." : "Pedir avaliação gratuita"}
+                        {loading ? "..." : t('contact_page.form_btn')}
                       </WekaButton>
                     </form>
                   ) : (
                     <div className="rounded-2xl bg-[color:var(--color-orange-light)] p-6">
                       <p className="text-sm font-semibold text-[color:var(--color-orange)]">
-                        Enviado
+                        {t('contact_page.form_btn')}
                       </p>
                       <p className="mt-2 text-2xl font-bold text-zinc-900">
-                        Vamos contactar em menos de 24 horas.
+                        {t('contact_page.success_title')}
                       </p>
                       <p className="mt-3 text-sm text-zinc-600">
-                        Se preferires, podes também falar connosco diretamente via
-                        WhatsApp.
+                        {t('contact_page.success_sub')}
                       </p>
                       <a
                         href={`https://wa.me/${wa}`}
@@ -272,7 +273,7 @@ export default function Contacto() {
                         rel="noreferrer"
                         className="mt-5 inline-flex items-center justify-center rounded-lg bg-[#25D366] px-4 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#1fb65a]"
                       >
-                        Falar no WhatsApp
+                        {t('contact_page.wa_btn')}
                       </a>
                     </div>
                   )}

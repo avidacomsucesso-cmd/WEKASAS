@@ -10,6 +10,7 @@ import { LocationSelect } from "@/components/LocationSelect";
 import { toast } from "sonner";
 import { Users, Briefcase, MessageCircle, Info, UserPlus, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from 'react-i18next';
 
 function getWhatsAppNumber() {
   const raw =
@@ -28,6 +29,7 @@ function eur(n: number) {
 }
 
 export default function Parceiros() {
+  const { t } = useTranslation();
   const [loading, setLoading] = React.useState(false);
   const [done, setDone] = React.useState(false);
   
@@ -56,8 +58,8 @@ export default function Parceiros() {
   const programs = [
     {
       icon: Users,
-      title: "Indicadores de Imóveis",
-      desc: "Ideal para porteiros, zeladores, gestores de condomínio, vizinhos ou qualquer pessoa que conheça um proprietário.",
+      title: t('partners_page.prog1_title'),
+      desc: t('partners_page.prog1_desc'),
       benefits: [
         "Renda até €1.000 → €150 de comissão",
         "Renda €1.001–€2.000 → €200 de comissão",
@@ -66,8 +68,8 @@ export default function Parceiros() {
     },
     {
       icon: Briefcase,
-      title: "Consultor Parceiro",
-      desc: "Para consultores imobiliários, corretores e agentes independentes que querem potenciar a sua carteira.",
+      title: t('partners_page.prog2_title'),
+      desc: t('partners_page.prog2_desc'),
       benefits: [
         "35% da taxa de intermediação WEKASAS",
         "Renda €1.000 → comissão €525",
@@ -93,8 +95,8 @@ export default function Parceiros() {
   return (
     <>
       <PageMeta
-        title="Parceiros — WEKASAS"
-        description="Ganha dinheiro a indicar imóveis. Recebe até €300 por imóvel arrendado."
+        title={`Parceiros — WEKASAS`}
+        description={t('partners_page.hero_sub')}
         path="/parceiros"
       />
 
@@ -103,23 +105,23 @@ export default function Parceiros() {
         <div className="wk-container wk-section">
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
             <div className="order-2 lg:order-1">
-              <span className="text-[10px] font-black tracking-[0.2em] text-[color:var(--color-orange)] uppercase">PROGRAMA PARCEIROS</span>
+              <span className="text-[10px] font-black tracking-[0.2em] text-[color:var(--color-orange)] uppercase">{t('partners_page.hero_tag')}</span>
               <h1 className="mt-4 text-4xl font-bold tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl leading-[1.1]">
-                Ganha dinheiro a <br className="hidden sm:block" /> indicar imóveis.
+                {t('partners_page.hero_title')}
               </h1>
               <p className="mt-6 text-base text-white/75 sm:text-lg max-w-xl leading-relaxed">
-                Conheces um proprietário que quer arrendar? Indica-nos. Nós tratamos de tudo. Tu recebes até <span className="text-white font-bold underline decoration-[color:var(--color-orange)] decoration-2">€300</span> por imóvel arrendado.
+                {t('partners_page.hero_sub')}
               </p>
               
               <div className="mt-8 flex flex-wrap gap-2">
-                <span className="wk-pill bg-white/5 border border-white/10 text-white/80">Sem burocracia</span>
-                <span className="wk-pill bg-white/5 border border-white/10 text-white/80">Pago com a 1ª renda</span>
-                <span className="wk-pill bg-white/5 border border-white/10 text-white/80">PT + ES</span>
+                <span className="wk-pill bg-white/5 border border-white/10 text-white/80">{t('partners_page.hero_pill1')}</span>
+                <span className="wk-pill bg-white/5 border border-white/10 text-white/80">{t('partners_page.hero_pill2')}</span>
+                <span className="wk-pill bg-white/5 border border-white/10 text-white/80">{t('partners_page.hero_pill3')}</span>
               </div>
 
               <div className="mt-10">
                 <WekaButton asChild size="lg" className="h-14 px-8 text-base font-bold shadow-xl shadow-orange-500/20">
-                  <a href="#form-parceiros">Quero ser parceiro</a>
+                  <a href="#form-parceiros">{t('partners_page.cta_hero')}</a>
                 </WekaButton>
               </div>
             </div>
@@ -139,7 +141,7 @@ export default function Parceiros() {
                   </div>
                   <div>
                     <p className="text-xs font-bold text-white leading-none">Pedro M. · Portugal</p>
-                    <p className="mt-1 text-[10px] font-medium text-white/50 leading-none">Parceiro desde Jan 2025</p>
+                    <p className="mt-1 text-[10px] font-medium text-white/50 leading-none">{t('partners_page.partner_since')}</p>
                   </div>
                 </div>
 
@@ -149,7 +151,7 @@ export default function Parceiros() {
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22C55E] opacity-75"></span>
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-[#22C55E]"></span>
                   </div>
-                  <p className="text-xs font-bold text-white leading-none">Comissão recebida · €200</p>
+                  <p className="text-xs font-bold text-white leading-none">{t('partners_page.comm_received')} · €200</p>
                 </div>
               </div>
             </div>
@@ -161,8 +163,8 @@ export default function Parceiros() {
       <section className="bg-white">
         <div className="wk-container wk-section">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-[#212121] sm:text-4xl">Escolhe o teu programa.</h2>
-            <p className="mt-4 text-zinc-600">Duas formas de ganhar com a WEKASAS.</p>
+            <h2 className="text-3xl font-bold tracking-tight text-[#212121] sm:text-4xl">{t('partners_page.choose_title')}</h2>
+            <p className="mt-4 text-zinc-600">{t('partners_page.choose_sub')}</p>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
             {programs.map((p) => {
@@ -205,28 +207,28 @@ export default function Parceiros() {
               />
             </div>
             <div className="text-white">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-10">3 passos. Menos de 2 minutos.</h2>
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-10">{t('partners_page.steps_title')}</h2>
               
               <div className="space-y-10">
                 <div className="flex gap-5">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color:var(--color-orange)] text-white font-bold">1</div>
                   <div>
-                    <h4 className="text-lg font-bold">Indica em 2 minutos</h4>
-                    <p className="mt-2 text-white/70 leading-relaxed">Envia-nos o endereço e o contacto do proprietário por WhatsApp ou pelo formulário.</p>
+                    <h4 className="text-lg font-bold">{t('partners_page.step1_t')}</h4>
+                    <p className="mt-2 text-white/70 leading-relaxed">{t('partners_page.step1_d')}</p>
                   </div>
                 </div>
                 <div className="flex gap-5">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color:var(--color-orange)] text-white font-bold">2</div>
                   <div>
-                    <h4 className="text-lg font-bold">Nós tratamos de tudo</h4>
-                    <p className="mt-2 text-white/70 leading-relaxed">A WEKASAS contacta o proprietário, avalia o imóvel, publica o anúncio e encontra o inquilino certo.</p>
+                    <h4 className="text-lg font-bold">{t('partners_page.step2_t')}</h4>
+                    <p className="mt-2 text-white/70 leading-relaxed">{t('partners_page.step2_d')}</p>
                   </div>
                 </div>
                 <div className="flex gap-5">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color:var(--color-orange)] text-white font-bold">3</div>
                   <div>
-                    <h4 className="text-lg font-bold">Recebes a comissão</h4>
-                    <p className="mt-2 text-white/70 leading-relaxed">Quando a primeira renda é recebida, transferimos o pagamento. €150 a €300 na tua conta.</p>
+                    <h4 className="text-lg font-bold">{t('partners_page.step3_t')}</h4>
+                    <p className="mt-2 text-white/70 leading-relaxed">{t('partners_page.step3_d')}</p>
                   </div>
                 </div>
               </div>
@@ -234,7 +236,7 @@ export default function Parceiros() {
               <div className="mt-12">
                 <WekaButton asChild intent="secondary" className="h-12 border-white text-white hover:bg-white/10 px-6 font-bold">
                   <a href={`https://wa.me/${wa}?text=Olá!%20Quero%20ser%20parceiro%20WEKASAS.`} target="_blank" rel="noreferrer">
-                    Indicar agora pelo WhatsApp <ArrowRight className="ml-2 h-4 w-4" />
+                    {t('partners_page.wa_cta')} <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </WekaButton>
               </div>
@@ -255,8 +257,8 @@ export default function Parceiros() {
               />
             </div>
             <div>
-              <span className="text-[10px] font-black tracking-[0.2em] text-[color:var(--color-orange)] uppercase">TABELA DE COMISSÕES</span>
-              <h2 className="mt-4 text-3xl font-bold tracking-tight text-[#212121] sm:text-4xl">Quanto podes ganhar?</h2>
+              <span className="text-[10px] font-black tracking-[0.2em] text-[color:var(--color-orange)] uppercase">{t('partners_page.earnings_title')}</span>
+              <h2 className="mt-4 text-3xl font-bold tracking-tight text-[#212121] sm:text-4xl">{t('partners_page.earnings_title')}?</h2>
               
               <div className="mt-10 space-y-4">
                 {[
@@ -273,12 +275,12 @@ export default function Parceiros() {
 
               <p className="mt-8 flex items-center gap-2 text-sm font-medium text-zinc-500 italic">
                 <Info className="h-4 w-4 text-[color:var(--color-orange)]" />
-                Pagamento único quando a WEKASAS recebe a primeira renda do inquilino.
+                {t('partners_page.comm_note')}
               </p>
 
               <div className="mt-10">
                 <WekaButton asChild className="h-12 px-8 font-bold">
-                  <a href="#form-parceiros">Simular os meus ganhos <ArrowRight className="ml-2 h-4 w-4" /></a>
+                  <a href="#form-parceiros">{t('partners_page.sim_title')} <ArrowRight className="ml-2 h-4 w-4" /></a>
                 </WekaButton>
               </div>
             </div>
@@ -292,15 +294,15 @@ export default function Parceiros() {
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-5">
               <h2 className="text-3xl font-bold tracking-[-0.02em] text-zinc-900 sm:text-4xl">
-                Torna-te parceiro.
+                {t('partners_page.form_title')}
               </h2>
               <p className="mt-3 text-base text-zinc-600">
-                Simula os teus ganhos e envia o teu cadastro.
+                {t('partners_page.form_sub')}
               </p>
 
               {/* SIMULATOR CARD */}
               <Card className="mt-8 p-6 bg-zinc-900 text-white rounded-3xl border-0 shadow-xl">
-                <p className="text-xs font-black text-white/40 uppercase tracking-widest mb-6">Simulador de Comissão</p>
+                <p className="text-xs font-black text-white/40 uppercase tracking-widest mb-6">{t('partners_page.sim_label')}</p>
                 
                 <div className="space-y-8">
                   <div className="flex p-1 bg-white/5 rounded-xl">
@@ -311,7 +313,7 @@ export default function Parceiros() {
                         partnerType === "indicador" ? "bg-white text-zinc-900" : "text-white/60"
                       )}
                     >
-                      Indicador
+                      {t('partners_page.sim_indicador')}
                     </button>
                     <button
                       onClick={() => setPartnerType("consultor")}
@@ -320,13 +322,13 @@ export default function Parceiros() {
                         partnerType === "consultor" ? "bg-white text-zinc-900" : "text-white/60"
                       )}
                     >
-                      Consultor
+                      {t('partners_page.sim_consultor')}
                     </button>
                   </div>
 
                   <div className="space-y-4">
                     <div className="flex justify-between items-end">
-                      <Label className="text-xs font-bold text-white/60 uppercase">Renda Estimada</Label>
+                      <Label className="text-xs font-bold text-white/60 uppercase">{t('partners_page.sim_rent_est')}</Label>
                       <span className="text-xl font-black">{eur(estimatedRent)}</span>
                     </div>
                     <Slider
@@ -340,7 +342,7 @@ export default function Parceiros() {
                   </div>
 
                   <div className="bg-white/10 p-6 rounded-2xl border border-white/10 text-center">
-                    <p className="text-[10px] font-black text-[color:var(--color-orange)] uppercase tracking-widest mb-1">A tua comissão</p>
+                    <p className="text-[10px] font-black text-[color:var(--color-orange)] uppercase tracking-widest mb-1">{t('partners_page.sim_your_comm')}</p>
                     <p className="text-4xl font-black text-white">{eur(calculateCommission())}</p>
                   </div>
                 </div>
@@ -348,7 +350,7 @@ export default function Parceiros() {
 
               <div className="mt-8 rounded-2xl border border-zinc-200 bg-zinc-50 p-6">
                 <p className="text-sm font-semibold text-zinc-900">
-                  Preferes indicar directamente no WhatsApp?
+                  {t('partners_page.wa_direct')}
                 </p>
                 <a
                   href={`https://wa.me/${wa}?text=Olá! Quero ser parceiro WEKASAS.`}
@@ -356,7 +358,7 @@ export default function Parceiros() {
                   rel="noreferrer"
                   className="mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-[#25D366] px-5 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#1fb65a]"
                 >
-                  <MessageCircle className="h-4 w-4" /> Falar agora
+                  <MessageCircle className="h-4 w-4" /> {t('partners_page.wa_btn')}
                 </a>
               </div>
             </div>
@@ -367,7 +369,7 @@ export default function Parceiros() {
                   <form onSubmit={onSubmit} className="grid gap-5">
                     <div className="grid gap-5 sm:grid-cols-2">
                       <div className="space-y-2">
-                        <Label>Nome completo</Label>
+                        <Label>{t('partners_page.form_name')}</Label>
                         <Input 
                           required 
                           className="h-11 rounded-xl"
@@ -376,7 +378,7 @@ export default function Parceiros() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <Label>Email</Label>
+                        <Label>{t('partners_page.form_email')}</Label>
                         <Input 
                           required 
                           type="email" 
@@ -388,7 +390,7 @@ export default function Parceiros() {
                     </div>
 
                     <div className="space-y-2">
-                      <Label>Telefone</Label>
+                      <Label>{t('partners_page.form_phone')}</Label>
                       <Input 
                         required 
                         className="h-11 rounded-xl" 
@@ -405,18 +407,18 @@ export default function Parceiros() {
                     />
 
                     <div className="space-y-2">
-                      <Label>Tipo de parceiro</Label>
+                      <Label>{t('partners_page.form_type')}</Label>
                       <Select 
                         required
                         value={form.partnerType}
                         onValueChange={(v) => setForm(s => ({ ...s, partnerType: v }))}
                       >
                         <SelectTrigger className="h-11 rounded-xl">
-                          <SelectValue placeholder="Selecciona o perfil" />
+                          <SelectValue placeholder={t('partners_page.form_type_p')} />
                         </SelectTrigger>
                         <SelectContent className="bg-white">
-                          <SelectItem value="portaria">Indicadores de Imóveis</SelectItem>
-                          <SelectItem value="consultor">Consultor Parceiro</SelectItem>
+                          <SelectItem value="portaria">{t('partners_page.form_type_v1')}</SelectItem>
+                          <SelectItem value="consultor">{t('partners_page.form_type_v2')}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -426,7 +428,7 @@ export default function Parceiros() {
                       disabled={loading}
                       className="h-12 text-base font-bold"
                     >
-                      {loading ? "A processar..." : "Enviar cadastro"}
+                      {loading ? "A processar..." : t('partners_page.form_btn')}
                     </WekaButton>
                   </form>
                 ) : (
@@ -435,14 +437,14 @@ export default function Parceiros() {
                       <UserPlus className="h-8 w-8" />
                     </div>
                     <h3 className="mt-5 text-2xl font-bold text-zinc-900">
-                      Recebemos o teu cadastro!
+                      {t('partners_page.success_title')}
                     </h3>
                     <p className="mt-3 text-zinc-600 leading-relaxed">
-                      Obrigado pelo interesse. O teu cliente de email foi aberto com os teus dados. Por favor, clica em "Enviar" para concluir o processo.
+                      {t('partners_page.success_desc')}
                     </p>
                     <div className="mt-8">
                       <WekaButton asChild intent="secondary" className="font-bold border-zinc-200 text-zinc-900">
-                        <a href="/">Voltar à homepage</a>
+                        <a href="/">{t('partners_page.success_home')}</a>
                       </WekaButton>
                     </div>
                   </div>
