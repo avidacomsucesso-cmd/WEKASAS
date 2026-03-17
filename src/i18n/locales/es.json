@@ -15,7 +15,11 @@
     "cta_secondary": "Ver cómo funciona",
     "pill1": "Renta garantizada",
     "pill2": "100% digital",
-    "pill3": "Portugal y España"
+    "pill3": "Portugal y España",
+    "owner": "Propietaria",
+    "owners": "Propietarios",
+    "rent_received": "Renta cobrada",
+    "consecutive_months": "meses consecutivos"
   },
   "social_proof": {
     "s1_title": "Valoración gratuita",

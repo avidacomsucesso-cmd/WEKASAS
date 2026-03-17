@@ -1,35 +1,40 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
-
-const slides = [
-  {
-    image: "/assets/hero-slide-1.png",
-    initials: "AR",
-    name: "Ana R.",
-    role: "Proprietária · Portugal",
-    rent: "€1.100",
-    stats: "8 meses consecutivos",
-  },
-  {
-    image: "/assets/hero-slide-2.png",
-    initials: "MT",
-    name: "Miguel T.",
-    role: "Proprietário · Portugal",
-    rent: "€1.450",
-    stats: "14 meses consecutivos",
-  },
-  {
-    image: "/assets/hero-slide-3.png",
-    initials: "JL",
-    name: "Juan e Lucia",
-    role: "Proprietários · Espanha",
-    rent: "€1.350",
-    stats: "22 meses consecutivos",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export function HeroCarousel() {
+  const { t } = useTranslation();
   const [current, setCurrent] = React.useState(0);
+
+  const slides = [
+    {
+      image: "/assets/hero-slide-1.png",
+      initials: "AR",
+      name: "Ana R.",
+      role: `${t("hero.owner")} · Portugal`,
+      rent: "€1.100",
+      stats: `8 ${t("hero.consecutive_months")}`,
+    },
+    {
+      image: "/assets/hero-slide-2.png",
+      initials: "MT",
+      name: "Miguel T.",
+      role: `Proprietário · Portugal`,
+      rent: "€1.450",
+      stats: `14 ${t("hero.consecutive_months")}`,
+    },
+    {
+      image: "/assets/hero-slide-3.png",
+      initials: "JL",
+      name: "Juan e Lucia",
+      role: `${t("hero.owners")} · Espanha`,
+      rent: "€1.350",
+      stats: `22 ${t("hero.consecutive_months")}`,
+    },
+  ];
+
+  // Fix Role for Miguel if needed or use translation
+  slides[1].role = `${t("hero.owner").replace('a', 'o')} · Portugal`;
 
   React.useEffect(() => {
     const timer = setInterval(() => {
@@ -75,7 +80,7 @@ export function HeroCarousel() {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-[#22C55E]"></span>
             </div>
             <div>
-              <p className="text-xs font-bold text-white leading-none">Renda recebida</p>
+              <p className="text-xs font-bold text-white leading-none">{t("hero.rent_received")}</p>
               <p className="mt-1 text-[10px] font-medium text-white/50 leading-none">
                 <span className="text-white font-bold">{slide.rent}</span> · {slide.stats}
               </p>
