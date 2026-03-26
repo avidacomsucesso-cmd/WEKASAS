@@ -81,13 +81,33 @@ export default function Parceiros() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const subject = encodeURIComponent(`Novo parceiro WEKASAS — ${form.name}`);
-    const body = encodeURIComponent(
-      `Nome: ${form.name}\nEmail: ${form.email}\nTelefone: ${form.phone}\nPaís: ${form.country}\nRegião: ${form.region}\nTipo: ${form.partnerType}`
-    );
-    window.location.href = `mailto:wekasasadm@gmail.com?subject=${subject}&body=${body}`;
-    setDone(true);
-    toast.success("O teu cliente de email foi aberto.");
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/parceiros", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) throw new Error("Falha ao enviar.");
+
+      setDone(true);
+      toast.success(t('partners_page.success_title'));
+    } catch (error) {
+      console.error("Partner submission error:", error);
+      
+      // Fallback a mailto
+      const subject = encodeURIComponent(`Novo parceiro WEKASAS — ${form.name}`);
+      const body = encodeURIComponent(
+        `Nome: ${form.name}\nEmail: ${form.email}\nTelefone: ${form.phone}\nPaís: ${form.country}\nRegião: ${form.region}\nTipo: ${form.partnerType}`
+      );
+      window.location.href = `mailto:wekasasadm@gmail.com?subject=${subject}&body=${body}`;
+      setDone(true);
+      toast.info("Abrimos o teu cliente de email para completar o envio.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const wa = getWhatsAppNumber();

@@ -41,24 +41,42 @@ export default function Contacto() {
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    setLoading(true);
     
-    const subject = encodeURIComponent(`Novo pedido de avaliação — ${form.name}`);
-    const body = encodeURIComponent(
-      `Nome: ${form.name}\n` +
-      `Email: ${form.email}\n` +
-      `Telefone: ${form.phone}\n` +
-      `País: ${form.country}\n` +
-      `Região: ${form.region}\n` +
-      `Morada: ${form.address}\n` +
-      `Tipologia: ${form.typology}\n` +
-      `Renda esperada: ${form.expectedRent}€\n` +
-      `Mensagem: ${form.message}`
-    );
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    window.location.href = `mailto:wekasasadm@gmail.com?subject=${subject}&body=${body}`;
-    
-    setDone(true);
-    toast.success("O teu cliente de email foi aberto. Por favor, clica em 'Enviar'.");
+      if (!response.ok) throw new Error("Falha ao enviar.");
+
+      setDone(true);
+      toast.success(t('contact_page.success_title'));
+    } catch (error) {
+      console.error("Submission error:", error);
+      
+      // Fallback a mailto apenas se a API falhar
+      const subject = encodeURIComponent(`Novo pedido de avaliação — ${form.name}`);
+      const body = encodeURIComponent(
+        `Nome: ${form.name}\n` +
+        `Email: ${form.email}\n` +
+        `Telefone: ${form.phone}\n` +
+        `País: ${form.country}\n` +
+        `Região: ${form.region}\n` +
+        `Morada: ${form.address}\n` +
+        `Tipologia: ${form.typology}\n` +
+        `Renda esperada: ${form.expectedRent}€\n` +
+        `Mensagem: ${form.message}`
+      );
+
+      window.location.href = `mailto:wekasasadm@gmail.com?subject=${subject}&body=${body}`;
+      setDone(true);
+      toast.info("Abrimos o teu cliente de email para completar o envio.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (

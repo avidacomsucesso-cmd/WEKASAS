@@ -99,7 +99,7 @@ export default function SubmeterImovel() {
     } catch (error) {
       console.error("Submission error:", error);
       
-      // Fallback to mailto if API fails (useful in local dev without env vars)
+      // Fallback a mailto
       const subject = encodeURIComponent(`Novo imóvel submetido — ${form.typology} em ${form.region}`);
       const body = encodeURIComponent(
         `DADOS DO IMÓVEL:\n` +
