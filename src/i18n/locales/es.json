@@ -85,18 +85,22 @@
     "t3_city": "España"
   },
   "faq": {
-    "title": "Preguntas frecuentes",
+    "title": "Perguntas frequentes",
     "sub": "Transparencia total. Sin sorpresas.",
     "q1": "¿Cuánto cuesta WEKASAS?",
     "a1": "Intermediación: 1,5 rentas en la firma. Gestión mensual: 10% de la renta. Sin costes ocultos.",
-    "q2": "¿Qué pasa si el inquilino no paga?",
+    "q2": "¿Qué pasa si el inquilino no pague?",
     "a2": "Estás cubierto. Nuestro seguro de impago garantiza hasta 12 mensualidades + daños.",
     "q3": "¿Puedo salir cuando quiera?",
     "a3": "Sí. Sin contratos de permanencia forzados.",
     "q4": "¿Operáis en Portugal también?",
     "a4": "Sí. Operamos en todo el territorio de Portugal y España.",
     "q5": "¿Cuánto tarda en alquilarse?",
-    "a5": "Una media de 18 días hábiles desde la valoración hasta el contrato firmado."
+    "a5": "Una media de 18 días hábiles desde la valoración hasta el contrato firmado.",
+    "q6": "¿Cómo funciona la Renta Garantizada?",
+    "a6": "A través de nuestro seguro de impago incluido. Si el inquilino falla, WEKASAS activa la cobertura y tú sigues cobrando tu renta mensualmente hasta 12 meses.",
+    "q7": "¿Tengo que pagar por las fotos?",
+    "a7": "No. El reportaje fotográfico profesional está incluido sin coste adicional tanto en el plan de Intermediación como en el de Gestión Completa."
   },
   "cta_final": {
     "title": "¿Listo para cobrar tu renta?",

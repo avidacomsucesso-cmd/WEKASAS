@@ -26,6 +26,7 @@ export function SiteFooter() {
                   <li><Link to="/como-funciona" className="text-xs text-white/60 hover:text-white transition-colors">{t('nav.how')}</Link></li>
                   <li><Link to="/precos" className="text-xs text-white/60 hover:text-white transition-colors">{t('nav.prices')}</Link></li>
                   <li><Link to="/arrendamentos" className="text-xs text-white/60 hover:text-white transition-colors">{t('nav.tenants')}</Link></li>
+                  <li><Link to="/#faq" className="text-xs text-white/60 hover:text-white transition-colors">FAQ</Link></li>
                 </ul>
               </div>
 
