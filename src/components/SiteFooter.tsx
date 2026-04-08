@@ -1,9 +1,20 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { WekaLogo } from "@/components/WekaLogo";
 import { useTranslation } from 'react-i18next';
 
 export function SiteFooter() {
   const { t } = useTranslation();
+  const location = useLocation();
+
+  const handleFaqClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (location.pathname === "/") {
+      e.preventDefault();
+      const faqSection = document.getElementById("faq");
+      if (faqSection) {
+        faqSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <footer className="bg-[color:var(--color-charcoal)] border-t border-white/10 pt-16 pb-8 text-white">
@@ -26,7 +37,15 @@ export function SiteFooter() {
                   <li><Link to="/como-funciona" className="text-xs text-white/60 hover:text-white transition-colors">{t('nav.how')}</Link></li>
                   <li><Link to="/precos" className="text-xs text-white/60 hover:text-white transition-colors">{t('nav.prices')}</Link></li>
                   <li><Link to="/arrendamentos" className="text-xs text-white/60 hover:text-white transition-colors">{t('nav.tenants')}</Link></li>
-                  <li><Link to="/#faq" className="text-xs text-white/60 hover:text-white transition-colors">FAQ</Link></li>
+                  <li>
+                    <Link 
+                      to="/#faq" 
+                      onClick={handleFaqClick}
+                      className="text-xs text-white/60 hover:text-white transition-colors"
+                    >
+                      FAQ
+                    </Link>
+                  </li>
                 </ul>
               </div>
 

@@ -5,11 +5,24 @@ import { Card } from "@/components/ui/card";
 import { RentCalculator } from "@/components/home/RentCalculator";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { ShieldCheck, KeyRound, Smartphone, UserCheck, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
+import { useEffect } from "react";
 
 export default function Index() {
   const { t } = useTranslation();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === "#faq") {
+      const element = document.getElementById("faq");
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   const promises = [
     {
