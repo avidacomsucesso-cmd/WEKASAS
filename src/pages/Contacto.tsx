@@ -16,7 +16,7 @@ function getWhatsAppNumber() {
   const raw =
     (import.meta as any).env?.NEXT_PUBLIC_WHATSAPP ||
     (import.meta as any).env?.VITE_WHATSAPP ||
-    "351962525307";
+    "351928202241";
   return String(raw).replace(/\D/g, "");
 }
 
@@ -136,7 +136,7 @@ export default function Contacto() {
               </div>
 
               <a
-                href={`https://wa.me/${wa}`}
+                href="https://wa.me/message/XPRMI6GLOCXKM1"
                 target="_blank"
                 rel="noreferrer"
                 className="mt-8 inline-flex items-center justify-center rounded-lg bg-[#25D366] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition-transform duration-200 hover:scale-[1.02] hover:bg-[#1fb65a]"
@@ -286,7 +286,7 @@ export default function Contacto() {
                         {t('contact_page.success_sub')}
                       </p>
                       <a
-                        href={`https://wa.me/${wa}`}
+                        href="https://wa.me/message/XPRMI6GLOCXKM1"
                         target="_blank"
                         rel="noreferrer"
                         className="mt-5 inline-flex items-center justify-center rounded-lg bg-[#25D366] px-4 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#1fb65a]"

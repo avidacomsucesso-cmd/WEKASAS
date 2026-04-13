@@ -10,8 +10,8 @@ import { useTranslation } from "react-i18next";
 
 // --- DATA & CONSTANTS ---
 
-// ÚLTIMA ACTUALIZAÇÃO: Dezembro 2024 (2.º Semestre 2024)
-// PRÓXIMA ACTUALIZAÇÃO PREVISTA: Junho 2025 (1.º Semestre 2025)
+// ÚLTIMA ATUALIZAÇÃO: Dezembro 2024 (2.º Semestre 2024)
+// PRÓXIMA ATUALIZAÇÃO PREVISTA: Junho 2025 (1.º Semestre 2025)
 // FONTE: https://www.ine.pt — Estatísticas de Rendas da Habitação ao Nível Local
 
 interface FreguesiaDados {

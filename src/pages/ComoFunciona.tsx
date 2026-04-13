@@ -437,7 +437,7 @@ export default function ComoFunciona() {
                   <Link to="/contacto">{t('steps_page.cta_final_primary')}</Link>
                 </WekaButton>
                 <WekaButton asChild intent="secondary" size="lg" className="border-white text-white hover:bg-white/10">
-                  <a href="https://wa.me/351962525307" target="_blank" rel="noopener noreferrer">
+                  <a href="https://wa.me/message/XPRMI6GLOCXKM1" target="_blank" rel="noopener noreferrer">
                     {t('steps_page.cta_final_wa')} →
                   </a>
                 </WekaButton>

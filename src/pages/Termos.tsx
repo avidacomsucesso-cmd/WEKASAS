@@ -35,7 +35,7 @@ export default function Termos() {
               <p className="mt-4 text-base leading-relaxed text-zinc-600">
                 HEAVENWHISPER UNIPESSOAL, LDA, NIF 517 714 140, com sede na Rua dos Malhões, Quinta da Fonte, 2770-071 Paço de Arcos, Lisboa, Portugal, a operar sob a marca WEKASAS nos websites wekasas.com, wekasas.pt e wekasas.es.
                 <br />
-                Contacto: <a href="mailto:contacto@wekasas.com" className="text-[#FA621C] font-semibold hover:underline">contacto@wekasas.com</a> | WhatsApp: <a href="https://wa.me/351962525307" className="text-[#FA621C] font-semibold hover:underline">+351 96 252 5307</a>
+                Contacto: <a href="mailto:contacto@wekasas.com" className="text-[#FA621C] font-semibold hover:underline">contacto@wekasas.com</a> | WhatsApp: <a href="https://wa.me/message/XPRMI6GLOCXKM1" className="text-[#FA621C] font-semibold hover:underline">+351 928 202 241</a>
               </p>
             </div>
 

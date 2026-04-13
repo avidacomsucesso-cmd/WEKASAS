@@ -16,7 +16,7 @@ function getWhatsAppNumber() {
   const raw =
     (import.meta as any).env?.NEXT_PUBLIC_WHATSAPP ||
     (import.meta as any).env?.VITE_WHATSAPP ||
-    "351962525307";
+    "351928202241";
   return String(raw).replace(/\D/g, "");
 }
 
@@ -255,7 +255,7 @@ export default function Parceiros() {
 
               <div className="mt-12">
                 <WekaButton asChild intent="secondary" className="h-12 border-white text-white hover:bg-white/10 px-6 font-bold">
-                  <a href={`https://wa.me/${wa}?text=Olá!%20Quero%20ser%20parceiro%20WEKASAS.`} target="_blank" rel="noreferrer">
+                  <a href="https://wa.me/message/XPRMI6GLOCXKM1" target="_blank" rel="noreferrer">
                     {t('partners_page.wa_cta')} <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </WekaButton>
@@ -373,7 +373,7 @@ export default function Parceiros() {
                   {t('partners_page.wa_direct')}
                 </p>
                 <a
-                  href={`https://wa.me/${wa}?text=Olá! Quero ser parceiro WEKASAS.`}
+                  href="https://wa.me/message/XPRMI6GLOCXKM1"
                   target="_blank"
                   rel="noreferrer"
                   className="mt-4 inline-flex items-center justify-center gap-2 rounded-lg bg-[#25D366] px-5 py-3 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#1fb65a]"

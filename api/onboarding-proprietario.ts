@@ -71,7 +71,7 @@ export default async function handler(req: Request) {
             <li><strong>Contacto em 24h:</strong> Entraremos em contacto para apresentar o valor sugerido e agendar a fotografia.</li>
             <li><strong>Fotografia e Publicação:</strong> Enviamos fotógrafo profissional sem qualquer custo para ti.</li>
           </ol>
-          <p>Se tiveres alguma dúvida urgente, podes falar connosco via WhatsApp: <a href="https://wa.me/351962525307">+351 96 252 5307</a></p>
+          <p>Se tiveres alguma dúvida urgente, podes falar connosco via WhatsApp: <a href="https://wa.me/message/XPRMI6GLOCXKM1">+351 928 202 241</a></p>
           <p>Até breve,<br>Equipa WEKASAS</p>
         </div>
       `,

@@ -5,8 +5,15 @@ function getWhatsAppNumber() {
   const raw =
     (import.meta as any).env?.NEXT_PUBLIC_WHATSAPP ||
     (import.meta as any).env?.VITE_WHATSAPP ||
-    "351962525307";
+    "351928202241";
   return String(raw).replace(/\D/g, "");
+}
+
+function eur(n: number) {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "EUR",
+  }).format(n);
 }
 
 export function WhatsAppFab({ className }: { className?: string }) {

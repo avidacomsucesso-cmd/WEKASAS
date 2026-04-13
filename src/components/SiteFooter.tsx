@@ -76,7 +76,7 @@ export function SiteFooter() {
                 </p>
                 <ul className="mt-4 space-y-2">
                   <li className="text-xs text-white/60">contacto@wekasas.com</li>
-                  <li className="text-xs text-white/60">+351 96 252 5307</li>
+                  <li className="text-xs text-white/60">+351 928 202 241</li>
                   <li className="text-xs text-white/60">{t('footer.platform')}</li>
                 </ul>
               </div>

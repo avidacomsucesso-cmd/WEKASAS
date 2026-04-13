@@ -527,7 +527,7 @@ export default function SubmeterImovel() {
                     <Link to="/">{t('onboarding_page.s4_btn_home')}</Link>
                   </WekaButton>
                   <WekaButton asChild intent="secondary" className="h-12 border-[#25D366] text-[#25D366] hover:bg-[#25D366]/5">
-                    <a href="https://wa.me/351962525307" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/message/XPRMI6GLOCXKM1" target="_blank" rel="noopener noreferrer">
                       {t('onboarding_page.s4_btn_wa')}
                     </a>
                   </WekaButton>
