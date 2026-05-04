@@ -71,7 +71,7 @@ export default function Contacto() {
         `Mensagem: ${form.message}`
       );
 
-      window.location.href = `mailto:wekasasadm@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:contacto@wekasas.com?subject=${subject}&body=${body}`;
       setDone(true);
       toast.info("Abrimos o teu cliente de email para completar o envio.");
     } finally {

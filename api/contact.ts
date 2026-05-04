@@ -9,16 +9,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return;
   }
 
-  const {
-    name,
-    email,
-    phone,
-    country,
-    region,
-    typology,
-    expectedRent,
-    message,
-  } = (req.body ?? {}) as Record<string, any>;
+  const body = await req.json();
+  const { name, email, phone, country, region, address, typology, expectedRent, message } = body;
 
   const apiKey = process.env.RESEND_API_KEY;
 
@@ -32,7 +24,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return;
   }
 
-  const notificationEmail = "wekasasadm@gmail.com";
+  const notificationEmail = "contacto@wekasas.com";
   const resend = new Resend(apiKey);
 
   try {

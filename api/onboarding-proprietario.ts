@@ -16,7 +16,7 @@ export default async function handler(req: Request) {
       nif, iban, fiscalAddress
     } = body;
 
-    const notificationEmail = process.env.NOTIFICATION_EMAIL || "wekasasadm@gmail.com";
+    const notificationEmail = process.env.NOTIFICATION_EMAIL || "contacto@wekasas.com";
 
     // 1. Notificar WEKASAS
     await resend.emails.send({

@@ -126,7 +126,7 @@ export default function SubmeterImovel() {
         `Morada Fiscal: ${form.fiscalAddress}`
       );
 
-      window.location.href = `mailto:wekasasadm@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:contacto@wekasas.com?subject=${subject}&body=${body}`;
       setStep(4);
       toast.info("Abrimos o teu cliente de email para completar o envio.");
     } finally {

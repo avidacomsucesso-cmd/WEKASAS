@@ -102,7 +102,7 @@ export default function Parceiros() {
       const body = encodeURIComponent(
         `Nome: ${form.name}\nEmail: ${form.email}\nTelefone: ${form.phone}\nPaís: ${form.country}\nRegião: ${form.region}\nTipo: ${form.partnerType}`
       );
-      window.location.href = `mailto:wekasasadm@gmail.com?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:contacto@wekasas.com?subject=${subject}&body=${body}`;
       setDone(true);
       toast.info("Abrimos o teu cliente de email para completar o envio.");
     } finally {
