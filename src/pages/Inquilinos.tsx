@@ -194,17 +194,46 @@ export default function Inquilinos() {
             </div>
 
             <div className="lg:col-span-5 relative animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
-              <div className="relative h-[450px] w-full">
-                {/* Collage Logic */}
-                <div className="absolute top-0 right-0 w-2/3 h-2/3 rounded-3xl overflow-hidden shadow-2xl z-10">
-                  <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=600&auto=format&fit=crop" alt="Jovem profissional" className="w-full h-full object-cover" />
+              {/* Mobile: apenas imagem família em banner */}
+              <div className="lg:hidden w-full h-[240px] rounded-2xl overflow-hidden shadow-lg mb-8">
+                <img 
+                  src="/images/inquilinos/familia_1.png"
+                  alt="Família a encontrar o seu novo lar WEKASAS"
+                  className="w-full h-full object-cover object-top"
+                />
+              </div>
+
+              {/* Desktop Collage */}
+              <div className="relative w-full h-[560px] hidden lg:block group/collage">
+                {/* Card 1 — Jovem Profissional */}
+                <div className="absolute top-0 left-0 w-[58%] h-[320px] rounded-2xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.03] z-10">
+                  <img 
+                    src="/images/inquilinos/jovem.png" 
+                    alt="Jovem profissional à procura de imóvel" 
+                    className="w-full h-full object-cover object-center"
+                  />
                 </div>
-                <div className="absolute bottom-0 left-0 w-2/3 h-2/3 rounded-3xl overflow-hidden shadow-2xl z-20 border-8 border-white">
-                  <img src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=600&auto=format&fit=crop" alt="Casal feliz" className="w-full h-full object-cover" />
+
+                {/* Card 2 — Casal */}
+                <div className="absolute top-[40px] right-0 w-[40%] h-[260px] rounded-2xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.03] z-20">
+                  <img 
+                    src="/images/inquilinos/casal_1.jpg" 
+                    alt="Casal à procura do lar ideal" 
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
-                <div className="absolute top-1/4 left-0 w-1/2 h-1/2 rounded-3xl overflow-hidden shadow-2xl z-0 opacity-40 blur-[2px]">
-                  <img src="https://images.unsplash.com/photo-1536640712247-c45474d66487?q=80&w=600&auto=format&fit=crop" alt="Família" className="w-full h-full object-cover" />
+
+                {/* Card 3 — Família */}
+                <div className="absolute bottom-0 left-[8%] w-[84%] h-[220px] rounded-2xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.03] z-0">
+                  <img 
+                    src="/images/inquilinos/familia_1.png" 
+                    alt="Família a encontrar o seu novo lar" 
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
+
+                {/* Overlay decorativo sutil */}
+                <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white/20 to-transparent rounded-b-2xl pointer-events-none" />
               </div>
             </div>
           </div>
@@ -224,9 +253,9 @@ export default function Inquilinos() {
             {conceptCards.map(({ title, description, icon: Icon }) => (
               <div
                 key={title}
-                className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm group hover:-translate-y-2 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/5"
+                className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm group hover:-translate-y-2 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/5 cursor-default"
               >
-                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#FFF3EE]">
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#FFF3EE] transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                   <Icon size={32} color="#FA621C" strokeWidth={2} />
                 </div>
 
@@ -688,11 +717,20 @@ export default function Inquilinos() {
       </section>
 
       {/* SECÇÃO 4 — TRUST SIGNALS */}
-      <section className="bg-[color:var(--color-charcoal)] py-20 relative overflow-hidden">
-        {/* Subtle dot pattern */}
-        <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 0)', backgroundSize: '30px 30px' }} />
+      <section className="relative py-20 overflow-hidden">
+        {/* Background image com Vista Aérea */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-10000 hover:scale-110"
+          style={{ 
+            backgroundImage: "url('/images/inquilinos/vista_aerea.jpg')",
+            backgroundPosition: 'center center'
+          }}
+        />
         
-        <div className="wk-container relative">
+        {/* Dark overlay — garante legibilidade total do texto */}
+        <div className="absolute inset-0 bg-[#1C1C1E]/85" />
+        
+        <div className="wk-container relative z-10">
           <div className="grid grid-cols-2 gap-y-12 md:grid-cols-4 lg:divide-x lg:divide-white/10">
             {[
               { val: "18 dias", label: "Prazo médio de arrendamento" },
