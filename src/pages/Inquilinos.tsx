@@ -210,7 +210,7 @@ export default function Inquilinos() {
                   <img
                     src="/images/inquilinos/jovem.png"
                     alt="Jovem profissional à procura de imóvel"
-                    className="w-full h-full object-contain bg-zinc-50"
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
 
@@ -224,11 +224,11 @@ export default function Inquilinos() {
                 </div>
 
                 {/* Card 3 — Família */}
-                <div className="absolute bottom-0 left-[8%] w-[84%] h-[220px] rounded-2xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.03] z-0">
-                  <img 
-                    src="/images/inquilinos/familia_1.png" 
-                    alt="Família a encontrar o seu novo lar" 
-                    className="w-full h-full object-cover object-top"
+                <div className="absolute bottom-0 left-[8%] w-[84%] h-[260px] rounded-2xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.03] z-0">
+                  <img
+                    src="/images/inquilinos/familia_1.png"
+                    alt="Família a encontrar o seu novo lar"
+                    className="w-full h-full object-contain bg-zinc-50"
                   />
                 </div>
 
