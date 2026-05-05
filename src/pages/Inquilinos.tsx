@@ -194,13 +194,31 @@ export default function Inquilinos() {
             </div>
 
             <div className="lg:col-span-5 relative animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
-              {/* Mobile: apenas imagem família em banner */}
-              <div className="lg:hidden w-full h-[240px] rounded-2xl overflow-hidden shadow-lg mb-8">
-                <img 
-                  src="/images/inquilinos/familia_1.png"
-                  alt="Família a encontrar o seu novo lar WEKASAS"
-                  className="w-full h-full object-cover object-top"
-                />
+              {/* Mobile: carrossel simples para ver os 3 perfis */}
+              <div className="lg:hidden w-full mb-12 space-y-6">
+                <div className="w-full h-[300px] rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-zinc-50">
+                  <img 
+                    src="/images/inquilinos/familia_1.png"
+                    alt="Família WEKASAS"
+                    className="w-full h-full object-contain"
+                  />
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="aspect-square rounded-2xl overflow-hidden shadow-lg border-2 border-white">
+                    <img 
+                      src="/images/inquilinos/jovem.png" 
+                      alt="Jovem Profissional" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="aspect-square rounded-2xl overflow-hidden shadow-lg border-2 border-white">
+                    <img 
+                      src="/images/inquilinos/casal_1.jpg" 
+                      alt="Casal" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* Desktop Collage */}
