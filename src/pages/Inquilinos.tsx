@@ -159,7 +159,7 @@ export default function Inquilinos() {
       />
 
       {/* SECÇÃO 1 — HERO */}
-      <section className="relative overflow-hidden bg-white pt-16 pb-20 lg:pt-24 lg:pb-32">
+      <section className="relative overflow-hidden bg-white pt-8 pb-8 lg:pt-16 lg:pb-12">
         <div className="wk-container">
           <div className="grid gap-12 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7 animate-in fade-in slide-in-from-left-8 duration-700">
@@ -195,8 +195,8 @@ export default function Inquilinos() {
 
             <div className="lg:col-span-5 relative animate-in fade-in slide-in-from-right-8 duration-1000 delay-200">
               {/* Mobile: carrossel simples para ver os 3 perfis */}
-              <div className="lg:hidden w-full mb-12 space-y-6">
-                <div className="w-full h-[300px] rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-zinc-50">
+              <div className="lg:hidden w-full mb-8 space-y-4">
+                <div className="w-full h-[280px] rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-zinc-50">
                   <img 
                     src="/images/inquilinos/familia_1.png"
                     alt="Família WEKASAS"
@@ -259,9 +259,9 @@ export default function Inquilinos() {
       </section>
 
       {/* SECÇÃO 2 — CONCEITO */}
-      <section className="bg-zinc-50 py-24">
+      <section className="bg-zinc-50 py-8 lg:py-12">
         <div className="wk-container">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-8 lg:mb-10">
             <span className="text-[11px] font-black uppercase tracking-[0.2em] text-[color:var(--color-orange)]">COMO FUNCIONA</span>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl">Não é uma vitrine. É um serviço.</h2>
             <p className="mt-4 text-zinc-600">Enquanto os outros portais mostram imóveis para todos, a WEKASAS encontra o imóvel certo para si.</p>
@@ -291,7 +291,7 @@ export default function Inquilinos() {
       </section>
 
       {/* SECÇÃO 3 — WIZARD DE FORMULÁRIO */}
-      <section ref={formRef} id="submeter-perfil" className="bg-white py-24 scroll-mt-24">
+      <section ref={formRef} id="submeter-perfil" className="bg-white py-8 lg:py-12 scroll-mt-24">
         <div className="wk-container">
           <div className="max-w-2xl mx-auto">
             {!isSuccess ? (
@@ -735,7 +735,7 @@ export default function Inquilinos() {
       </section>
 
       {/* SECÇÃO 4 — TRUST SIGNALS */}
-      <section className="relative py-20 overflow-hidden">
+      <section className="relative py-8 lg:py-12 overflow-hidden">
         {/* Background image com Vista Aérea */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-10000 hover:scale-110"
@@ -766,9 +766,9 @@ export default function Inquilinos() {
       </section>
 
       {/* SECÇÃO 5 — FOOTER CTA */}
-      <section className="bg-zinc-50 py-24">
+      <section className="bg-zinc-50 py-8 lg:py-12">
         <div className="wk-container text-center">
-          <div className="mx-auto h-12 w-auto mb-10 opacity-20 grayscale">
+          <div className="mx-auto h-12 w-auto mb-6 lg:mb-10 opacity-20 grayscale">
             <img src="/assets/wekasas-logo-official.png" alt="WEKASAS" className="h-full mx-auto mix-blend-multiply" />
           </div>
           <h2 className="text-3xl font-black tracking-tight text-zinc-900 sm:text-4xl">Não encontra o que procura nos portais?</h2>
