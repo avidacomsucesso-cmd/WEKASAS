@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 const navItems = [
   { href: "/como-funciona", label: "nav.how" },
   { href: "/precos", label: "nav.prices" },
-  { href: "/arrendamentos", label: "nav.tenants" },
+  { href: "/inquilinos", label: "nav.tenants" },
   { href: "/parceiros", label: "nav.partners" },
   { href: "/sobre", label: "nav.about" },
 ];

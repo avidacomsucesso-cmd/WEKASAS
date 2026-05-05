@@ -10,6 +10,7 @@ import Index from "./pages/Index";
 import ComoFunciona from "./pages/ComoFunciona";
 import Precos from "./pages/Precos";
 import Arrendamentos from "./pages/Arrendamentos";
+import Inquilinos from "./pages/Inquilinos";
 import ArrendamentoDetalhe from "./pages/ArrendamentoDetalhe";
 import Contacto from "./pages/Contacto";
 import Sobre from "./pages/Sobre";
@@ -29,6 +30,7 @@ function App() {
             <Route path="/como-funciona" element={<ComoFunciona />} />
             <Route path="/precos" element={<Precos />} />
             <Route path="/arrendamentos" element={<Arrendamentos />} />
+            <Route path="/inquilinos" element={<Inquilinos />} />
             <Route path="/parceiros" element={<Parceiros />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/contacto" element={<Contacto />} />
