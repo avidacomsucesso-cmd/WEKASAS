@@ -207,10 +207,10 @@ export default function Inquilinos() {
               <div className="relative w-full h-[560px] hidden lg:block group/collage">
                 {/* Card 1 — Jovem Profissional */}
                 <div className="absolute top-0 left-0 w-[58%] h-[320px] rounded-2xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.03] z-10">
-                  <img 
-                    src="/images/inquilinos/jovem.png" 
-                    alt="Jovem profissional à procura de imóvel" 
-                    className="w-full h-full object-cover object-center"
+                  <img
+                    src="/images/inquilinos/jovem.png"
+                    alt="Jovem profissional à procura de imóvel"
+                    className="w-full h-full object-contain bg-zinc-50"
                   />
                 </div>
 
