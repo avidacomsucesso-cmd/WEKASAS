@@ -204,18 +204,18 @@ export default function Inquilinos() {
               </div>
 
               {/* Desktop Collage */}
-              <div className="relative w-full h-[560px] hidden lg:block group/collage">
+              <div className="relative w-full h-[640px] hidden lg:block group/collage">
                 {/* Card 1 — Jovem Profissional */}
-                <div className="absolute top-0 left-0 w-[58%] h-[320px] rounded-2xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.03] z-10">
-                  <img
-                    src="/images/inquilinos/jovem.png"
-                    alt="Jovem profissional à procura de imóvel"
+                <div className="absolute top-0 left-0 w-[55%] h-[320px] rounded-2xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.03] z-10">
+                  <img 
+                    src="/images/inquilinos/jovem.png" 
+                    alt="Jovem profissional à procura de imóvel" 
                     className="w-full h-full object-cover object-center"
                   />
                 </div>
 
                 {/* Card 2 — Casal */}
-                <div className="absolute top-[40px] right-0 w-[40%] h-[260px] rounded-2xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.03] z-20">
+                <div className="absolute top-[60px] right-0 w-[55%] h-[320px] rounded-2xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.03] z-20 border-8 border-white">
                   <img 
                     src="/images/inquilinos/casal_1.jpg" 
                     alt="Casal à procura do lar ideal" 
@@ -224,10 +224,10 @@ export default function Inquilinos() {
                 </div>
 
                 {/* Card 3 — Família */}
-                <div className="absolute bottom-0 left-[8%] w-[84%] h-[260px] rounded-2xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.03] z-0">
-                  <img
-                    src="/images/inquilinos/familia_1.png"
-                    alt="Família a encontrar o seu novo lar"
+                <div className="absolute bottom-0 left-[10%] w-[80%] h-[320px] rounded-2xl overflow-hidden shadow-xl transition-transform duration-500 hover:scale-[1.03] z-0">
+                  <img 
+                    src="/images/inquilinos/familia_1.png" 
+                    alt="Família a encontrar o seu novo lar" 
                     className="w-full h-full object-contain bg-zinc-50"
                   />
                 </div>
