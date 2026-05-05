@@ -10,11 +10,29 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { 
-  Home, Users, Shield, Target, ArrowRight, Check, 
+  Building, Target, Shield, ArrowRight, Check, 
   Dog, Car, Sofa, Building2, School, Train, 
-  Briefcase, BarChart, Globe, Lock, MessageCircle
+  Briefcase, BarChart, Globe, Lock, MessageCircle, Users
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+const conceptCards = [
+  {
+    title: "Portfólio Exclusivo",
+    description: "Imóveis selecionados e verificados pela WEKASAS.",
+    icon: Building,
+  },
+  {
+    title: "Matching Personalizado",
+    description: "Encontramos opções alinhadas ao perfil de cada cliente.",
+    icon: Target,
+  },
+  {
+    title: "Processo Transparente",
+    description: "Acompanhamento claro do primeiro contacto à assinatura.",
+    icon: Shield,
+  },
+];
 
 // --- TYPES ---
 
@@ -202,19 +220,24 @@ export default function Inquilinos() {
             <p className="mt-4 text-zinc-600">Enquanto os outros portais mostram imóveis para todos, a WEKASAS encontra o imóvel certo para si.</p>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            {[
-              { icon: Home, title: "Portfólio Exclusivo", desc: "Trabalhamos com imóveis rigorosamente seleccionados, muitos deles disponíveis apenas para os inquilinos que conhecemos." },
-              { icon: Target, title: "Matching Personalizado", desc: "O nosso sistema analisa o seu perfil e encontra os imóveis que melhor se adequam às suas necessidades e estilo de vida." },
-              { icon: Shield, title: "Processo Transparente", desc: "Do primeiro contacto à entrega das chaves — tudo digital, documentado e com suporte dedicado em PT e ES." }
-            ].map((card, i) => (
-              <Card key={i} className="group p-8 rounded-[20px] border-zinc-200 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-orange-500/5">
-                <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-[color:var(--color-orange-light)] text-[color:var(--color-orange)] group-hover:scale-110 transition-transform">
-                  <card.icon className="h-7 w-7" />
+          <div className="grid gap-6 md:grid-cols-3">
+            {conceptCards.map(({ title, description, icon: Icon }) => (
+              <div
+                key={title}
+                className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm group hover:-translate-y-2 transition-all duration-300 hover:shadow-xl hover:shadow-orange-500/5"
+              >
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#FFF3EE]">
+                  <Icon size={32} color="#FA621C" strokeWidth={2} />
                 </div>
-                <h3 className="text-lg font-bold text-zinc-900 mb-3">{card.title}</h3>
-                <p className="text-sm text-zinc-500 leading-relaxed">{card.desc}</p>
-              </Card>
+
+                <h3 className="text-xl font-semibold text-neutral-900">
+                  {title}
+                </h3>
+
+                <p className="mt-2 text-sm leading-6 text-neutral-600">
+                  {description}
+                </p>
+              </div>
             ))}
           </div>
         </div>
