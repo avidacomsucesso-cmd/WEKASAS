@@ -94,6 +94,14 @@ export default function SubmeterImovel() {
 
       if (!response.ok) throw new Error("Falha ao submeter o formulário.");
 
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-18071544613/wiv1CMu10KccEKXGl6lD',
+          'value': 1.0,
+          'currency': 'EUR'
+        });
+      }
+
       setStep(4);
       toast.success("Imóvel submetido com sucesso!");
     } catch (error) {

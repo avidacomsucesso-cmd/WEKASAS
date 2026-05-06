@@ -52,6 +52,14 @@ export default function Contacto() {
 
       if (!response.ok) throw new Error("Falha ao enviar.");
 
+      if (typeof window.gtag !== 'undefined') {
+        window.gtag('event', 'conversion', {
+          'send_to': 'AW-18071544613/LH9ECIK30KccEKXGl6lD',
+          'value': 1.0,
+          'currency': 'EUR'
+        });
+      }
+
       setDone(true);
       toast.success(t('contact_page.success_title'));
     } catch (error) {
