@@ -7,11 +7,11 @@ export function WekaLogo({
   className?: string;
 }) {
   return (
-    <div className={cn("flex items-center shrink-0 pr-12 md:pr-48 lg:pr-64", className)}>
+    <div className={cn("flex items-center shrink-0 pr-[140px] md:pr-[280px] lg:pr-[320px]", className)}>
       <img
         src="/assets/wekasas-logo-official.png"
         alt="WEKASAS"
-        className="h-12 md:h-12 w-auto object-contain mix-blend-screen scale-[2.5] md:scale-[3.5] origin-left"
+        className="h-10 md:h-12 w-auto object-contain mix-blend-screen scale-[2.5] md:scale-[3.5] origin-left relative z-50"
         aria-hidden="true"
       />
     </div>
