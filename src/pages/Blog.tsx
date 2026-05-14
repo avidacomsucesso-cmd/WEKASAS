@@ -32,14 +32,15 @@ export default function Blog() {
         <div className="wk-container">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => (
-              <Card key={post.id} className="group border-none shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col">
+              <Card key={post.id} className="group border-none shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col relative">
+                <Link to={`/blog/${post.slug}`} className="absolute inset-0 z-10" aria-label={post.titulo} />
                 <div className="relative aspect-video overflow-hidden">
-                  <img 
-                    src={post.imagemHero} 
+                  <img
+                    src={post.imagemHero}
                     alt={post.imagemHeroAlt}
                     className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                   />
-                  <div className="absolute top-4 left-4">
+                  <div className="absolute top-4 left-4 z-20">
                     <Badge className="bg-white/90 text-charcoal backdrop-blur-sm border-none">
                       {post.categoria}
                     </Badge>
@@ -66,12 +67,9 @@ export default function Blog() {
                   </p>
                 </CardContent>
                 <CardFooter className="pt-0 pb-6">
-                  <Link 
-                    to={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-sm font-bold text-charcoal hover:gap-2 transition-all"
-                  >
+                  <div className="inline-flex items-center text-sm font-bold text-charcoal hover:gap-2 transition-all">
                     {t('blog.read_more')} <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
+                  </div>
                 </CardFooter>
               </Card>
             ))}
