@@ -19,6 +19,8 @@ import Privacidade from "./pages/Privacidade";
 import Termos from "./pages/Termos";
 import NotFound from "./pages/NotFound";
 import SubmeterImovel from "./pages/SubmeterImovel";
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 
 function App() {
   return (
@@ -34,6 +36,8 @@ function App() {
             <Route path="/parceiros" element={<Parceiros />} />
             <Route path="/sobre" element={<Sobre />} />
             <Route path="/contacto" element={<Contacto />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:id" element={<BlogPost />} />
             <Route path="/submeter-imovel" element={<SubmeterImovel />} />
             <Route path="/termos" element={<Termos />} />
             <Route path="/privacidade" element={<Privacidade />} />

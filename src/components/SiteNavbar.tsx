@@ -12,6 +12,7 @@ const navItems = [
   { href: "/precos", label: "nav.prices" },
   { href: "/inquilinos", label: "nav.tenants" },
   { href: "/parceiros", label: "nav.partners" },
+  { href: "/blog", label: "nav.blog" },
   { href: "/sobre", label: "nav.about" },
 ];
 

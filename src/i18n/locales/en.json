@@ -4,8 +4,32 @@
     "prices": "Pricing",
     "tenants": "For tenants",
     "partners": "Partners",
+    "blog": "Blog",
     "about": "About",
     "cta": "I want to rent out my property"
+  },
+  "blog": {
+    "hero_title": "The real estate market, explained.",
+    "hero_sub": "Tips for landlords, market trends, and guides on renting in Portugal and Spain.",
+    "read_more": "Read more",
+    "back_to_blog": "Back to Blog",
+    "category_placeholder": "MARKET",
+    "newsletter_title": "Stay updated with the latest news.",
+    "newsletter_sub": "Subscribe to our newsletter and receive the latest real estate market trends directly in your email.",
+    "posts": {
+      "mercado-arrendamento-2026": {
+        "title": "What to expect from the rental market in 2026?",
+        "excerpt": "We analyze trends, new laws, and price behavior in Lisbon, Porto, and Madrid for the coming year."
+      },
+      "guia-proprietario-portugal": {
+        "title": "Complete Guide: How to rent out your property in Portugal without risks.",
+        "excerpt": "Everything you need to know about contracts, inspections, and choosing the ideal tenant for your home."
+      },
+      "seguro-incumprimento-como-funciona": {
+        "title": "Default Insurance: Is it really worth it?",
+        "excerpt": "We explain how the coverage that guarantees your rent every month works, even if the tenant fails."
+      }
+    }
   },
   "hero": {
     "line1": "Your property.",

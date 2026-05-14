@@ -4,8 +4,32 @@
     "prices": "Preços",
     "tenants": "Para inquilinos",
     "partners": "Parceiros",
+    "blog": "Blog",
     "about": "Sobre",
     "cta": "Quero arrendar o meu imóvel"
+  },
+  "blog": {
+    "hero_title": "O mercado imobiliário, explicado.",
+    "hero_sub": "Dicas para proprietários, tendências de mercado e guias sobre o arrendamento em Portugal e Espanha.",
+    "read_more": "Ler mais",
+    "back_to_blog": "Voltar ao Blog",
+    "category_placeholder": "MERCADO",
+    "newsletter_title": "Fique por dentro das novidades.",
+    "newsletter_sub": "Subscreva a nossa newsletter e receba as últimas tendências do mercado imobiliário diretamente no seu email.",
+    "posts": {
+      "mercado-arrendamento-2026": {
+        "title": "O que esperar do mercado de arrendamento em 2026?",
+        "excerpt": "Analisamos as tendências, novas leis e o comportamento dos preços em Lisboa, Porto e Madrid para o próximo ano."
+      },
+      "guia-proprietario-portugal": {
+        "title": "Guia Completo: Como arrendar o seu imóvel em Portugal sem riscos.",
+        "excerpt": "Tudo o que precisa de saber sobre contratos, vistorias e a escolha do inquilino ideal para a sua casa."
+      },
+      "seguro-incumprimento-como-funciona": {
+        "title": "Seguro de Incumprimento: Vale mesmo a pena?",
+        "excerpt": "Explicamos como funciona a cobertura que garante a sua renda todos os meses, mesmo que o inquilino falhe."
+      }
+    }
   },
   "hero": {
     "line1": "O seu imóvel.",

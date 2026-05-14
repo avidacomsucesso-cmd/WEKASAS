@@ -4,8 +4,32 @@
     "prices": "Precios",
     "tenants": "Para inquilinos",
     "partners": "Partners",
+    "blog": "Blog",
     "about": "Nosotros",
     "cta": "Quiero alquilar mi inmueble"
+  },
+  "blog": {
+    "hero_title": "El mercado inmobiliario, explicado.",
+    "hero_sub": "Consejos para propietarios, tendencias de mercado y guías sobre el alquiler en Portugal y España.",
+    "read_more": "Leer más",
+    "back_to_blog": "Volver al Blog",
+    "category_placeholder": "MERCADO",
+    "newsletter_title": "Mantente informado de las novedades.",
+    "newsletter_sub": "Suscríbete a nuestra newsletter y recibe las últimas tendencias del mercado inmobiliario directamente en tu email.",
+    "posts": {
+      "mercado-arrendamento-2026": {
+        "title": "¿Qué esperar del mercado de alquiler en 2026?",
+        "excerpt": "Analizamos las tendencias, nuevas leyes y el comportamiento de los precios en Lisboa, Oporto y Madrid para el próximo año."
+      },
+      "guia-proprietario-portugal": {
+        "title": "Guía Completa: Cómo alquilar su inmueble en Portugal sin riesgos.",
+        "excerpt": "Todo lo que necesita saber sobre contratos, inspecciones y la elección del inquilino ideal para su casa."
+      },
+      "seguro-incumprimento-como-funciona": {
+        "title": "Seguro de Impago: ¿Vale realmente la pena?",
+        "excerpt": "Explicamos cómo funciona la cobertura que garantiza su renta todos los meses, incluso si el inquilino falla."
+      }
+    }
   },
   "hero": {
     "line1": "Tu inmueble.",
