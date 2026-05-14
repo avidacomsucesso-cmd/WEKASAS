@@ -61,8 +61,8 @@ export function SiteNavbar() {
               onClick={() => i18n.changeLanguage('pt')}
               className={cn(
                 "text-xs transition-colors duration-200",
-                i18n.language === 'pt' 
-                  ? 'text-white font-bold' 
+                i18n.language.startsWith('pt')
+                  ? 'text-white font-bold'
                   : 'text-white/40 hover:text-white/70'
               )}
             >
@@ -80,6 +80,18 @@ export function SiteNavbar() {
             >
               ES
             </button>
+            <span className="text-white/20 select-none">|</span>
+            <button
+              onClick={() => i18n.changeLanguage('en')}
+              className={cn(
+                "text-xs transition-colors duration-200",
+                i18n.language.startsWith('en')
+                  ? 'text-white font-bold'
+                  : 'text-white/40 hover:text-white/70'
+              )}
+            >
+              EN
+            </button>
           </div>
 
           <WekaButton asChild size="lg" className="px-6 h-12 text-sm font-bold">
@@ -96,7 +108,7 @@ export function SiteNavbar() {
               onClick={() => i18n.changeLanguage('pt')}
               className={cn(
                 "text-[10px] transition-colors duration-200",
-                i18n.language === 'pt' ? 'text-white font-bold' : 'text-white/40'
+                i18n.language.startsWith('pt') ? 'text-white font-bold' : 'text-white/40'
               )}
             >
               PT
@@ -110,6 +122,16 @@ export function SiteNavbar() {
               )}
             >
               ES
+            </button>
+            <span className="text-white/20 text-[10px]">|</span>
+            <button
+              onClick={() => i18n.changeLanguage('en')}
+              className={cn(
+                "text-[10px] transition-colors duration-200",
+                i18n.language.startsWith('en') ? 'text-white font-bold' : 'text-white/40'
+              )}
+            >
+              EN
             </button>
           </div>
 
