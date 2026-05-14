@@ -11,11 +11,11 @@ export function WekaLogo({
       <img
         src="/assets/wekasas-logo-official.png"
         alt="WEKASAS"
-        className="h-8 md:h-12 w-auto object-contain mix-blend-screen scale-[1.5] md:scale-[3.0] origin-left relative z-50"
+        className="h-10 md:h-12 w-auto object-contain mix-blend-screen scale-[3.5] md:scale-[3.0] origin-left relative z-50 ml-4 md:ml-0"
         aria-hidden="true"
       />
       {/* Spacer to prevent overlap without breaking the layout */}
-      <div className="hidden md:block w-[180px] lg:w-[240px]" />
+      <div className="w-[120px] md:w-[180px] lg:w-[240px]" />
     </div>
   );
 }
