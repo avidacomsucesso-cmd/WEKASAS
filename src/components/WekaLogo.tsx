@@ -7,7 +7,7 @@ export function WekaLogo({
   className?: string;
 }) {
   return (
-    <div className={cn("flex items-center shrink-0", className)}>
+    <div className={cn("flex items-center shrink-0 w-full md:w-auto", className)}>
       <img
         src="/assets/wekasas-logo-official.png"
         alt="WEKASAS"
@@ -15,7 +15,7 @@ export function WekaLogo({
         aria-hidden="true"
       />
       {/* Spacer to prevent overlap without breaking the layout */}
-      <div className="w-[120px] md:w-[180px] lg:w-[240px]" />
+      <div className="flex-grow md:flex-none md:w-[180px] lg:w-[240px]" />
     </div>
   );
 }
