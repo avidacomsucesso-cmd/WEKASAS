@@ -1,15 +1,27 @@
-import { SiteLayout } from "@/components/SiteLayout";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, ChevronLeft, User } from "lucide-react";
 import { Link, useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { getPostBySlug } from "@/lib/blog";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 export default function BlogPost() {
-  const { id } = useParams();
+  const { id } = useParams(); // 'id' will contain the slug because of the route definition
   const { t } = useTranslation();
+  const post = id ? getPostBySlug(id) : undefined;
 
-  // In a real app, you would fetch post data by id
-  // This is a placeholder for the blog post content
+  if (!post) {
+    return (
+      <div className="py-20 text-center">
+        <h1 className="text-2xl font-bold">Artigo não encontrado</h1>
+        <Link to="/blog" className="text-blue-600 hover:underline mt-4 inline-block">
+          Voltar ao Blog
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <>
       <article className="bg-white pb-20">
@@ -22,10 +34,10 @@ export default function BlogPost() {
             
             <div className="max-w-4xl">
               <Badge className="mb-4 bg-white/10 text-white hover:bg-white/20 border-none px-4 py-1">
-                {t('blog.category_placeholder')}
+                {post.categoria.toUpperCase()}
               </Badge>
               <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
-                {t(`blog.posts.${id}.title`, { defaultValue: "Artigo do Blog" })}
+                {post.titulo}
               </h1>
               
               <div className="flex flex-wrap items-center gap-6 text-white/60 text-sm">
@@ -35,11 +47,11 @@ export default function BlogPost() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
-                  <span>15 Fev, 2026</span>
+                  <span>{new Date(post.data).toLocaleDateString()}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4" />
-                  <span>6 min de leitura</span>
+                  <span>{post.tempoLeitura}</span>
                 </div>
               </div>
             </div>
@@ -50,36 +62,26 @@ export default function BlogPost() {
           <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
             <div className="aspect-video overflow-hidden">
               <img 
-                src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1073&auto=format&fit=crop" 
-                alt="Post Cover" 
+                src={post.imagemHero} 
+                alt={post.imagemHeroAlt} 
                 className="w-full h-full object-cover"
               />
             </div>
             
             <div className="p-8 md:p-16">
-              <div className="prose prose-lg max-w-none text-slate-700">
-                <p className="text-xl font-medium text-slate-900 mb-8 leading-relaxed">
-                  {t(`blog.posts.${id}.excerpt`, { defaultValue: "Estamos a preparar conteúdo exclusivo sobre o mercado imobiliário em Portugal e Espanha." })}
-                </p>
-                
-                <p className="mb-6">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
-                
-                <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-6">O que muda no mercado em 2026?</h2>
-                <p className="mb-6">
-                  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                
-                <div className="bg-slate-50 border-l-4 border-charcoal p-8 my-10 rounded-r-2xl">
-                  <p className="italic text-lg text-slate-800">
-                    "A previsibilidade é o maior activo que um proprietário pode ter no mercado actual."
-                  </p>
-                </div>
-                
-                <p>
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
-                </p>
+              <div className="prose prose-lg prose-slate max-w-none text-slate-700 
+                prose-headings:text-slate-900 prose-headings:font-bold 
+                prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6
+                prose-p:leading-relaxed prose-p:mb-6
+                prose-img:rounded-2xl prose-img:my-10
+                prose-blockquote:border-l-4 prose-blockquote:border-charcoal prose-blockquote:bg-slate-50 prose-blockquote:p-8 prose-blockquote:my-10 prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:text-lg prose-blockquote:text-slate-800
+                prose-table:w-full prose-table:my-8
+                prose-th:bg-slate-100 prose-th:p-4 prose-th:text-left
+                prose-td:p-4 prose-td:border-b prose-td:border-slate-100
+              ">
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {post.conteudo}
+                </ReactMarkdown>
               </div>
             </div>
           </div>
