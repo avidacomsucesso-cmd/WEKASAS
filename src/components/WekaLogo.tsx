@@ -11,7 +11,7 @@ export function WekaLogo({
       <img
         src="/assets/wekasas-logo-official.png"
         alt="WEKASAS"
-        className="h-64 md:h-[208px] w-auto object-contain mix-blend-screen"
+        className="h-12 md:h-12 w-auto object-contain mix-blend-screen scale-[2.5] md:scale-[3.5] origin-left"
         aria-hidden="true"
       />
     </div>
