@@ -40,7 +40,7 @@ export default function Blog() {
   const { t } = useTranslation();
 
   return (
-    <SiteLayout>
+    <>
       <section className="bg-[color:var(--color-charcoal)] py-20 md:py-32">
         <div className="wk-container">
           <div className="max-w-3xl">
@@ -126,6 +126,6 @@ export default function Blog() {
           </div>
         </div>
       </section>
-    </SiteLayout>
+    </>
   );
 }

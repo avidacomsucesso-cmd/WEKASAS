@@ -11,7 +11,7 @@ export default function BlogPost() {
   // In a real app, you would fetch post data by id
   // This is a placeholder for the blog post content
   return (
-    <SiteLayout>
+    <>
       <article className="bg-white pb-20">
         <div className="bg-[color:var(--color-charcoal)] py-20 md:py-32">
           <div className="wk-container">
@@ -85,6 +85,6 @@ export default function BlogPost() {
           </div>
         </div>
       </article>
-    </SiteLayout>
+    </>
   );
 }
