@@ -71,15 +71,15 @@ export default function BlogPost() {
             <div className="p-8 md:p-16">
               <div className="prose prose-lg prose-slate max-w-none text-slate-700
                 prose-headings:text-slate-900 prose-headings:font-bold
-                prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8
-                prose-p:leading-relaxed prose-p:mb-8 prose-p:text-justify
-                prose-img:rounded-2xl prose-img:my-12 prose-img:shadow-lg
-                prose-blockquote:border-l-4 prose-blockquote:border-charcoal prose-blockquote:bg-slate-50 prose-blockquote:p-10 prose-blockquote:my-12 prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:text-xl prose-blockquote:text-slate-800
-                prose-table:w-full prose-table:my-10
+                prose-h2:text-3xl prose-h2:mt-24 prose-h2:mb-12
+                prose-p:leading-relaxed prose-p:mb-16 prose-p:text-justify
+                prose-img:rounded-2xl prose-img:mt-16 prose-img:mb-4 prose-img:shadow-lg
+                prose-blockquote:border-l-4 prose-blockquote:border-charcoal prose-blockquote:bg-slate-50 prose-blockquote:p-10 prose-blockquote:my-20 prose-blockquote:rounded-r-2xl prose-blockquote:italic prose-blockquote:text-xl prose-blockquote:text-slate-800
+                prose-table:w-full prose-table:my-16
                 prose-th:bg-slate-100 prose-th:p-4 prose-th:text-left
                 prose-td:p-4 prose-td:border-b prose-td:border-slate-100
-                prose-hr:my-16 prose-hr:border-slate-200
-                [&>em]:block [&>em]:text-center [&>em]:text-sm [&>em]:text-slate-500 [&>em]:mt-[-2rem] [&>em]:mb-12
+                prose-hr:my-24 prose-hr:border-slate-200
+                [&>em]:block [&>em]:text-center [&>em]:text-sm [&>em]:text-slate-500 [&>em]:mb-20
               ">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
                   {post.conteudo}
