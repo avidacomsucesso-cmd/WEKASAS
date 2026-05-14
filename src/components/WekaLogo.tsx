@@ -7,7 +7,7 @@ export function WekaLogo({
   className?: string;
 }) {
   return (
-    <div className={cn("flex items-center gap-3 shrink-0", className)}>
+    <div className={cn("flex items-center shrink-0 pr-12 md:pr-48 lg:pr-64", className)}>
       <img
         src="/assets/wekasas-logo-official.png"
         alt="WEKASAS"

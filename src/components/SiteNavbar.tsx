@@ -9,7 +9,6 @@ import { useTranslation } from 'react-i18next';
 
 const navItems = [
   { href: "/como-funciona", label: "nav.how" },
-  { href: "/precos", label: "nav.prices" },
   { href: "/inquilinos", label: "nav.tenants" },
   { href: "/parceiros", label: "nav.partners" },
   { href: "/blog", label: "nav.blog" },
@@ -21,7 +20,7 @@ function NavLinks({ onNavigate }: { onNavigate?: () => void }) {
   const { t } = useTranslation();
 
   return (
-    <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-6">
+    <div className="flex flex-col gap-2 md:flex-row md:items-center md:gap-2 lg:gap-4">
       {navItems.map((item) => {
         const active = location.pathname === item.href;
         return (
@@ -49,11 +48,11 @@ export function SiteNavbar() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-[color:var(--color-charcoal)]">
       <div className="wk-container flex h-28 md:h-36 items-center justify-between">
-        <Link to="/" className="rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30">
+        <Link to="/" className="relative z-50 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/30">
           <WekaLogo />
         </Link>
 
-        <nav className="hidden md:flex md:items-center md:gap-8">
+        <nav className="hidden md:flex md:items-center md:gap-4 lg:gap-6">
           <NavLinks />
           
           {/* Idioma Selector */}
