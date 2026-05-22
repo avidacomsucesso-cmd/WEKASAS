@@ -36,75 +36,39 @@ export const DADOS_RENDA: Record<string, DistritoDados> = {
   lisboa: {
     label: 'Lisboa',
     municipios: {
-      'lisboa': {
-        label: 'Lisboa (município)',
-        freguesias: {
-          'santo-antonio':    { label: 'Santo António',                        ine: 20.00, idealista: 22.5 },
-          'campo-ourique':    { label: 'Campo de Ourique',                     ine: 19.02, idealista: 18.8 },
-          'parque-nacoes':    { label: 'Parque das Nações',                    ine: 19.05, idealista: 19.2 },
-          'sta-maria-maior':  { label: 'Santa Maria Maior',                    ine: 19.33, idealista: 20.1 },
-          'misericordia':     { label: 'Misericórdia',                         ine: 18.35, idealista: 19.0 },
-          'estrela':          { label: 'Estrela',                              ine: 17.80, idealista: 18.2 },
-          'ajuda':            { label: 'Ajuda',                                ine: 17.06, idealista: 16.5 },
-          'campolide':        { label: 'Campolide',                            ine: 17.05, idealista: 16.8 },
-          'avenidas-novas':   { label: 'Avenidas Novas',                       ine: 16.56, idealista: 17.1 },
-          'sao-vicente':      { label: 'São Vicente',                          ine: 16.24, idealista: 16.5 },
-          'belem':            { label: 'Belém',                                ine: 16.14, idealista: 15.9 },
-          'carnide':          { label: 'Carnide',                              ine: 16.27, idealista: 15.2 },
-          'arroios':          { label: 'Arroios',                              ine: 15.40, idealista: 15.8 },
-          'alvalade':         { label: 'Alvalade',                             ine: 14.80, idealista: 15.0 },
-          'benfica':          { label: 'São Domingos de Benfica',              ine: 14.20, idealista: 14.1 },
-          'lumiar':           { label: 'Lumiar',                               ine: 13.90, idealista: 13.5 },
-          'olivais':          { label: 'Olivais',                              ine: 13.10, idealista: 12.8 },
-          'marvila':          { label: 'Marvila',                              ine: 12.50, idealista: 13.2 },
-          'beato':            { label: 'Beato',                                ine: 13.20, idealista: 13.8 },
-          'penha-franca':     { label: 'Penha de França',                      ine: 14.10, idealista: 14.0 },
-          'santa-clara':      { label: 'Santa Clara',                          ine: 12.80, idealista: 12.0 },
-          'benfica-uf':       { label: 'Benfica',                              ine: 13.60, idealista: 13.2 },
-        }
-      },
-      'cascais':  { label: 'Cascais',        ine: 15.31, idealista: 16.2 },
-      'oeiras':   { label: 'Oeiras',         ine: 13.80, idealista: 14.0 },
-      'sintra':   { label: 'Sintra',         ine: 10.20, idealista: 10.8 },
-      'amadora':  { label: 'Amadora',        ine: 11.40, idealista: 11.2 },
-      'loures':   { label: 'Loures',         ine: 10.90, idealista: 10.5 },
-      'odivelas': { label: 'Odivelas',       ine: 11.20, idealista: 10.9 },
-      'mafra':    { label: 'Mafra',          ine:  9.50, idealista:  9.2 },
-      'vila-franca': { label: 'Vila Franca de Xira', ine: 9.80, idealista: 9.6 },
+      'lisboa':   { label: 'Lisboa',         ine: 22.10, idealista: 22.1 },
+      'cascais':  { label: 'Cascais',        ine: 20.10, idealista: 20.1 },
+      'oeiras':   { label: 'Oeiras',         ine: 17.50, idealista: 17.5 },
+      'sintra':   { label: 'Sintra',         ine: 12.80, idealista: 12.8 },
+      'amadora':  { label: 'Amadora',        ine: 13.50, idealista: 13.5 },
+      'loures':   { label: 'Loures',         ine: 12.50, idealista: 12.5 },
+      'odivelas': { label: 'Odivelas',       ine: 13.00, idealista: 13.0 },
+      'mafra':    { label: 'Mafra',          ine: 11.00, idealista: 11.0 },
+      'vila-franca': { label: 'Vila Franca de Xira', ine: 10.20, idealista: 10.2 },
+      'torres-vedras': { label: 'Torres Vedras', ine: 10.40, idealista: 10.4 },
       'alenquer': { label: 'Alenquer',       ine:  8.20, idealista:  8.0 },
     }
   },
   porto: {
     label: 'Porto',
     municipios: {
-      'porto': {
-        label: 'Porto (município)',
-        freguesias: {
-          'foz-nevogilde':  { label: 'Aldoar, Foz do Douro e Nevogilde',              ine: 14.29, idealista: 15.2 },
-          'lordelo':        { label: 'Lordelo do Ouro e Massarelos',                  ine: 12.97, idealista: 13.5 },
-          'cedofeita':      { label: 'Cedofeita, Ildefonso, Sé, Miragaia, Vitória',   ine: 13.50, idealista: 14.0 },
-          'paranhos':       { label: 'Paranhos',                                      ine: 11.20, idealista: 11.5 },
-          'ramalde':        { label: 'Ramalde',                                       ine: 11.50, idealista: 11.2 },
-          'campanha':       { label: 'Campanhã',                                      ine: 10.80, idealista: 10.5 },
-          'bonfim':         { label: 'Bonfim',                                        ine: 12.10, idealista: 12.5 },
-        }
-      },
-      'matosinhos':  { label: 'Matosinhos',         ine: 11.80, idealista: 12.2 },
-      'gaia':        { label: 'Vila Nova de Gaia',  ine: 10.90, idealista: 11.2 },
-      'gondomar':    { label: 'Gondomar',            ine:  9.80, idealista:  9.5 },
-      'maia':        { label: 'Maia',                ine:  9.60, idealista:  9.2 },
-      'valongo':     { label: 'Valongo',             ine:  8.90, idealista:  8.6 },
-      'braga':       { label: 'Braga',               ine:  8.50, idealista:  8.8 },
+      'porto':       { label: 'Porto',               ine: 17.40, idealista: 17.4 },
+      'matosinhos':  { label: 'Matosinhos',         ine: 15.50, idealista: 15.5 },
+      'gaia':        { label: 'Vila Nova de Gaia',  ine: 13.80, idealista: 13.8 },
+      'gondomar':    { label: 'Gondomar',            ine: 11.50, idealista: 11.5 },
+      'maia':        { label: 'Maia',                ine: 12.50, idealista: 12.5 },
+      'valongo':     { label: 'Valongo',             ine: 10.50, idealista: 10.5 },
+      'braga':       { label: 'Braga',               ine: 11.90, idealista: 11.9 },
       'guimaraes':   { label: 'Guimarães',           ine:  8.10, idealista:  8.3 },
     }
   },
   setubal: {
     label: 'Setúbal',
     municipios: {
-      'almada':     { label: 'Almada',      ine: 11.50, idealista: 11.8 },
-      'seixal':     { label: 'Seixal',      ine: 10.40, idealista: 10.2 },
-      'setubal':    { label: 'Setúbal',     ine:  9.20, idealista:  9.0 },
-      'barreiro':   { label: 'Barreiro',    ine:  9.80, idealista:  9.5 },
+      'almada':     { label: 'Almada',      ine: 13.00, idealista: 13.0 },
+      'seixal':     { label: 'Seixal',      ine: 11.50, idealista: 11.5 },
+      'setubal':    { label: 'Setúbal',     ine: 13.50, idealista: 13.5 },
+      'barreiro':   { label: 'Barreiro',    ine: 10.50, idealista: 10.5 },
       'moita':      { label: 'Moita',       ine:  9.10, idealista:  8.8 },
       'palmela':    { label: 'Palmela',     ine:  8.90, idealista:  8.6 },
       'sesimbra':   { label: 'Sesimbra',    ine:  9.50, idealista: 10.0 },
@@ -115,7 +79,7 @@ export const DADOS_RENDA: Record<string, DistritoDados> = {
   algarve: {
     label: 'Algarve',
     municipios: {
-      'faro':      { label: 'Faro',         ine: 10.20, idealista: 10.8 },
+      'faro':      { label: 'Faro',         ine: 15.00, idealista: 15.0 },
       'loule':     { label: 'Loulé',        ine: 11.50, idealista: 12.5 },
       'portimao':  { label: 'Portimão',     ine: 10.80, idealista: 11.2 },
       'silves':    { label: 'Silves',        ine:  9.80, idealista: 10.0 },
@@ -131,16 +95,17 @@ export const DADOS_RENDA: Record<string, DistritoDados> = {
   outros: {
     label: 'Outro distrito',
     municipios: {
-      'aveiro':    { label: 'Aveiro',       ine:  7.80, idealista:  8.0 },
-      'coimbra':   { label: 'Coimbra',      ine:  8.20, idealista:  8.5 },
+      'aveiro':    { label: 'Aveiro',       ine: 10.50, idealista: 10.5 },
+      'coimbra':   { label: 'Coimbra',      ine: 11.90, idealista: 11.9 },
       'viseu':     { label: 'Viseu',        ine:  6.80, idealista:  7.0 },
-      'leiria':    { label: 'Leiria',       ine:  7.50, idealista:  7.8 },
-      'evora':     { label: 'Évora',        ine:  7.20, idealista:  7.5 },
+      'leiria':    { label: 'Leiria',       ine: 10.00, idealista: 10.0 },
+      'evora':     { label: 'Évora',        ine:  9.50, idealista:  9.5 },
+      'funchal':   { label: 'Funchal',      ine: 16.20, idealista: 16.2 },
       'beja':      { label: 'Beja',         ine:  6.20, idealista:  6.5 },
       'braganca':  { label: 'Bragança',     ine:  5.80, idealista:  6.0 },
       'castelo-branco': { label: 'Castelo Branco', ine: 6.00, idealista: 6.2 },
       'faro-out':  { label: 'Outro (Algarve interior)', ine: 8.00, idealista: 8.2 },
-      'viana':     { label: 'Viana do Castelo', ine: 7.10, idealista: 7.3 },
+      'viana':     { label: 'Viana do Castelo', ine: 9.00, idealista: 9.0 },
       'outros-pt': { label: 'Outro município', ine: 6.50, idealista: 6.8 },
     }
   }
@@ -156,10 +121,10 @@ const FATOR_TIPOLOGIA: Record<string, number> = {
 };
 
 const FATOR_ESTADO: Record<string, number> = {
-  'medio':    1.00,
-  'novo':     1.12,
-  'premium':  1.25,
-  'basico':   0.85,
+  'medio':    1.08,
+  'novo':     1.20,
+  'premium':  1.15,
+  'basico':   0.88,
 };
 
 // --- LOGIC ---
@@ -193,8 +158,8 @@ function calcularRenda(
 
   return {
     mediaRenda:       arredondar(rendaBruta),
-    minRenda:         arredondar(rendaBruta * 0.92),
-    maxRenda:         arredondar(rendaBruta * 1.08),
+    minRenda:         arredondar(rendaBruta * 0.88),
+    maxRenda:         arredondar(rendaBruta * 1.12),
     inePorM2:         ine,
     idealistaPorM2:   idealista,
     fatorTipologia:   fTipo,
@@ -432,9 +397,9 @@ export function RentCalculator() {
                 <div className="flex items-start gap-2">
                   <Info className="h-3 w-3 shrink-0 mt-0.5" />
                   <p className="text-[9px] leading-tight font-medium text-zinc-600">
-                    [INE] Estatísticas de Rendas ao Nível Local · 2.º Sem 2024 <br/>
-                    [Idealista] Preço médio de mercado por zona · 2024 <br/>
-                    [WEKASAS] Factor de ajuste por tipologia e estado do imóvel <br/>
+                    [Idealista] Índice de Preços de Arrendamento · Dez 2025 <br/>
+                    [Doutor Finanças] Observatório Imobiliário · Jan 2026 <br/>
+                    [WEKASAS] Fator de ajuste por tipologia e estado do imóvel <br/>
                     Valores indicativos. A WEKASAS realiza avaliação presencial gratuita.
                   </p>
                 </div>
